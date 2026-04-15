@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>账户总览 · Vela-alpha</title>
+<link rel="stylesheet" href="../assets/style.css"/>
+<style>
+  .welcome {
+    background: linear-gradient(135deg, #0A0A0F 0%, #1a0a12 100%);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .welcome::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 30%, rgba(228, 46, 46, 0.25) 0%, transparent 50%);
+  }
+  .welcome h2 {
+    color: white;
+    margin: 0 0 8px;
+    font-size: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .welcome p {
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .welcome-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .dash-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+  }
+
+  .chart-card {
+    background: white;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .chart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .chart-head h3 {
+    font-size: 16px;
+    margin: 0;
+  }
+  .range-group {
+    display: flex;
+    gap: 4px;
+    background: var(--ink-100);
+    border-radius: 8px;
+    padding: 3px;
+  }
+  .range-group button {
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--ink-500);
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .range-group button.active {
+    background: white;
+    color: var(--ink-900);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .balance-card {
+    background: linear-gradient(135deg, var(--brand) 0%, #FF6B4A 100%);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .balance-card .label {
+    font-size: 12px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .balance-card .amount {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 6px 0 4px;
+  }
+  .balance-card .meta {
+    font-size: 13px;
+    opacity: 0.85;
+  }
+  .balance-card .actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 8px;
+  }
+  .balance-card .actions .btn {
+    background: white;
+    color: var(--brand);
+  }
+  .balance-card .actions .btn:hover {
+    transform: translateY(-1px);
+    color: var(--brand-dark);
+  }
+  .balance-card .btn-ghost {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border-color: transparent;
+  }
+  .balance-card .btn-ghost:hover { background: rgba(255,255,255,0.25); color: white;}
+
+  .recent-activity {
+    background: white;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .activity-row {
+    display: grid;
+    grid-template-columns: 16px 1fr auto auto;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ink-100);
+    font-size: 13.5px;
+  }
+  .activity-row:last-child { border-bottom: none; }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+  }
+  .dot.err { background: var(--danger); }
+
+  .alert-banner {
+    background: #FFFBEA;
+    border: 1px solid #FDE68A;
+    color: #92400E;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">V</span>
+      Vela-alpha
+    </a>
+    <div class="side-section">工作台</div>
+    <a class="side-link active" href="dashboard.html">
+      <span class="ico">🏠</span> 账户总览
+    </a>
+    <a class="side-link" href="api-keys.html">
+      <span class="ico">🔑</span> API Keys
+    </a>
+    <a class="side-link" href="usage.html">
+      <span class="ico">📊</span> 用量统计
+    </a>
+
+    <div class="side-section">开发</div>
+    <a class="side-link " href="../playground.html"><span class="ico">🎮</span> 体验中心</a>
+    <a class="side-link" href="../docs.html">
+      <span class="ico">📘</span> 文档
+    </a>
+    <a class="side-link" href="../pricing.html">
+      <span class="ico">💳</span> Coding Plan
+    </a>
+  </aside>
+
+  <!-- 主区 -->
+  <main class="app-main">
+    <div class="app-topbar">
+      <div class="title">账户总览</div>
+      <div class="flex">
+        <span class="badge badge-success">公测 Free</span>
+        <div class="user-menu">
+          <div class="user-avatar">W</div>
+          <div class="user-dropdown">
+            <div class="info">
+              <div class="name">xxxxx</div>
+              <div class="meta">📱 +86 xxx ****xxxx</div>
+              <div class="meta">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+            </div>
+            <button class="menu-item">
+              <span class="ico">🔒</span> 修改密码
+            </button>
+            <a class="menu-item danger" href="../login.html">
+              <span class="ico">↪</span> 退出登录
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-body">
+      <!-- 告警横幅 -->
+      <div class="alert-banner">
+        <span>🎁 公测期完全免费开放，所有 Coding 模型无限制使用，每 Key 限流 1,500 次 / 5 小时</span>
+        <a href="../pricing.html" class="text-small" style="color: #92400E; font-weight:600;">了解详情 →</a>
+      </div>
+
+      <!-- 欢迎卡 -->
+      <div class="welcome">
+        <h2>欢迎回来，xxxxx 👋</h2>
+        <p>你的账户本月已调用 <strong style="color:white;">2.4M tokens</strong>，当前窗口剩余 <strong style="color:white;">1,240</strong> 次调用额度</p>
+        <div class="welcome-actions">
+          <a href="api-keys.html" class="btn btn-primary btn-sm">管理 API Keys</a>
+          <a href="../playground.html" class="btn btn-ghost btn-sm" style="color:white; border-color: rgba(255,255,255,0.2);">前往体验中心</a>
+          <a href="../docs.html" class="btn btn-ghost btn-sm" style="color:white; border-color: rgba(255,255,255,0.2);">查看文档</a>
+        </div>
+      </div>
+
+      <!-- 统计卡片 -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="label">本月 Token 用量</div>
+          <div class="value">2.41M</div>
+          <div class="trend trend-up">↗ +18.2% 较上月</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">请求总数</div>
+          <div class="value">12,487</div>
+          <div class="trend trend-up">↗ +24.5%</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">平均延迟 (P50)</div>
+          <div class="value">186 <span style="font-size:14px; color: var(--ink-500);">ms</span></div>
+          <div class="trend trend-down">↘ -12ms 优化中</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">错误率</div>
+          <div class="value">0.24<span style="font-size:14px; color: var(--ink-500);">%</span></div>
+          <div class="trend trend-down">↘ -0.1%</div>
+        </div>
+      </div>
+
+      <!-- 图表 + 余额 -->
+      <div class="dash-grid mt-3">
+        <div class="chart-card">
+          <div class="chart-head">
+            <h3>Token 用量趋势</h3>
+            <div class="range-group">
+              <button>24H</button>
+              <button class="active">7D</button>
+              <button>30D</button>
+              <button>90D</button>
+            </div>
+          </div>
+          <div id="chart-trend"></div>
+        </div>
+
+        <div>
+          <div class="balance-card">
+            <div class="label">当前窗口调用余量</div>
+            <div class="amount">1,240</div>
+            <div class="meta">每 Key 1,500 次 / 5 小时 · 已用 260 次 · 2h 15m 后重置</div>
+            <div class="actions">
+              <a href="api-keys.html" class="btn btn-sm">新增 API Key</a>
+              <a href="usage.html" class="btn btn-ghost btn-sm">查看用量</a>
+            </div>
+          </div>
+
+          <div class="chart-card mt-2">
+            <div class="chart-head">
+              <h3 style="font-size:14px;">模型使用分布</h3>
+            </div>
+            <div id="chart-models"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 最近调用 -->
+      <div class="recent-activity mt-3">
+        <div class="chart-head">
+          <h3>最近 API 调用</h3>
+          <a href="usage.html" class="text-small" style="color: var(--brand);">查看全部 →</a>
+        </div>
+        <div class="activity-row">
+          <span class="dot"></span>
+          <div>
+            <strong>vela-code-pro</strong> · chat.completions
+            <div class="text-small text-muted">prod-key · 2.4k tokens · 384ms</div>
+          </div>
+          <span class="badge badge-success">200 OK</span>
+          <span class="text-small text-muted">2 秒前</span>
+        </div>
+        <div class="activity-row">
+          <span class="dot"></span>
+          <div>
+            <strong>vela-chat-pro</strong> · chat.completions
+            <div class="text-small text-muted">dev-key · 512 tokens · 162ms</div>
+          </div>
+          <span class="badge badge-success">200 OK</span>
+          <span class="text-small text-muted">8 秒前</span>
+        </div>
+        <div class="activity-row">
+          <span class="dot err"></span>
+          <div>
+            <strong>vela-code-pro</strong> · chat.completions
+            <div class="text-small text-muted">prod-key · rate_limit_exceeded</div>
+          </div>
+          <span class="badge badge-danger">429</span>
+          <span class="text-small text-muted">14 秒前</span>
+        </div>
+        <div class="activity-row">
+          <span class="dot"></span>
+          <div>
+            <strong>vela-code-fim</strong> · completions
+            <div class="text-small text-muted">ide-key (Cursor) · 128 tokens · 98ms</div>
+          </div>
+          <span class="badge badge-success">200 OK</span>
+          <span class="text-small text-muted">21 秒前</span>
+        </div>
+        <div class="activity-row">
+          <span class="dot"></span>
+          <div>
+            <strong>vela-chat-pro</strong> · models
+            <div class="text-small text-muted">web-key · 12ms</div>
+          </div>
+          <span class="badge badge-success">200 OK</span>
+          <span class="text-small text-muted">1 分钟前</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/app.js"></script>
+<script>
+  // 用量趋势
+  const trendData = [
+    { x: 'Mon', v: 280000 },
+    { x: 'Tue', v: 340000 },
+    { x: 'Wed', v: 310000 },
+    { x: 'Thu', v: 420000 },
+    { x: 'Fri', v: 380000 },
+    { x: 'Sat', v: 290000 },
+    { x: 'Sun', v: 460000 },
+  ];
+  renderLineChart(document.getElementById('chart-trend'), trendData, { height: 220 });
+
+  // 模型分布
+  const modelData = [
+    { x: 'chat-pro', v: 1100000 },
+    { x: 'code-pro', v: 820000 },
+    { x: 'code-fim', v: 340000 },
+    { x: 'chat-lite', v: 150000 },
+  ];
+  renderBarChart(document.getElementById('chart-models'), modelData, { height: 180 });
+
+  window.addEventListener('resize', () => {
+    renderLineChart(document.getElementById('chart-trend'), trendData, { height: 220 });
+    renderBarChart(document.getElementById('chart-models'), modelData, { height: 180 });
+  });
+</script>
+</body>
+</html>

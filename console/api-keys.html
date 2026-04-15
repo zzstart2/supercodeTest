@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>API Keys · Vela-alpha</title>
+<link rel="stylesheet" href="../assets/style.css"/>
+<style>
+  .keys-card {
+    background: white;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .key-mask {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-700);
+    background: var(--ink-100);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  /* 模态框 */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 15, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    backdrop-filter: blur(3px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal h3 { margin: 0 0 8px; }
+  .modal .desc { color: var(--ink-500); font-size: 14px; margin: 0 0 20px; }
+
+  .success-key {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    padding: 16px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #065F46;
+    word-break: break-all;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .access-chip {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--ink-100);
+    color: var(--ink-700);
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+
+  .permission-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .perm-chip {
+    padding: 6px 12px;
+    border: 1px solid var(--ink-200);
+    border-radius: 100px;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .perm-chip.selected {
+    background: var(--brand-soft);
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">V</span>
+      Vela-alpha
+    </a>
+    <div class="side-section">工作台</div>
+    <a class="side-link" href="dashboard.html"><span class="ico">🏠</span> 账户总览</a>
+    <a class="side-link active" href="api-keys.html"><span class="ico">🔑</span> API Keys</a>
+    <a class="side-link" href="usage.html"><span class="ico">📊</span> 用量统计</a>
+    <div class="side-section">开发</div>
+    <a class="side-link " href="../playground.html"><span class="ico">🎮</span> 体验中心</a>
+    <a class="side-link" href="../docs.html"><span class="ico">📘</span> 文档</a>
+    <a class="side-link" href="../pricing.html"><span class="ico">💳</span> Coding Plan</a>
+  </aside>
+
+  <main class="app-main">
+    <div class="app-topbar">
+      <div class="title">API Keys</div>
+      <div class="flex">
+        <span class="badge badge-success">公测 Free</span>
+        <div class="user-menu">
+          <div class="user-avatar">W</div>
+          <div class="user-dropdown">
+            <div class="info">
+              <div class="name">xxxxx</div>
+              <div class="meta">📱 +86 xxx ****xxxx</div>
+              <div class="meta">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+            </div>
+            <button class="menu-item">
+              <span class="ico">🔒</span> 修改密码
+            </button>
+            <a class="menu-item danger" href="../login.html">
+              <span class="ico">↪</span> 退出登录
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-body">
+      <div class="page-head" style="align-items: center;">
+        <p class="page-desc" style="margin:0;">创建、注销 API 密钥，用于应用接入 Vela-alpha。最多可创建 20 个 Keys。</p>
+        <button class="btn btn-primary" onclick="document.getElementById('m-create').classList.add('open')">
+          + 创建 API Key
+        </button>
+      </div>
+
+      <!-- 紧凑版安全提醒 -->
+      <div class="flex" style="background: #EFF6FF; border: 1px solid #BFDBFE; color: #1E40AF; padding: 8px 14px; border-radius: var(--radius); font-size: 13px; margin-bottom: 20px; gap: 8px;">
+        <span>🔒</span>
+        <span>Key 仅在创建时完整显示一次，请妥善保存到环境变量或密钥管理服务。</span>
+      </div>
+
+      <!-- Keys 表格（精简版） -->
+      <div class="keys-card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>Key (掩码)</th>
+              <th>创建时间</th>
+              <th>最后使用</th>
+              <th>已用 Tokens</th>
+              <th>状态</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>prod-key</strong></td>
+              <td><span class="key-mask">va-••••••••••3f8a</span></td>
+              <td class="text-small text-muted">2026-02-18</td>
+              <td class="text-small text-muted">2 秒前</td>
+              <td><strong>1.82M</strong></td>
+              <td><span class="badge badge-success">● Active</span></td>
+              <td>
+                <button class="btn btn-sm btn-danger">注销</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>dev-key</strong></td>
+              <td><span class="key-mask">va-••••••••••91d2</span></td>
+              <td class="text-small text-muted">2026-02-22</td>
+              <td class="text-small text-muted">12 分钟前</td>
+              <td><strong>342K</strong></td>
+              <td><span class="badge badge-success">● Active</span></td>
+              <td>
+                <button class="btn btn-sm btn-danger">注销</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>ide-key</strong></td>
+              <td><span class="key-mask">va-••••••••••7e4c</span></td>
+              <td class="text-small text-muted">2026-03-02</td>
+              <td class="text-small text-muted">21 秒前</td>
+              <td><strong>468K</strong></td>
+              <td><span class="badge badge-success">● Active</span></td>
+              <td>
+                <button class="btn btn-sm btn-danger">注销</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>web-key</strong></td>
+              <td><span class="key-mask">va-••••••••••a1b2</span></td>
+              <td class="text-small text-muted">2026-03-14</td>
+              <td class="text-small text-muted">3 小时前</td>
+              <td><strong>56K</strong></td>
+              <td><span class="badge badge-success">● Active</span></td>
+              <td>
+                <button class="btn btn-sm btn-danger">注销</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>legacy-key</strong></td>
+              <td><span class="key-mask">va-••••••••••bc03</span></td>
+              <td class="text-small text-muted">2026-01-08</td>
+              <td class="text-small text-muted">30 天前</td>
+              <td><strong>—</strong></td>
+              <td><span class="badge badge-neutral">● 已注销</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline">查看</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-small text-muted mt-2">当前已使用 <strong>4</strong> / 20 可用 Keys</p>
+
+      <!-- 使用示例 -->
+      <div class="mt-4">
+        <h3>快速使用示例</h3>
+        <div class="code-block mt-2">
+          <button class="code-copy">复制</button>
+<pre><span class="cm"># 设置环境变量</span>
+<span class="kw">export</span> VELA_API_KEY=<span class="str">"va-xxxxxxxxxxxxxxxxxxxx"</span>
+
+<span class="cm"># Python (使用官方 openai SDK)</span>
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
+client = <span class="fn">OpenAI</span>(
+    base_url=<span class="str">"https://api.vela.dev/v1"</span>,
+    api_key=os.getenv(<span class="str">"VELA_API_KEY"</span>),
+)</pre>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- 创建 Key 模态框 -->
+<div class="modal-overlay" id="m-create">
+  <div class="modal">
+    <h3>创建新的 API Key</h3>
+    <p class="desc">为 Key 命名，便于区分不同应用场景</p>
+
+    <div class="form-field">
+      <label>名称</label>
+      <input class="input" placeholder="例如 prod-backend / ide-cursor"/>
+      <div class="helper">仅用于内部展示识别，不会发送给模型</div>
+    </div>
+
+    <div class="flex" style="justify-content: flex-end; gap: 8px; margin-top: 24px;">
+      <button class="btn btn-outline" onclick="document.getElementById('m-create').classList.remove('open')">取消</button>
+      <button class="btn btn-primary" onclick="showCreated()">创建并生成 Key</button>
+    </div>
+  </div>
+</div>
+
+<!-- 成功弹窗 -->
+<div class="modal-overlay" id="m-success">
+  <div class="modal">
+    <h3>🎉 Key 创建成功</h3>
+    <p class="desc">这是您的 API Key，<strong style="color: var(--danger);">只会显示一次</strong>，请立即复制保存：</p>
+
+    <div class="success-key">
+      <span>va-a7f9d4b8c3e6210fa8b47c9d3e6f2a1b</span>
+      <button class="btn btn-sm btn-primary" onclick="navigator.clipboard.writeText('va-a7f9d4b8c3e6210fa8b47c9d3e6f2a1b'); this.textContent='✓'">复制</button>
+    </div>
+
+    <div class="helper">建议保存到环境变量或专业密钥管理服务中。</div>
+
+    <div class="flex" style="justify-content: flex-end; margin-top: 24px;">
+      <button class="btn btn-primary" onclick="document.getElementById('m-success').classList.remove('open')">我已保存</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/app.js"></script>
+<script>
+  function showCreated() {
+    document.getElementById('m-create').classList.remove('open');
+    document.getElementById('m-success').classList.add('open');
+  }
+
+  // 点击权限 chip 切换选中
+  document.querySelectorAll('.perm-chip').forEach(c => {
+    c.addEventListener('click', () => c.classList.toggle('selected'));
+  });
+</script>
+</body>
+</html>

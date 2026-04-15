@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>用量统计 · Vela-alpha</title>
+<link rel="stylesheet" href="../assets/style.css"/>
+<style>
+  .filter-bar {
+    background: white;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter-bar label {
+    font-size: 12px;
+    color: var(--ink-500);
+    margin-right: 6px;
+  }
+  .filter-bar select, .filter-bar input {
+    padding: 6px 12px;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius);
+    font-size: 13px;
+    background: white;
+  }
+
+  .chart-wrap {
+    background: white;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .chart-wrap h3 {
+    font-size: 16px;
+    margin: 0 0 16px;
+  }
+
+  .breakdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  /* 堆叠条形图 */
+  .stack-row {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .stack-bar {
+    height: 18px;
+    background: var(--ink-100);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+  }
+  .stack-bar .p {
+    height: 100%;
+    background: var(--brand);
+  }
+  .stack-bar .c {
+    height: 100%;
+    background: #FFA88E;
+  }
+  .stack-val {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--ink-500);
+    margin-bottom: 16px;
+  }
+  .legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .legend .swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  @media (max-width: 900px) {
+    .breakdown-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">V</span>
+      Vela-alpha
+    </a>
+    <div class="side-section">工作台</div>
+    <a class="side-link" href="dashboard.html"><span class="ico">🏠</span> 账户总览</a>
+    <a class="side-link" href="api-keys.html"><span class="ico">🔑</span> API Keys</a>
+    <a class="side-link active" href="usage.html"><span class="ico">📊</span> 用量统计</a>
+    <div class="side-section">开发</div>
+    <a class="side-link " href="../playground.html"><span class="ico">🎮</span> 体验中心</a>
+    <a class="side-link" href="../docs.html"><span class="ico">📘</span> 文档</a>
+    <a class="side-link" href="../pricing.html"><span class="ico">💳</span> Coding Plan</a>
+  </aside>
+
+  <main class="app-main">
+    <div class="app-topbar">
+      <div class="title">用量统计</div>
+      <div class="flex">
+        <span class="badge badge-success">公测 Free</span>
+        <div class="user-menu">
+          <div class="user-avatar">W</div>
+          <div class="user-dropdown">
+            <div class="info">
+              <div class="name">xxxxx</div>
+              <div class="meta">📱 +86 xxx ****xxxx</div>
+              <div class="meta">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+            </div>
+            <button class="menu-item">
+              <span class="ico">🔒</span> 修改密码
+            </button>
+            <a class="menu-item danger" href="../login.html">
+              <span class="ico">↪</span> 退出登录
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-body">
+      <div class="page-head" style="align-items: center;">
+        <p class="page-desc" style="margin:0;">按 Key / 模型 / 日期维度追踪 prompt + completion tokens · 可导出 CSV 用于内部账务</p>
+        <button class="btn btn-outline">导出 CSV</button>
+      </div>
+
+      <!-- 筛选条 -->
+      <div class="filter-bar">
+        <div>
+          <label>时间范围</label>
+          <select>
+            <option>最近 7 天</option>
+            <option selected>最近 30 天</option>
+            <option>本月</option>
+            <option>上月</option>
+            <option>自定义</option>
+          </select>
+        </div>
+        <div>
+          <label>API Key</label>
+          <select>
+            <option>全部 Keys</option>
+            <option>prod-key</option>
+            <option>dev-key</option>
+            <option>ide-key</option>
+            <option>web-key</option>
+          </select>
+        </div>
+        <div>
+          <label>模型</label>
+          <select>
+            <option>全部模型</option>
+            <option>vela-chat-pro</option>
+            <option>vela-chat-lite</option>
+            <option>vela-code-pro</option>
+            <option>vela-code-fim</option>
+          </select>
+        </div>
+        <div>
+          <label>聚合粒度</label>
+          <select>
+            <option>按日</option>
+            <option>按小时</option>
+          </select>
+        </div>
+        <div style="margin-left:auto;">
+          <button class="btn btn-outline btn-sm">重置</button>
+          <button class="btn btn-primary btn-sm">应用</button>
+        </div>
+      </div>
+
+      <!-- 统计卡 -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="label">周期 Tokens</div>
+          <div class="value">8.94M</div>
+          <div class="trend trend-up">↗ prompt 2.1M · completion 6.8M</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">请求数</div>
+          <div class="value">48,231</div>
+          <div class="trend trend-up">↗ 成功率 99.76%</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">活跃 API Keys</div>
+          <div class="value">4 <span style="font-size:14px; color: var(--ink-500);">/ 20</span></div>
+          <div class="trend text-muted">上限 20 个</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">平均每请求 Tokens</div>
+          <div class="value">185</div>
+          <div class="trend trend-down">↘ -12 tokens</div>
+        </div>
+      </div>
+
+      <!-- 趋势图 -->
+      <div class="chart-wrap mt-3">
+        <div class="flex-between">
+          <h3>每日 Token 用量</h3>
+          <div class="legend">
+            <span><span class="swatch" style="background: var(--brand);"></span>Prompt</span>
+            <span><span class="swatch" style="background: #FFA88E;"></span>Completion</span>
+          </div>
+        </div>
+        <div id="chart-daily"></div>
+      </div>
+
+      <!-- 按模型 & 按 Key 分解 -->
+      <div class="breakdown-grid">
+        <div class="chart-wrap" style="margin:0;">
+          <h3>按模型分布 (Tokens)</h3>
+          <div class="legend">
+            <span><span class="swatch" style="background: var(--brand);"></span>Prompt</span>
+            <span><span class="swatch" style="background: #FFA88E;"></span>Completion</span>
+          </div>
+          <div class="stack-row">
+            <span>vela-chat-pro</span>
+            <div class="stack-bar">
+              <div class="p" style="width: 18%;"></div>
+              <div class="c" style="width: 52%;"></div>
+            </div>
+            <span class="stack-val">4.21M</span>
+          </div>
+          <div class="stack-row">
+            <span>vela-code-pro</span>
+            <div class="stack-bar">
+              <div class="p" style="width: 14%;"></div>
+              <div class="c" style="width: 44%;"></div>
+            </div>
+            <span class="stack-val">3.02M</span>
+          </div>
+          <div class="stack-row">
+            <span>vela-code-fim</span>
+            <div class="stack-bar">
+              <div class="p" style="width: 6%;"></div>
+              <div class="c" style="width: 12%;"></div>
+            </div>
+            <span class="stack-val">1.12M</span>
+          </div>
+          <div class="stack-row">
+            <span>vela-chat-lite</span>
+            <div class="stack-bar">
+              <div class="p" style="width: 2%;"></div>
+              <div class="c" style="width: 5%;"></div>
+            </div>
+            <span class="stack-val">0.59M</span>
+          </div>
+        </div>
+
+        <div class="chart-wrap" style="margin:0;">
+          <h3>按 API Key 分布 (Tokens)</h3>
+          <div class="legend">
+            <span><span class="swatch" style="background: var(--brand);"></span>已用</span>
+            <span><span class="swatch" style="background: var(--ink-200);"></span>余量 / 限额</span>
+          </div>
+          <div class="stack-row">
+            <span>prod-key</span>
+            <div class="stack-bar">
+              <div class="p" style="width: 55%;"></div>
+            </div>
+            <span class="stack-val">4.85M</span>
+          </div>
+          <div class="stack-row">
+            <span>ide-key</span>
+            <div class="stack-bar">
+              <div class="p" style="width: 30%;"></div>
+            </div>
+            <span class="stack-val">2.68M</span>
+          </div>
+          <div class="stack-row">
+            <span>dev-key</span>
+            <div class="stack-bar">
+              <div class="p" style="width: 12%;"></div>
+            </div>
+            <span class="stack-val">1.09M</span>
+          </div>
+          <div class="stack-row">
+            <span>web-key</span>
+            <div class="stack-bar">
+              <div class="p" style="width: 4%;"></div>
+            </div>
+            <span class="stack-val">324K</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 明细表 -->
+      <div class="keys-card mt-3" style="background: white; border: 1px solid var(--ink-200); border-radius: var(--radius-lg); overflow: hidden;">
+        <div style="padding: 20px 24px; border-bottom: 1px solid var(--ink-200);">
+          <h3 style="margin:0; font-size:16px;">日用量明细</h3>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>日期</th>
+              <th>Prompt Tokens</th>
+              <th>Completion Tokens</th>
+              <th>总请求数</th>
+              <th>错误数</th>
+              <th>平均延迟 (P50)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2026-04-14</td><td>82,340</td><td>298,120</td><td>1,842</td><td>3</td><td>184ms</td></tr>
+            <tr><td>2026-04-13</td><td>94,210</td><td>312,450</td><td>1,902</td><td>5</td><td>192ms</td></tr>
+            <tr><td>2026-04-12</td><td>72,510</td><td>248,930</td><td>1,623</td><td>2</td><td>178ms</td></tr>
+            <tr><td>2026-04-11</td><td>105,420</td><td>362,180</td><td>2,180</td><td>8</td><td>210ms</td></tr>
+            <tr><td>2026-04-10</td><td>68,320</td><td>231,700</td><td>1,486</td><td>4</td><td>181ms</td></tr>
+            <tr><td>2026-04-09</td><td>58,910</td><td>198,340</td><td>1,284</td><td>1</td><td>165ms</td></tr>
+            <tr><td>2026-04-08</td><td>77,120</td><td>265,810</td><td>1,712</td><td>6</td><td>188ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-small text-muted mt-2" style="text-align:center;">
+        仅显示最近 7 天，<a href="#" style="color: var(--brand);">查看完整 30 天 →</a>
+      </p>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/app.js"></script>
+<script>
+  const daily = [
+    { x: '4/8', v: 342930 },
+    { x: '4/9', v: 257250 },
+    { x: '4/10', v: 300020 },
+    { x: '4/11', v: 467600 },
+    { x: '4/12', v: 321440 },
+    { x: '4/13', v: 406660 },
+    { x: '4/14', v: 380460 },
+  ];
+  renderLineChart(document.getElementById('chart-daily'), daily, { height: 260 });
+  window.addEventListener('resize', () => {
+    renderLineChart(document.getElementById('chart-daily'), daily, { height: 260 });
+  });
+</script>
+</body>
+</html>

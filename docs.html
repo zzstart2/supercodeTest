@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>API 文档 · Vela-alpha AI Platform</title>
+<link rel="stylesheet" href="assets/style.css"/>
+<style>
+  .docs-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 220px;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: calc(100vh - var(--nav-h));
+  }
+
+  .docs-sidebar {
+    border-right: 1px solid var(--ink-200);
+    padding: 32px 0 32px 32px;
+    position: sticky;
+    top: var(--nav-h);
+    height: calc(100vh - var(--nav-h));
+    overflow-y: auto;
+    font-size: 14px;
+  }
+  .docs-sidebar h6 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-400);
+    margin: 20px 0 8px;
+    font-weight: 600;
+  }
+  .docs-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+  }
+  .docs-sidebar li a {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: var(--ink-700);
+    margin-bottom: 2px;
+  }
+  .docs-sidebar li a:hover { background: var(--ink-100); color: var(--ink-900); }
+  .docs-sidebar li a.active {
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-weight: 600;
+  }
+
+  .docs-content {
+    padding: 48px 48px;
+    max-width: 880px;
+    min-width: 0;
+  }
+  .docs-content h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+  .docs-content h2 {
+    font-size: 26px;
+    margin-top: 56px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--ink-200);
+  }
+  .docs-content h3 {
+    font-size: 20px;
+    margin-top: 40px;
+  }
+  .docs-content p, .docs-content li {
+    font-size: 15px;
+    color: var(--ink-700);
+  }
+  .docs-content code:not(.block) {
+    background: var(--ink-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #C41D1D;
+  }
+  .docs-content .callout {
+    background: #FFFBEA;
+    border-left: 4px solid #F59E0B;
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .docs-content .callout.info {
+    background: #EFF6FF;
+    border-color: #3B82F6;
+  }
+  .docs-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .docs-content th, .docs-content td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--ink-200);
+    text-align: left;
+  }
+  .docs-content th {
+    background: var(--ink-100);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    color: var(--ink-500);
+  }
+
+  .docs-toc {
+    padding: 48px 24px;
+    font-size: 13px;
+    position: sticky;
+    top: var(--nav-h);
+    height: calc(100vh - var(--nav-h));
+    overflow-y: auto;
+  }
+  .docs-toc h6 {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--ink-400);
+    margin: 0 0 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .docs-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .docs-toc li {
+    margin-bottom: 6px;
+  }
+  .docs-toc a {
+    color: var(--ink-500);
+  }
+  .docs-toc a:hover { color: var(--brand); }
+
+  .method {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-right: 8px;
+  }
+  .method.post { background: #DCFCE7; color: #065F46; }
+  .method.get { background: #DBEAFE; color: #1D4ED8; }
+
+  .endpoint {
+    background: var(--ink-100);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    margin: 12px 0 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 2px;
+    border-bottom: 1px solid var(--ink-200);
+  }
+  .tab {
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-500);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    cursor: pointer;
+  }
+  .tab.active {
+    color: var(--brand);
+    border-bottom-color: var(--brand);
+  }
+
+  @media (max-width: 1100px) {
+    .docs-layout { grid-template-columns: 220px 1fr; }
+    .docs-toc { display: none; }
+  }
+  @media (max-width: 800px) {
+    .docs-layout { grid-template-columns: 1fr; }
+    .docs-sidebar { display: none; }
+    .docs-content { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">V</span>
+      Vela-alpha
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="pricing.html">Coding Plan</a>
+      <a href="docs.html" class="active">文档</a>
+      <a href="playground.html">体验中心</a>
+      <a href="console/dashboard.html">控制台</a>
+    </div>
+    <div class="nav-cta">
+      <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
+      <a href="register.html" class="btn btn-primary btn-sm">免费注册</a>
+    </div>
+  </div>
+</nav>
+
+<div class="docs-layout">
+  <!-- 左侧导航 -->
+  <aside class="docs-sidebar">
+    <h6>入门</h6>
+    <ul>
+      <li><a href="#intro">平台概览</a></li>
+      <li><a href="#quickstart">快速开始</a></li>
+      <li><a href="#auth">鉴权</a></li>
+    </ul>
+    <h6>API 参考</h6>
+    <ul>
+      <li><a href="#chat">Chat Completions</a></li>
+      <li><a href="#models">Models 列表</a></li>
+      <li><a href="#fim">FIM 补全 (Coding)</a></li>
+    </ul>
+    <h6>高级</h6>
+    <ul>
+      <li><a href="#ratelimit">限流 Rate Limiting</a></li>
+      <li><a href="#errors">错误码</a></li>
+      <li><a href="#moderation">内容审核</a></li>
+    </ul>
+  </aside>
+
+  <!-- 主体 -->
+  <main class="docs-content">
+    <section id="intro">
+      <div class="eyebrow">Documentation</div>
+      <h1>Vela-alpha AI API 文档</h1>
+      <p class="lead">
+        Vela-alpha 提供与 OpenAI 完全兼容的大模型 API 服务。以下文档涵盖所有核心接口及行为规范。
+      </p>
+
+      <div class="callout info">
+        <strong>Base URL</strong> · 所有接口请求基于
+        <code>https://api.vela.dev/v1</code>
+      </div>
+    </section>
+
+    <section id="quickstart">
+      <h2>快速开始</h2>
+      <p>使用 Vela-alpha API 只需 3 步：</p>
+      <ol>
+        <li><a href="register.html">注册账号</a> 并完成手机号验证</li>
+        <li>在 <a href="console/api-keys.html">控制台 → API Keys</a> 创建一枚 <code>nv-</code> 开头的密钥</li>
+        <li>替换 OpenAI SDK 的 <code>base_url</code> 为 Vela-alpha 地址，即可调用</li>
+      </ol>
+
+      <div class="tabs mt-2">
+        <div class="tab active">Python</div>
+        <div class="tab">Node.js</div>
+        <div class="tab">cURL</div>
+      </div>
+      <div class="code-block">
+        <button class="code-copy">复制</button>
+<pre><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
+
+client = <span class="fn">OpenAI</span>(
+    base_url=<span class="str">"https://api.vela.dev/v1"</span>,
+    api_key=<span class="str">"va-xxxxxxxxxxxxxxxxxxxx"</span>,
+)
+
+resp = client.chat.completions.<span class="fn">create</span>(
+    model=<span class="str">"vela-chat-pro"</span>,
+    messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"Hello!"</span>}],
+)
+
+<span class="fn">print</span>(resp.choices[<span class="num">0</span>].message.content)</pre>
+      </div>
+    </section>
+
+    <section id="auth">
+      <h2>鉴权</h2>
+      <p>所有 API 请求必须在 HTTP Header 中携带 Bearer Token：</p>
+      <div class="code-block">
+<pre>Authorization: Bearer va-xxxxxxxxxxxxxxxxxxxx</pre>
+      </div>
+      <p>建议为不同应用/环境创建独立的 API Key，以便独立监控与轮换。密钥可在 <a href="console/api-keys.html">控制台</a> 随时注销。</p>
+    </section>
+
+    <section id="chat">
+      <h2>Chat Completions</h2>
+      <p>兼容 OpenAI 协议，支持流式 & 非流式模式。</p>
+      <div class="endpoint">
+        <span class="method post">POST</span>
+        <span>/v1/chat/completions</span>
+      </div>
+
+      <h3>请求参数</h3>
+      <table>
+        <thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><code>model</code></td><td>string</td><td>模型 ID，如 <code>vela-chat-pro</code></td></tr>
+          <tr><td><code>messages</code></td><td>array</td><td>对话历史，role ∈ {system, user, assistant}</td></tr>
+          <tr><td><code>stream</code></td><td>bool</td><td>是否开启 SSE 流式响应（默认 false）</td></tr>
+          <tr><td><code>temperature</code></td><td>number</td><td>采样温度，0.0 - 2.0</td></tr>
+          <tr><td><code>max_tokens</code></td><td>integer</td><td>最大生成 token 数</td></tr>
+          <tr><td><code>top_p</code></td><td>number</td><td>nucleus 采样</td></tr>
+        </tbody>
+      </table>
+
+      <h3>响应示例</h3>
+      <div class="code-block">
+<pre>{
+  <span class="str">"id"</span>: <span class="str">"chatcmpl-8aBcD..."</span>,
+  <span class="str">"object"</span>: <span class="str">"chat.completion"</span>,
+  <span class="str">"created"</span>: <span class="num">1713167890</span>,
+  <span class="str">"model"</span>: <span class="str">"vela-chat-pro"</span>,
+  <span class="str">"choices"</span>: [{
+    <span class="str">"index"</span>: <span class="num">0</span>,
+    <span class="str">"message"</span>: {<span class="str">"role"</span>: <span class="str">"assistant"</span>, <span class="str">"content"</span>: <span class="str">"Hello! How can I help?"</span>},
+    <span class="str">"finish_reason"</span>: <span class="str">"stop"</span>
+  }],
+  <span class="str">"usage"</span>: {
+    <span class="str">"prompt_tokens"</span>: <span class="num">12</span>,
+    <span class="str">"completion_tokens"</span>: <span class="num">8</span>,
+    <span class="str">"total_tokens"</span>: <span class="num">20</span>
+  }
+}</pre>
+      </div>
+    </section>
+
+    <section id="models">
+      <h2>Models 列表</h2>
+      <p>获取当前账号可用的全部模型与元信息。</p>
+      <div class="endpoint">
+        <span class="method get">GET</span>
+        <span>/v1/models</span>
+      </div>
+      <p>响应字段包含模型名、上下文长度、支持能力标签 (<code>chat</code> / <code>coding</code> / <code>fim</code>) 等。</p>
+
+      <h3>可用模型</h3>
+      <table>
+        <thead><tr><th>模型 ID</th><th>类别</th><th>上下文</th><th>能力</th></tr></thead>
+        <tbody>
+          <tr><td><code>vela-chat-lite</code></td><td>Chat</td><td>32K</td><td>通用对话（免费档）</td></tr>
+          <tr><td><code>vela-chat-pro</code></td><td>Chat</td><td>128K</td><td>通用对话（Pro 档）</td></tr>
+          <tr><td><code>vela-code-lite</code></td><td>Coding</td><td>64K</td><td>代码补全、重构</td></tr>
+          <tr><td><code>vela-code-pro</code></td><td>Coding</td><td>200K</td><td>仓库级代码理解</td></tr>
+          <tr><td><code>vela-code-fim</code></td><td>Coding / FIM</td><td>64K</td><td>IDE 插件 Fill-in-the-Middle</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="fim">
+      <h2>FIM 补全 (Coding)</h2>
+      <p>面向 Cursor / Continue / JetBrains AI 等 IDE 场景，提供 Fill-in-the-Middle 接口，插入 <code>prefix</code> 与 <code>suffix</code>，模型在中间生成。</p>
+      <div class="endpoint">
+        <span class="method post">POST</span>
+        <span>/v1/completions</span>
+      </div>
+      <div class="code-block">
+<pre>{
+  <span class="str">"model"</span>: <span class="str">"vela-code-fim"</span>,
+  <span class="str">"prompt"</span>: <span class="str">"def quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    "</span>,
+  <span class="str">"suffix"</span>: <span class="str">"\n    return quick_sort(left) + [pivot] + quick_sort(right)"</span>,
+  <span class="str">"max_tokens"</span>: <span class="num">128</span>
+}</pre>
+      </div>
+    </section>
+
+    <section id="ratelimit">
+      <h2>限流 Rate Limiting</h2>
+      <p>Vela-alpha 按 <strong>API Key</strong> 维度执行限流策略：</p>
+      <table>
+        <thead><tr><th>档位</th><th>RPM</th><th>TPM</th></tr></thead>
+        <tbody>
+          <tr><td>Free</td><td>10</td><td>20,000</td></tr>
+          <tr><td>Pro</td><td>60</td><td>500,000</td></tr>
+          <tr><td>Team</td><td colspan="2">定制，不设硬上限</td></tr>
+        </tbody>
+      </table>
+      <p>每次响应都会在 Header 中返回剩余配额：</p>
+      <div class="code-block">
+<pre><span class="cm">X-RateLimit-Limit-Requests: 60</span>
+<span class="cm">X-RateLimit-Remaining-Requests: 42</span>
+<span class="cm">X-RateLimit-Reset-Requests: 27s</span></pre>
+      </div>
+      <div class="callout">
+        <strong>超限行为</strong> · 当 RPM/TPM 超过限额时返回 HTTP 429，带 <code>Retry-After</code> 响应头。SDK 建议实现指数退避。
+      </div>
+    </section>
+
+    <section id="errors">
+      <h2>错误码</h2>
+      <table>
+        <thead><tr><th>HTTP</th><th>错误码</th><th>含义</th></tr></thead>
+        <tbody>
+          <tr><td>401</td><td><code>invalid_api_key</code></td><td>API Key 无效或已注销</td></tr>
+          <tr><td>403</td><td><code>model_access_denied</code></td><td>当前套餐无权访问该模型</td></tr>
+          <tr><td>404</td><td><code>model_not_found</code></td><td>模型 ID 不存在</td></tr>
+          <tr><td>429</td><td><code>rate_limit_exceeded</code></td><td>请求速率或 token 速率超限</td></tr>
+          <tr><td>402</td><td><code>insufficient_quota</code></td><td>账户余额或额度不足</td></tr>
+          <tr><td>400</td><td><code>content_policy_violation</code></td><td>输入内容未通过合规审核</td></tr>
+          <tr><td>500</td><td><code>internal_error</code></td><td>服务器内部错误</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="moderation">
+      <h2>内容审核</h2>
+      <p>所有请求的输入输出都会经过合规引擎实时扫描，拦截范围包括：</p>
+      <ul>
+        <li>暴力、违法、仇恨类内容</li>
+        <li>儿童不宜、明显违规场景</li>
+        <li>越狱 / Prompt 注入尝试（输出侧过滤）</li>
+      </ul>
+      <p>被拦截时返回 400 <code>content_policy_violation</code>，并携带 <code>filter_reason</code> 字段说明触发类别。</p>
+    </section>
+  </main>
+
+  <!-- 右侧目录 -->
+  <aside class="docs-toc">
+    <h6>本页目录</h6>
+    <ul>
+      <li><a href="#intro">平台概览</a></li>
+      <li><a href="#quickstart">快速开始</a></li>
+      <li><a href="#auth">鉴权</a></li>
+      <li><a href="#chat">Chat Completions</a></li>
+      <li><a href="#models">Models 列表</a></li>
+      <li><a href="#fim">FIM 补全</a></li>
+      <li><a href="#ratelimit">限流</a></li>
+      <li><a href="#errors">错误码</a></li>
+      <li><a href="#moderation">内容审核</a></li>
+    </ul>
+  </aside>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Playground · Vela-alpha</title>
+<link rel="stylesheet" href="assets/style.css"/>
+<style>
+  body { background: #FAFAFA; }
+
+  /* ===== 三栏布局：模型分类 + 对话区 + 参数 ===== */
+  .pg-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 300px;
+    min-height: calc(100vh - var(--nav-h));
+  }
+
+  /* 左侧：模型分类 */
+  .pg-left {
+    background: white;
+    border-right: 1px solid var(--ink-200);
+    padding: 24px 12px;
+  }
+  .pg-left h4 {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-400);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 8px 12px 10px;
+  }
+  .pg-left h4:not(:first-child) {
+    margin-top: 24px;
+  }
+  .cat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--ink-700);
+    cursor: pointer;
+    margin-bottom: 2px;
+  }
+  .cat-item:hover {
+    background: var(--ink-100);
+  }
+  .cat-item.active {
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-weight: 600;
+  }
+  .cat-item.disabled {
+    color: var(--ink-400);
+    cursor: not-allowed;
+  }
+  .cat-item.disabled:hover {
+    background: transparent;
+  }
+  .cat-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cat-ico {
+    width: 18px;
+    height: 18px;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+  }
+  .cat-tag {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 100px;
+    background: var(--ink-100);
+    color: var(--ink-500);
+    font-weight: 500;
+  }
+
+  /* 中间：主区 */
+  .pg-main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .pg-topbar {
+    padding: 14px 32px;
+    border-bottom: 1px solid var(--ink-200);
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pg-topbar h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .billing-tip {
+    background: #FFFBEA;
+    border-bottom: 1px solid #FDE68A;
+    padding: 10px 32px;
+    font-size: 13px;
+    color: #92400E;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .billing-tip .close {
+    margin-left: auto;
+    color: #92400E;
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+
+  /* 居中对话 Hero + 组合输入 */
+  .pg-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 72px 32px 32px;
+    overflow-y: auto;
+  }
+
+  .pg-hero-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 32px;
+    text-align: center;
+  }
+  .pg-hero-title .accent {
+    color: var(--brand);
+  }
+
+  /* 组合输入卡片 */
+  .composer-card {
+    width: 100%;
+    max-width: 720px;
+    background: white;
+    border: 1px solid var(--ink-200);
+    border-radius: 16px;
+    padding: 14px 18px 12px;
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  .composer-card:focus-within {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-soft);
+  }
+
+  .composer-model-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--ink-100);
+    margin-bottom: 12px;
+  }
+
+  .model-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px 4px 4px;
+    background: var(--ink-100);
+    border: 1px solid var(--ink-200);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .model-chip:hover {
+    border-color: var(--ink-400);
+  }
+  .model-chip .dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand) 0%, #FF6B4A 100%);
+    display: grid;
+    place-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+  }
+  .model-chip .arrow {
+    color: var(--ink-400);
+    font-size: 10px;
+  }
+
+  .mode-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .composer-textarea {
+    width: 100%;
+    min-height: 92px;
+    max-height: 260px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-900);
+    background: transparent;
+  }
+  .composer-textarea::placeholder {
+    color: var(--ink-400);
+  }
+
+  .composer-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px solid var(--ink-100);
+  }
+
+  .tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--ink-500);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  .tool-btn:hover {
+    background: var(--ink-100);
+    color: var(--ink-700);
+  }
+  .tool-btn.disabled {
+    color: var(--ink-400);
+    cursor: not-allowed;
+  }
+  .tool-btn.disabled:hover {
+    background: transparent;
+    color: var(--ink-400);
+  }
+
+  .send-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: var(--brand);
+    color: white;
+    display: grid;
+    place-items: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .send-btn:hover {
+    background: var(--brand-dark);
+    transform: translateY(-1px);
+  }
+  .send-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  /* 快捷提示 chips */
+  .quick-chips {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 720px;
+    width: 100%;
+    justify-content: center;
+  }
+  .q-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: white;
+    border: 1px solid var(--ink-200);
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--ink-700);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .q-chip:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+    background: var(--brand-soft);
+  }
+
+  .footer-tip {
+    margin-top: auto;
+    padding: 16px 32px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-400);
+  }
+
+  /* 右侧参数面板 */
+  .pg-right {
+    background: white;
+    border-left: 1px solid var(--ink-200);
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .pg-right h4 {
+    font-size: 14px;
+    color: var(--ink-900);
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  .pg-right .group { margin-bottom: 20px; }
+  .pg-right .group:first-child { margin-top: 0; }
+
+  /* System Prompt */
+  .sp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .sp-head h4 { margin: 0; font-size: 14px; }
+  .sp-head .link {
+    font-size: 13px;
+    color: var(--brand);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .sp-textarea {
+    width: 100%;
+    min-height: 130px;
+    padding: 12px;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius);
+    font-size: 12.5px;
+    font-family: var(--font-mono);
+    resize: vertical;
+    line-height: 1.55;
+    color: var(--ink-700);
+  }
+  .sp-textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-soft);
+  }
+
+  /* 滑杆 */
+  .param-row {
+    margin-bottom: 16px;
+  }
+  .param-row label {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-700);
+    margin-bottom: 8px;
+  }
+  .param-ctrl {
+    display: grid;
+    grid-template-columns: 1fr 64px;
+    gap: 10px;
+    align-items: center;
+  }
+  .param-ctrl input[type="range"] {
+    width: 100%;
+    accent-color: var(--brand);
+  }
+  .param-num {
+    padding: 6px 10px;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    background: white;
+  }
+  .param-num:focus {
+    outline: none;
+    border-color: var(--brand);
+  }
+
+  @media (max-width: 1100px) {
+    .pg-layout { grid-template-columns: 200px 1fr; }
+    .pg-right { display: none; }
+  }
+  @media (max-width: 800px) {
+    .pg-layout { grid-template-columns: 1fr; }
+    .pg-left { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">V</span>
+      Vela-alpha
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="pricing.html">Coding Plan</a>
+      <a href="docs.html">文档</a>
+      <a href="playground.html" class="active">体验中心</a>
+      <a href="console/dashboard.html">控制台</a>
+    </div>
+    <div class="nav-cta">
+      <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
+      <a href="register.html" class="btn btn-primary btn-sm">免费注册</a>
+    </div>
+  </div>
+</nav>
+
+<div class="pg-layout">
+  <!-- 左侧：模型分类 -->
+  <aside class="pg-left">
+    <h4>模型体验</h4>
+    <div class="cat-item active">
+      <span class="cat-left"><span class="cat-ico">📝</span>文本模型</span>
+    </div>
+    <div class="cat-item disabled">
+      <span class="cat-left"><span class="cat-ico">👁</span>视觉模型</span>
+      <span class="cat-tag">即将上线</span>
+    </div>
+    <div class="cat-item disabled">
+      <span class="cat-left"><span class="cat-ico">🎨</span>图像模型</span>
+      <span class="cat-tag">即将上线</span>
+    </div>
+    <div class="cat-item disabled">
+      <span class="cat-left"><span class="cat-ico">🎬</span>视频模型</span>
+      <span class="cat-tag">即将上线</span>
+    </div>
+    <div class="cat-item disabled">
+      <span class="cat-left"><span class="cat-ico">🎙</span>语音模型</span>
+      <span class="cat-tag">即将上线</span>
+    </div>
+
+    <h4>应用体验</h4>
+    <div class="cat-item disabled">
+      <span class="cat-left"><span class="cat-ico">🤖</span>智能体</span>
+      <span class="cat-tag">即将上线</span>
+    </div>
+    <div class="cat-item disabled">
+      <span class="cat-left"><span class="cat-ico">🧩</span>MCP 工具</span>
+      <span class="cat-tag">即将上线</span>
+    </div>
+  </aside>
+
+  <!-- 中间：主区 -->
+  <main class="pg-main">
+    <div class="pg-topbar">
+      <h3>文本模型</h3>
+      <div class="flex" style="gap:8px;">
+        <span class="badge badge-success">● 在线</span>
+        <a href="pricing.html" class="btn btn-primary btn-sm">🔥 Coding 套餐</a>
+        <button class="btn btn-outline btn-sm">PK 添加模型比较</button>
+      </div>
+    </div>
+
+    <div class="billing-tip">
+      <span>⚠️</span>
+      <span>模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href="pricing.html" style="color:#92400E; font-weight:600;">产品定价</a>。</span>
+      <span class="close">×</span>
+    </div>
+
+    <!-- 居中 Hero -->
+    <div class="pg-hero">
+      <h1 class="pg-hero-title">极速体验 <span class="accent">文本模型</span> 开启智能对话</h1>
+
+      <!-- 组合输入 -->
+      <div class="composer-card">
+        <!-- 模型 + 模式 -->
+        <div class="composer-model-row">
+          <div class="model-chip">
+            <span class="dot">V</span>
+            <span>Vela-alpha-Chat-Lite</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="mode-chip">
+            深度思考 ▼
+          </div>
+          <span style="color: var(--ink-400); font-size: 13px; margin-left: 2px;">⇄</span>
+        </div>
+
+        <!-- 输入区 -->
+        <textarea class="composer-textarea" placeholder="向我发指令，我可以完成对话聊天、创作文章、生成代码等多种任务..."></textarea>
+
+        <!-- 工具栏 -->
+        <div class="composer-toolbar">
+          <div class="flex" style="gap:2px;">
+            <button class="tool-btn" title="附件">📎</button>
+            <button class="tool-btn disabled" title="工具调用（暂不可用）">
+              🔧 工具
+            </button>
+          </div>
+          <button class="send-btn" title="发送 ⌘+Enter">
+            <svg viewBox="0 0 16 16"><path d="M14.5 1.5L7 9M14.5 1.5L10 14l-3-5-5-3z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- 快捷场景 -->
+      <div class="quick-chips">
+        <button class="q-chip"><span>💻</span>前端开发</button>
+        <button class="q-chip"><span>🔍</span>代码审阅</button>
+        <button class="q-chip"><span>🧪</span>单元测试生成</button>
+        <button class="q-chip"><span>📦</span>算法实现</button>
+        <button class="q-chip"><span>🐛</span>Bug 排查</button>
+        <button class="q-chip"><span>📝</span>文档生成</button>
+      </div>
+
+      <div class="footer-tip">
+        以上内容均由 AI 模型生成，结果仅供参考，请勿作为决策唯一依据。
+      </div>
+    </div>
+  </main>
+
+  <!-- 右侧：参数 -->
+  <aside class="pg-right">
+    <div class="group">
+      <div class="sp-head">
+        <h4>System Prompt</h4>
+        <span class="link">Prompt 示例</span>
+      </div>
+      <textarea class="sp-textarea"># 通用 Prompt
+**理解问题**
+- 仔细分析问题的词汇、语法和语义。
+- 考虑上下文信息，明确问题意图。
+**语言风格**
+- 使用自然、易懂的语言。
+- 避免专业术语，根据受众调整语言难度。</textarea>
+    </div>
+
+    <div class="group">
+      <h4>参数设置</h4>
+
+      <div class="param-row">
+        <label>温度</label>
+        <div class="param-ctrl">
+          <input type="range" min="0" max="2" step="0.01" value="0.6" oninput="document.getElementById('v-temp').value=this.value"/>
+          <input class="param-num" id="v-temp" value="0.60"/>
+        </div>
+      </div>
+
+      <div class="param-row">
+        <label>核采样</label>
+        <div class="param-ctrl">
+          <input type="range" min="0" max="1" step="0.01" value="0.7" oninput="document.getElementById('v-topp').value=this.value"/>
+          <input class="param-num" id="v-topp" value="0.70"/>
+        </div>
+      </div>
+
+      <div class="param-row">
+        <label>重复惩罚</label>
+        <div class="param-ctrl">
+          <input type="range" min="1" max="2" step="0.01" value="1.05" oninput="document.getElementById('v-rep').value=this.value"/>
+          <input class="param-num" id="v-rep" value="1.05"/>
+        </div>
+      </div>
+
+      <div class="param-row">
+        <label>最大输出 tokens 数</label>
+        <div class="param-ctrl">
+          <input type="range" min="256" max="8192" step="256" value="1024" oninput="document.getElementById('v-mt').value=this.value"/>
+          <input class="param-num" id="v-mt" value="1024"/>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  // 关闭账务提示
+  document.querySelectorAll('.billing-tip .close').forEach(c => {
+    c.addEventListener('click', e => {
+      e.target.closest('.billing-tip').style.display = 'none';
+    });
+  });
+
+  // 快捷 chip 填充输入框
+  document.querySelectorAll('.q-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const ta = document.querySelector('.composer-textarea');
+      ta.value = `请帮我完成「${chip.textContent.trim()}」相关任务：`;
+      ta.focus();
+    });
+  });
+</script>
+</body>
+</html>
