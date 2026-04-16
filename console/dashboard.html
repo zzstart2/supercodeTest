@@ -582,9 +582,9 @@
     <table class="drawer-key-table" id="drawer-keys">
       <thead><tr><th>名称</th><th>API Key</th></tr></thead>
       <tbody>
-        <tr><td>prod-key</td><td><code>va-••••••3f8a</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-prod-3f8a')">📋</button></td></tr>
-        <tr><td>dev-key</td><td><code>va-••••••91d2</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-dev-91d2')">📋</button></td></tr>
-        <tr><td>ide-key</td><td><code>va-••••••7e4c</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-ide-7e4c')">📋</button></td></tr>
+        <tr><td>prod-key</td><td><code>va-••••••3f8a</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-prod-3f8a')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td></tr>
+        <tr><td>dev-key</td><td><code>va-••••••91d2</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-dev-91d2')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td></tr>
+        <tr><td>ide-key</td><td><code>va-••••••7e4c</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-ide-7e4c')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td></tr>
       </tbody>
     </table>
 
@@ -679,8 +679,8 @@
   // 复制 Key
   window.copyKey = function(btn, key) {
     navigator.clipboard.writeText(key).then(() => {
-      btn.textContent = '✓';
-      setTimeout(() => btn.textContent = '📋', 1500);
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3.5 3.5L13 5"/></svg>';
+      setTimeout(() => btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>', 1500);
     });
   };
 
@@ -694,7 +694,7 @@
     const tbody = document.querySelector('#drawer-keys tbody');
     const tr = document.createElement('tr');
     tr.className = 'new-key';
-    tr.innerHTML = '<td>' + name + '</td><td><code>' + fullKey + '</code> <button class="cp-btn" onclick="copyKey(this,\'' + fullKey + '\')">📋</button></td>';
+    tr.innerHTML = '<td>' + name + '</td><td><code>' + fullKey + '</code> <button class="cp-btn" onclick="copyKey(this,\'' + fullKey + '\')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>';
     tbody.appendChild(tr);
     document.getElementById('inline-create').classList.add('hidden');
     document.getElementById('show-create-btn').classList.remove('hidden');
