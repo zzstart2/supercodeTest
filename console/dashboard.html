@@ -308,6 +308,56 @@
     margin-right: 16px;
     user-select: none;
   }
+  /* 抽屉内 Key 表格 */
+  .drawer-key-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .drawer-key-table th {
+    background: var(--ink-100);
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-500);
+  }
+  .drawer-key-table td {
+    padding: 10px 12px;
+    border-top: 1px solid var(--ink-100);
+    vertical-align: middle;
+  }
+  .drawer-key-table code {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    background: var(--ink-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .cp-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    font-size: 13px;
+    opacity: 0.5;
+    vertical-align: middle;
+    transition: opacity 0.12s;
+  }
+  .cp-btn:hover { opacity: 1; }
+  /* 新创建的 key 高亮行 */
+  .drawer-key-table tr.new-key {
+    background: #F0FDF4;
+  }
+  .drawer-key-table tr.new-key code {
+    background: #D1FAE5;
+    color: #065F46;
+    font-weight: 500;
+  }
 
   .alert-banner {
     background: #FFFBEA;
@@ -528,14 +578,25 @@
       <a class="link" href="api-keys.html">管理 API Key →</a>
     </div>
     <p class="step-desc">API Key 是访问 Vela-alpha 大模型服务的凭证，长期有效，请妥善保管。</p>
-    <div class="key-select-row">
-      <select id="key-select">
-        <option>prod-key · va-••••3f8a</option>
-        <option>dev-key · va-••••91d2</option>
-        <option>ide-key · va-••••7e4c</option>
-      </select>
-      <a href="api-keys.html" class="btn btn-outline btn-sm">+ 创建新的 API Key</a>
+
+    <table class="drawer-key-table" id="drawer-keys">
+      <thead><tr><th>名称</th><th>API Key</th></tr></thead>
+      <tbody>
+        <tr><td>prod-key</td><td><code>va-••••••3f8a</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-prod-3f8a')">📋</button></td></tr>
+        <tr><td>dev-key</td><td><code>va-••••••91d2</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-dev-91d2')">📋</button></td></tr>
+        <tr><td>ide-key</td><td><code>va-••••••7e4c</code> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-ide-7e4c')">📋</button></td></tr>
+      </tbody>
+    </table>
+
+    <!-- 内联创建 -->
+    <div id="inline-create" class="hidden" style="margin-top:12px;">
+      <div style="display:flex; gap:8px;">
+        <input class="input" id="new-key-name" placeholder="请输入 API Key 名称" style="flex:1; font-size:13px; padding:8px 12px;"/>
+        <button class="btn btn-primary btn-sm" onclick="createKeyInline()">创建</button>
+        <button class="btn btn-outline btn-sm" onclick="document.getElementById('inline-create').classList.add('hidden')">取消</button>
+      </div>
     </div>
+    <button class="btn btn-outline btn-sm mt-2" id="show-create-btn" onclick="document.getElementById('inline-create').classList.remove('hidden'); document.getElementById('new-key-name').focus(); this.classList.add('hidden');">+ 创建新的 API Key</button>
 
     <div class="step-divider"></div>
 
@@ -614,6 +675,32 @@
     renderLineChart(document.getElementById('chart-trend'), trendData, { height: 220 });
     renderBarChart(document.getElementById('chart-models'), modelData, { height: 180 });
   });
+
+  // 复制 Key
+  window.copyKey = function(btn, key) {
+    navigator.clipboard.writeText(key).then(() => {
+      btn.textContent = '✓';
+      setTimeout(() => btn.textContent = '📋', 1500);
+    });
+  };
+
+  // 内联创建 Key
+  window.createKeyInline = function() {
+    const name = document.getElementById('new-key-name').value.trim();
+    if (!name) { document.getElementById('new-key-name').style.borderColor = 'var(--danger)'; return; }
+    const hex = Math.random().toString(16).substring(2, 10);
+    const fullKey = 'va-' + Math.random().toString(36).substring(2, 18) + hex;
+    const mask = 'va-••••••' + hex.substring(4);
+    const tbody = document.querySelector('#drawer-keys tbody');
+    const tr = document.createElement('tr');
+    tr.className = 'new-key';
+    tr.innerHTML = '<td>' + name + '</td><td><code>' + fullKey + '</code> <button class="cp-btn" onclick="copyKey(this,\'' + fullKey + '\')">📋</button></td>';
+    tbody.appendChild(tr);
+    document.getElementById('inline-create').classList.add('hidden');
+    document.getElementById('show-create-btn').classList.remove('hidden');
+    document.getElementById('new-key-name').value = '';
+    document.getElementById('new-key-name').style.borderColor = '';
+  };
 
   // API 接入 - 代码 Tab 切换
   window.switchCodeTab = function(el, id) {

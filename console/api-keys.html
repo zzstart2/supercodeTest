@@ -61,6 +61,17 @@
     gap: 10px;
   }
 
+  .cp-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    font-size: 13px;
+    opacity: 0.5;
+    vertical-align: middle;
+  }
+  .cp-btn:hover { opacity: 1; }
+
   .access-chip {
     display: inline-block;
     padding: 2px 8px;
@@ -177,7 +188,7 @@
           <tbody>
             <tr>
               <td><strong>prod-key</strong></td>
-              <td><span class="key-mask">va-••••••••••3f8a</span></td>
+              <td><span class="key-mask">va-••••••••••3f8a</span> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-prod-key-3f8a')" title="复制">📋</button></td>
               <td class="text-small text-muted">2026-02-18</td>
               <td class="text-small text-muted">2 秒前</td>
               <td><strong>1.82M</strong></td>
@@ -188,7 +199,7 @@
             </tr>
             <tr>
               <td><strong>dev-key</strong></td>
-              <td><span class="key-mask">va-••••••••••91d2</span></td>
+              <td><span class="key-mask">va-••••••••••91d2</span> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-dev-key-91d2')" title="复制">📋</button></td>
               <td class="text-small text-muted">2026-02-22</td>
               <td class="text-small text-muted">12 分钟前</td>
               <td><strong>342K</strong></td>
@@ -199,7 +210,7 @@
             </tr>
             <tr>
               <td><strong>ide-key</strong></td>
-              <td><span class="key-mask">va-••••••••••7e4c</span></td>
+              <td><span class="key-mask">va-••••••••••7e4c</span> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-ide-key-7e4c')" title="复制">📋</button></td>
               <td class="text-small text-muted">2026-03-02</td>
               <td class="text-small text-muted">21 秒前</td>
               <td><strong>468K</strong></td>
@@ -210,7 +221,7 @@
             </tr>
             <tr>
               <td><strong>web-key</strong></td>
-              <td><span class="key-mask">va-••••••••••a1b2</span></td>
+              <td><span class="key-mask">va-••••••••••a1b2</span> <button class="cp-btn" onclick="copyKey(this,'va-xxxx-web-key-a1b2')" title="复制">📋</button></td>
               <td class="text-small text-muted">2026-03-14</td>
               <td class="text-small text-muted">3 小时前</td>
               <td><strong>56K</strong></td>
@@ -296,6 +307,13 @@ client = <span class="fn">OpenAI</span>(
 
 <script src="../assets/app.js"></script>
 <script>
+  function copyKey(btn, key) {
+    navigator.clipboard.writeText(key).then(() => {
+      btn.textContent = '✓';
+      setTimeout(() => btn.textContent = '📋', 1500);
+    });
+  }
+
   function showCreated() {
     document.getElementById('m-create').classList.remove('open');
     document.getElementById('m-success').classList.add('open');
