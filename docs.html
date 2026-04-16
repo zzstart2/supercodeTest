@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>API 文档 · Vela-alpha AI Platform</title>
+<title>API 文档 · SuperCode AI Platform</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
   .docs-layout {
@@ -201,8 +201,8 @@
 <nav class="nav">
   <div class="nav-inner">
     <a class="brand" href="index.html">
-      <span class="brand-mark">V</span>
-      Vela-alpha
+      <span class="brand-mark">S</span>
+      SuperCode
     </a>
     <div class="nav-links">
       <a href="index.html">首页</a>
@@ -244,24 +244,24 @@
   <main class="docs-content">
     <section id="intro">
       <div class="eyebrow">Documentation</div>
-      <h1>Vela-alpha AI API 文档</h1>
+      <h1>SuperCode AI API 文档</h1>
       <p class="lead">
-        Vela-alpha 提供与 OpenAI 完全兼容的大模型 API 服务。以下文档涵盖所有核心接口及行为规范。
+        SuperCode 提供与 OpenAI 完全兼容的大模型 API 服务。以下文档涵盖所有核心接口及行为规范。
       </p>
 
       <div class="callout info">
         <strong>Base URL</strong> · 所有接口请求基于
-        <code>https://api.vela.dev/v1</code>
+        <code>https://api.supercode.dev/v1</code>
       </div>
     </section>
 
     <section id="quickstart">
       <h2>快速开始</h2>
-      <p>使用 Vela-alpha API 只需 3 步：</p>
+      <p>使用 SuperCode API 只需 3 步：</p>
       <ol>
         <li><a href="register.html">注册账号</a> 并完成手机号验证</li>
         <li>在 <a href="console/api-keys.html">控制台 → API Keys</a> 创建一枚 <code>nv-</code> 开头的密钥</li>
-        <li>替换 OpenAI SDK 的 <code>base_url</code> 为 Vela-alpha 地址，即可调用</li>
+        <li>替换 OpenAI SDK 的 <code>base_url</code> 为 SuperCode 地址，即可调用</li>
       </ol>
 
       <div class="tabs mt-2">
@@ -274,12 +274,12 @@
 <pre><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = <span class="fn">OpenAI</span>(
-    base_url=<span class="str">"https://api.vela.dev/v1"</span>,
-    api_key=<span class="str">"va-xxxxxxxxxxxxxxxxxxxx"</span>,
+    base_url=<span class="str">"https://api.supercode.dev/v1"</span>,
+    api_key=<span class="str">"sc-xxxxxxxxxxxxxxxxxxxx"</span>,
 )
 
 resp = client.chat.completions.<span class="fn">create</span>(
-    model=<span class="str">"vela-chat-pro"</span>,
+    model=<span class="str">"supercode-chat-pro"</span>,
     messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"Hello!"</span>}],
 )
 
@@ -291,7 +291,7 @@ resp = client.chat.completions.<span class="fn">create</span>(
       <h2>鉴权</h2>
       <p>所有 API 请求必须在 HTTP Header 中携带 Bearer Token：</p>
       <div class="code-block">
-<pre>Authorization: Bearer va-xxxxxxxxxxxxxxxxxxxx</pre>
+<pre>Authorization: Bearer sc-xxxxxxxxxxxxxxxxxxxx</pre>
       </div>
       <p>建议为不同应用/环境创建独立的 API Key，以便独立监控与轮换。密钥可在 <a href="console/api-keys.html">控制台</a> 随时注销。</p>
     </section>
@@ -308,7 +308,7 @@ resp = client.chat.completions.<span class="fn">create</span>(
       <table>
         <thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead>
         <tbody>
-          <tr><td><code>model</code></td><td>string</td><td>模型 ID，如 <code>vela-chat-pro</code></td></tr>
+          <tr><td><code>model</code></td><td>string</td><td>模型 ID，如 <code>supercode-chat-pro</code></td></tr>
           <tr><td><code>messages</code></td><td>array</td><td>对话历史，role ∈ {system, user, assistant}</td></tr>
           <tr><td><code>stream</code></td><td>bool</td><td>是否开启 SSE 流式响应（默认 false）</td></tr>
           <tr><td><code>temperature</code></td><td>number</td><td>采样温度，0.0 - 2.0</td></tr>
@@ -323,7 +323,7 @@ resp = client.chat.completions.<span class="fn">create</span>(
   <span class="str">"id"</span>: <span class="str">"chatcmpl-8aBcD..."</span>,
   <span class="str">"object"</span>: <span class="str">"chat.completion"</span>,
   <span class="str">"created"</span>: <span class="num">1713167890</span>,
-  <span class="str">"model"</span>: <span class="str">"vela-chat-pro"</span>,
+  <span class="str">"model"</span>: <span class="str">"supercode-chat-pro"</span>,
   <span class="str">"choices"</span>: [{
     <span class="str">"index"</span>: <span class="num">0</span>,
     <span class="str">"message"</span>: {<span class="str">"role"</span>: <span class="str">"assistant"</span>, <span class="str">"content"</span>: <span class="str">"Hello! How can I help?"</span>},
@@ -351,11 +351,11 @@ resp = client.chat.completions.<span class="fn">create</span>(
       <table>
         <thead><tr><th>模型 ID</th><th>类别</th><th>上下文</th><th>能力</th></tr></thead>
         <tbody>
-          <tr><td><code>vela-chat-lite</code></td><td>Chat</td><td>32K</td><td>通用对话（免费档）</td></tr>
-          <tr><td><code>vela-chat-pro</code></td><td>Chat</td><td>128K</td><td>通用对话（Pro 档）</td></tr>
-          <tr><td><code>vela-code-lite</code></td><td>Coding</td><td>64K</td><td>代码补全、重构</td></tr>
-          <tr><td><code>vela-code-pro</code></td><td>Coding</td><td>200K</td><td>仓库级代码理解</td></tr>
-          <tr><td><code>vela-code-fim</code></td><td>Coding / FIM</td><td>64K</td><td>IDE 插件 Fill-in-the-Middle</td></tr>
+          <tr><td><code>supercode-chat-lite</code></td><td>Chat</td><td>32K</td><td>通用对话（免费档）</td></tr>
+          <tr><td><code>supercode-chat-pro</code></td><td>Chat</td><td>128K</td><td>通用对话（Pro 档）</td></tr>
+          <tr><td><code>supercode-code-lite</code></td><td>Coding</td><td>64K</td><td>代码补全、重构</td></tr>
+          <tr><td><code>supercode-code-pro</code></td><td>Coding</td><td>200K</td><td>仓库级代码理解</td></tr>
+          <tr><td><code>supercode-code-fim</code></td><td>Coding / FIM</td><td>64K</td><td>IDE 插件 Fill-in-the-Middle</td></tr>
         </tbody>
       </table>
     </section>
@@ -369,7 +369,7 @@ resp = client.chat.completions.<span class="fn">create</span>(
       </div>
       <div class="code-block">
 <pre>{
-  <span class="str">"model"</span>: <span class="str">"vela-code-fim"</span>,
+  <span class="str">"model"</span>: <span class="str">"supercode-code-fim"</span>,
   <span class="str">"prompt"</span>: <span class="str">"def quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    "</span>,
   <span class="str">"suffix"</span>: <span class="str">"\n    return quick_sort(left) + [pivot] + quick_sort(right)"</span>,
   <span class="str">"max_tokens"</span>: <span class="num">128</span>
@@ -379,7 +379,7 @@ resp = client.chat.completions.<span class="fn">create</span>(
 
     <section id="ratelimit">
       <h2>限流 Rate Limiting</h2>
-      <p>Vela-alpha 按 <strong>API Key</strong> 维度执行限流策略：</p>
+      <p>SuperCode 按 <strong>API Key</strong> 维度执行限流策略：</p>
       <table>
         <thead><tr><th>档位</th><th>RPM</th><th>TPM</th></tr></thead>
         <tbody>

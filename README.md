@@ -1,6 +1,6 @@
-# Vela-alpha · LLM API 服务平台 (Frontend Prototype)
+# SuperCode · LLM API 服务平台 (Frontend Prototype)
 
-静态 HTML / CSS / JS 原型，用于展示 Vela-alpha 大模型 API 服务平台的前端结构与交互流程。
+静态 HTML / CSS / JS 原型，用于展示 SuperCode 大模型 API 服务平台的前端结构与交互流程。
 
 ## 页面结构
 
