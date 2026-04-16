@@ -613,7 +613,7 @@
     </div>
 
     <div class="onboard-code" id="code-curl">
-      <button class="copy" onclick="copyCode('curl')">复制</button>
+      <button class="copy" onclick="copyCode('curl')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button>
 <pre><span class="ln"> 1</span>curl -X POST "https://api.vela.dev/v1/chat/completions" \
 <span class="ln"> 2</span>  -H "Content-Type: application/json" \
 <span class="ln"> 3</span>  -H "Authorization: Bearer <span style="color:#F1FA8C;">your-api-key</span>" \
@@ -629,7 +629,7 @@
     </div>
 
     <div class="onboard-code hidden" id="code-python">
-      <button class="copy" onclick="copyCode('python')">复制</button>
+      <button class="copy" onclick="copyCode('python')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button>
 <pre><span class="ln"> 1</span><span style="color:#FF79C6;">from</span> openai <span style="color:#FF79C6;">import</span> OpenAI
 <span class="ln"> 2</span>
 <span class="ln"> 3</span>client = <span style="color:#8BE9FD;">OpenAI</span>(
@@ -714,8 +714,8 @@
     const text = pre.textContent.replace(/^\d+/gm, '').trim();
     navigator.clipboard.writeText(text).then(() => {
       const btn = document.getElementById('code-' + id).querySelector('.copy');
-      btn.textContent = '✓ 已复制';
-      setTimeout(() => btn.textContent = '复制', 1500);
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3.5 3.5L13 5"/></svg>';
+      setTimeout(() => btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>', 1500);
     });
   };
 </script>
