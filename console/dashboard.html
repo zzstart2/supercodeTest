@@ -150,107 +150,163 @@
   }
   .dot.err { background: var(--danger); }
 
-  /* 快速体验卡 */
-  .quick-exp {
-    background: white;
-    border: 1px solid var(--ink-200);
-    border-radius: var(--radius-lg);
-    padding: 24px 28px;
-    margin-bottom: 24px;
+  /* API 接入抽屉 */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,15,0.4);
+    z-index: 200;
+    display: none;
+    backdrop-filter: blur(2px);
   }
-  .quick-exp-head {
+  .drawer-overlay.open { display: block; }
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -520px;
+    width: 500px;
+    max-width: 90vw;
+    height: 100vh;
+    background: white;
+    box-shadow: -20px 0 60px rgba(0,0,0,0.12);
+    z-index: 201;
+    overflow-y: auto;
+    transition: right 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 28px;
+  }
+  .drawer-overlay.open .drawer { right: 0; }
+  .drawer-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
-  .quick-exp-head h3 {
-    font-size: 16px;
+  .drawer-head h3 {
+    font-size: 18px;
+    font-weight: 700;
     margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
-  .quick-exp-head .full-link {
+  .drawer-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--ink-500);
+    border: none;
+    background: transparent;
+  }
+  .drawer-close:hover {
+    background: var(--ink-100);
+    color: var(--ink-900);
+  }
+  .step-label {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--brand);
+    color: white;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .step-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .step-title .link {
     font-size: 13px;
     color: var(--brand);
     font-weight: 500;
   }
-  .quick-exp-model {
+  .step-desc {
+    font-size: 13px;
+    color: var(--ink-500);
+    margin: 0 0 14px;
+  }
+  .key-select-row {
     display: flex;
     gap: 10px;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
-  .quick-exp-model select {
-    padding: 7px 12px;
+  .key-select-row select {
+    flex: 1;
+    padding: 9px 12px;
     border: 1px solid var(--ink-200);
     border-radius: var(--radius);
     font-size: 13px;
+    font-family: var(--font-mono);
     background: white;
-    color: var(--ink-900);
   }
-  .quick-exp-composer {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .quick-exp-composer textarea {
-    flex: 1;
-    min-height: 48px;
-    max-height: 120px;
-    padding: 12px 14px;
-    border: 1px solid var(--ink-200);
-    border-radius: 10px;
-    resize: none;
-    font-size: 14px;
-    font-family: inherit;
-    line-height: 1.5;
-  }
-  .quick-exp-composer textarea:focus {
+  .key-select-row select:focus {
     outline: none;
     border-color: var(--brand);
-    box-shadow: 0 0 0 3px var(--brand-soft);
   }
-  .quick-exp-composer .send {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-    background: var(--brand);
-    color: white;
-    display: grid;
-    place-items: center;
-    border: none;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background 0.15s;
-    font-size: 18px;
+  .step-divider {
+    height: 1px;
+    background: var(--ink-200);
+    margin: 20px 0;
   }
-  .quick-exp-composer .send:hover {
-    background: var(--brand-dark);
-  }
-  .quick-exp-chips {
+  .code-tabs {
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 2px;
+    border-bottom: 1px solid var(--ink-200);
+    margin-bottom: 0;
   }
-  .quick-exp-chips .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 6px 12px;
-    background: var(--ink-100);
-    border: 1px solid transparent;
-    border-radius: 100px;
-    font-size: 12.5px;
-    color: var(--ink-700);
+  .code-tabs .ct {
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-500);
     cursor: pointer;
-    transition: all 0.12s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
   }
-  .quick-exp-chips .chip:hover {
-    border-color: var(--brand);
+  .code-tabs .ct.active {
     color: var(--brand);
-    background: var(--brand-soft);
+    border-bottom-color: var(--brand);
+  }
+  .onboard-code {
+    background: var(--ink-900);
+    color: #E8E8F0;
+    padding: 18px 20px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    overflow-x: auto;
+    position: relative;
+    max-height: 320px;
+  }
+  .onboard-code .copy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    font-size: 11px;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+  }
+  .onboard-code .copy:hover {
+    background: rgba(255,255,255,0.16);
+  }
+  .onboard-code .ln {
+    display: inline-block;
+    width: 24px;
+    text-align: right;
+    color: rgba(255,255,255,0.25);
+    margin-right: 16px;
+    user-select: none;
   }
 
   .alert-banner {
@@ -323,6 +379,8 @@
   <main class="app-main">
 
     <div class="app-body">
+      <h2 class="page-title" style="font-size:22px; margin:0 0 20px;">账户总览</h2>
+
       <!-- 告警横幅 -->
       <div class="alert-banner">
         <span>🎁 公测期完全免费开放，所有 Coding 模型无限制使用，每 Key 限流 1,500 次 / 5 小时</span>
@@ -334,36 +392,9 @@
         <h2>欢迎回来，xxxxx 👋</h2>
         <p>你的账户本月已调用 <strong style="color:white;">2.4M tokens</strong>，当前窗口剩余 <strong style="color:white;">1,240</strong> 次调用额度</p>
         <div class="welcome-actions">
-          <a href="api-keys.html" class="btn btn-primary btn-sm">管理 API Keys</a>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('api-drawer').classList.add('open')">快速接入</button>
+          <a href="api-keys.html" class="btn btn-ghost btn-sm" style="color:white; border-color: rgba(255,255,255,0.2);">管理 API Keys</a>
           <a href="../docs.html" class="btn btn-ghost btn-sm" style="color:white; border-color: rgba(255,255,255,0.2);">查看文档</a>
-        </div>
-      </div>
-
-      <!-- 快速体验 -->
-      <div class="quick-exp">
-        <div class="quick-exp-head">
-          <h3>⚡ 快速体验</h3>
-          <a class="full-link" href="../playground.html" target="_blank">完整体验中心 ↗</a>
-        </div>
-        <div class="quick-exp-model">
-          <select>
-            <option>vela-chat-lite · 32K</option>
-            <option>vela-code-lite · 64K</option>
-            <option>vela-code-fim · 64K</option>
-          </select>
-          <span class="text-small text-muted">选择模型即刻对话</span>
-        </div>
-        <div class="quick-exp-composer">
-          <textarea placeholder="输入消息，快速测试模型效果..."></textarea>
-          <button class="send" title="发送">↗</button>
-        </div>
-        <div class="quick-exp-chips">
-          <button class="chip">💻 前端开发</button>
-          <button class="chip">🔍 代码审阅</button>
-          <button class="chip">🧪 单元测试</button>
-          <button class="chip">📦 算法实现</button>
-          <button class="chip">🐛 Bug 排查</button>
-          <button class="chip">📝 文档生成</button>
         </div>
       </div>
 
@@ -482,6 +513,80 @@
   </main>
 </div>
 
+<!-- API 接入抽屉 -->
+<div class="drawer-overlay" id="api-drawer" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="drawer">
+    <div class="drawer-head">
+      <h3>API 接入</h3>
+      <button class="drawer-close" onclick="document.getElementById('api-drawer').classList.remove('open')">×</button>
+    </div>
+
+    <!-- Step 1 -->
+    <span class="step-label">Step 1</span>
+    <div class="step-title">
+      获取 API Key
+      <a class="link" href="api-keys.html">管理 API Key →</a>
+    </div>
+    <p class="step-desc">API Key 是访问 Vela-alpha 大模型服务的凭证，长期有效，请妥善保管。</p>
+    <div class="key-select-row">
+      <select id="key-select">
+        <option>prod-key · va-••••3f8a</option>
+        <option>dev-key · va-••••91d2</option>
+        <option>ide-key · va-••••7e4c</option>
+      </select>
+      <a href="api-keys.html" class="btn btn-outline btn-sm">+ 创建新的 API Key</a>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <!-- Step 2 -->
+    <span class="step-label">Step 2</span>
+    <div class="step-title">
+      快速接入测试
+      <a class="link" href="../docs.html" target="_blank">开发文档 →</a>
+    </div>
+
+    <div class="code-tabs">
+      <span class="ct active" onclick="switchCodeTab(this,'curl')">cURL 代码示例</span>
+      <span class="ct" onclick="switchCodeTab(this,'python')">Python SDK 示例</span>
+    </div>
+
+    <div class="onboard-code" id="code-curl">
+      <button class="copy" onclick="copyCode('curl')">复制</button>
+<pre><span class="ln"> 1</span>curl -X POST "https://api.vela.dev/v1/chat/completions" \
+<span class="ln"> 2</span>  -H "Content-Type: application/json" \
+<span class="ln"> 3</span>  -H "Authorization: Bearer <span style="color:#F1FA8C;">your-api-key</span>" \
+<span class="ln"> 4</span>  -d '{
+<span class="ln"> 5</span>    "model": "<span style="color:#8BE9FD;">vela-chat-lite</span>",
+<span class="ln"> 6</span>    "messages": [
+<span class="ln"> 7</span>      {
+<span class="ln"> 8</span>        "role": "user",
+<span class="ln"> 9</span>        "content": "用 Python 写一个快速排序"
+<span class="ln">10</span>      }
+<span class="ln">11</span>    ]
+<span class="ln">12</span>  }'</pre>
+    </div>
+
+    <div class="onboard-code hidden" id="code-python">
+      <button class="copy" onclick="copyCode('python')">复制</button>
+<pre><span class="ln"> 1</span><span style="color:#FF79C6;">from</span> openai <span style="color:#FF79C6;">import</span> OpenAI
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>client = <span style="color:#8BE9FD;">OpenAI</span>(
+<span class="ln"> 4</span>    base_url=<span style="color:#F1FA8C;">"https://api.vela.dev/v1"</span>,
+<span class="ln"> 5</span>    api_key=<span style="color:#F1FA8C;">"your-api-key"</span>,
+<span class="ln"> 6</span>)
+<span class="ln"> 7</span>
+<span class="ln"> 8</span>resp = client.chat.completions.<span style="color:#8BE9FD;">create</span>(
+<span class="ln"> 9</span>    model=<span style="color:#F1FA8C;">"vela-chat-lite"</span>,
+<span class="ln">10</span>    messages=[{<span style="color:#F1FA8C;">"role"</span>: <span style="color:#F1FA8C;">"user"</span>,
+<span class="ln">11</span>               <span style="color:#F1FA8C;">"content"</span>: <span style="color:#F1FA8C;">"用 Python 写一个快速排序"</span>}],
+<span class="ln">12</span>)
+<span class="ln">13</span>
+<span class="ln">14</span><span style="color:#8BE9FD;">print</span>(resp.choices[<span style="color:#BD93F9;">0</span>].message.content)</pre>
+    </div>
+  </div>
+</div>
+
 <script src="../assets/app.js"></script>
 <script>
   // 用量趋势
@@ -510,14 +615,22 @@
     renderBarChart(document.getElementById('chart-models'), modelData, { height: 180 });
   });
 
-  // 快速体验 chip 填充
-  document.querySelectorAll('.quick-exp-chips .chip').forEach(c => {
-    c.addEventListener('click', () => {
-      const ta = document.querySelector('.quick-exp-composer textarea');
-      ta.value = '请帮我完成「' + c.textContent.trim() + '」相关任务：';
-      ta.focus();
+  // API 接入 - 代码 Tab 切换
+  window.switchCodeTab = function(el, id) {
+    document.querySelectorAll('.code-tabs .ct').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('code-curl').classList.toggle('hidden', id !== 'curl');
+    document.getElementById('code-python').classList.toggle('hidden', id !== 'python');
+  };
+  window.copyCode = function(id) {
+    const pre = document.getElementById('code-' + id).querySelector('pre');
+    const text = pre.textContent.replace(/^\d+/gm, '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('code-' + id).querySelector('.copy');
+      btn.textContent = '✓ 已复制';
+      setTimeout(() => btn.textContent = '复制', 1500);
     });
-  });
+  };
 </script>
 </body>
 </html>
