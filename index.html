@@ -54,10 +54,10 @@
 
   .cp-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 3fr 2fr;
     gap: 24px;
     width: 90%;
-    max-width: 1440px;
+    max-width: 1000px;
     margin: 56px auto 0;
   }
   .plan-card {
@@ -212,22 +212,11 @@
   </div><!-- 关闭 container -->
 
   <div class="cp-cards">
-      <!-- Lite -->
-      <div class="plan-card soon">
-        <div class="plan-head">
-          <h3 class="plan-name">Lite</h3>
-        </div>
-        <p class="plan-tip">适合轻量级应用</p>
-        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:18px; color:var(--ink-400); font-weight:500;">Coming Soon</span>
-        </div>
-      </div>
-
-      <!-- Free · 公测 -->
+      <!-- 左：Free · 公测 -->
       <div class="plan-card featured">
         <div class="plan-head">
           <h3 class="plan-name featured-name">Free · 公测</h3>
-          <span class="badge-hot">🔥 最受欢迎</span>
+          <span class="badge-hot">🔥 当前可用</span>
         </div>
         <div class="plan-price-area">
           <span class="plan-price-discount-tag">公测免费 · 限时</span>
@@ -247,14 +236,24 @@
         </ul>
       </div>
 
-      <!-- Pro -->
+      <!-- 右：Lite / Pro Coming Soon -->
       <div class="plan-card soon">
-        <div class="plan-head">
-          <h3 class="plan-name">Pro</h3>
+        <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px dashed var(--ink-200);">
+          <div class="plan-head">
+            <h3 class="plan-name">Lite</h3>
+            <span class="badge-soon">即将上线</span>
+          </div>
+          <p class="plan-tip" style="margin-bottom:0;">适合轻量级应用，更高配额与稳定性</p>
         </div>
-        <p class="plan-tip">面向成长型应用与团队</p>
+        <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px dashed var(--ink-200);">
+          <div class="plan-head">
+            <h3 class="plan-name">Pro</h3>
+            <span class="badge-soon">即将上线</span>
+          </div>
+          <p class="plan-tip" style="margin-bottom:0;">面向成长型应用与团队，更多能力</p>
+        </div>
         <div style="flex:1; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:18px; color:var(--ink-400); font-weight:500;">Coming Soon</span>
+          <span style="font-size: 15px; color: var(--ink-400);">更多套餐正在规划中，敬请期待</span>
         </div>
       </div>
     </div>
