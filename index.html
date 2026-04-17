@@ -148,7 +148,10 @@
   .plan-card.soon {
     background: var(--page-bg);
     border-color: var(--ink-200);
+    border-style: dashed;
+    opacity: 0.7;
   }
+  .plan-card.soon:hover { opacity: 0.85; }
   .plan-card.soon .plan-price { color: var(--ink-400); font-size: 44px; }
   .beta-banner {
     max-width: 1120px;
@@ -213,22 +216,11 @@
       <div class="plan-card soon">
         <div class="plan-head">
           <h3 class="plan-name">Lite</h3>
-          <span class="badge-soon">即将上线</span>
         </div>
-        <p class="plan-tip">适合轻量级应用，更高配额与稳定性</p>
-        <div class="plan-price-area">
-          <div class="plan-price">¥ --</div>
-          <p class="plan-price-sub">定价即将公布</p>
+        <p class="plan-tip">适合轻量级应用</p>
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <span style="font-size:18px; color:var(--ink-400); font-weight:500;">Coming Soon</span>
         </div>
-        <button class="plan-btn" disabled>敬请期待</button>
-        <div class="plan-quota"><span>调用配额</span><span class="v">—</span></div>
-        <div class="plan-section-head">规划中的能力</div>
-        <ul class="plan-features">
-          <li class="no"><span class="mark"></span>更高 RPM / TPM 配额</li>
-          <li class="no"><span class="mark"></span>更大上下文窗口</li>
-          <li class="no"><span class="mark"></span>请求日志长期保留</li>
-          <li class="no"><span class="mark"></span>Email 工单支持</li>
-        </ul>
       </div>
 
       <!-- Free · 公测 -->
@@ -259,22 +251,11 @@
       <div class="plan-card soon">
         <div class="plan-head">
           <h3 class="plan-name">Pro</h3>
-          <span class="badge-soon">即将上线</span>
         </div>
-        <p class="plan-tip">面向成长型应用与团队，解锁工具调用与更多能力</p>
-        <div class="plan-price-area">
-          <div class="plan-price">¥ --</div>
-          <p class="plan-price-sub">定价即将公布</p>
+        <p class="plan-tip">面向成长型应用与团队</p>
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <span style="font-size:18px; color:var(--ink-400); font-weight:500;">Coming Soon</span>
         </div>
-        <button class="plan-btn" disabled>敬请期待</button>
-        <div class="plan-quota"><span>调用配额</span><span class="v">—</span></div>
-        <div class="plan-section-head">规划中的能力</div>
-        <ul class="plan-features">
-          <li class="no"><span class="mark"></span>工具调用 (Function Calling)</li>
-          <li class="no"><span class="mark"></span>多模态输入能力</li>
-          <li class="no"><span class="mark"></span>更高峰值 RPM / TPM</li>
-          <li class="no"><span class="mark"></span>专属算力池与 SLA</li>
-        </ul>
       </div>
     </div>
 
