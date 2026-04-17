@@ -212,8 +212,7 @@ code, pre {
   transition: color 0.15s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
   color: var(--ink-900);
 }
 
