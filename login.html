@@ -33,10 +33,10 @@
     left: 4%;
     background: linear-gradient(135deg,
       rgba(255,255,255,0.55) 0%,
-      hsla(211,86%,48%,0.15) 25%,
+      hsla(262, 72%, 55%,0.15) 25%,
       hsla(200,70%,60%,0.22) 45%,
       rgba(255,255,255,0.5) 60%,
-      hsla(211,86%,48%,0.18) 80%,
+      hsla(262, 72%, 55%,0.18) 80%,
       rgba(255,255,255,0.45) 100%);
     border-radius: 50% 40% 55% 45% / 55% 35% 65% 45%;
     filter: blur(35px);
@@ -68,7 +68,7 @@
     border-radius: 50%;
   }
   .bg-orb.a { width: 400px; height: 400px; top: 5%;  left: 8%;  background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 70%); }
-  .bg-orb.b { width: 280px; height: 280px; bottom: 12%; left: 25%; background: radial-gradient(circle, rgba(228,46,46,0.1) 0%, transparent 70%); }
+  .bg-orb.b { width: 280px; height: 280px; bottom: 12%; left: 25%; background: radial-gradient(circle, hsla(262,72%,55%,0.1) 0%, transparent 70%); }
   .bg-orb.c { width: 200px; height: 200px; top: 48%;  left: 42%; background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%); }
 
   /* 细线环 */
@@ -78,7 +78,7 @@
     border: 1.5px solid rgba(255,255,255,0.3);
   }
   .bg-ring.r1 { width: 420px; height: 420px; top: 10%; left: 6%; }
-  .bg-ring.r2 { width: 300px; height: 300px; top: 28%; left: 30%; border-color: hsla(211,86%,48%,0.1); }
+  .bg-ring.r2 { width: 300px; height: 300px; top: 28%; left: 30%; border-color: hsla(262, 72%, 55%,0.1); }
   .bg-ring.r3 { width: 220px; height: 220px; bottom: 16%; left: 18%; border-color: rgba(255,255,255,0.22); }
 
   /* 光点 */
@@ -88,7 +88,7 @@
     background: rgba(255,255,255,0.65);
   }
   .bg-dot.d1 { width: 7px;  height: 7px;  top: 18%; left: 28%; }
-  .bg-dot.d2 { width: 10px; height: 10px; top: 52%; left: 12%; background: hsla(211,86%,48%,0.25); }
+  .bg-dot.d2 { width: 10px; height: 10px; top: 52%; left: 12%; background: hsla(262, 72%, 55%,0.25); }
   .bg-dot.d3 { width: 13px; height: 13px; top: 68%; left: 48%; background: hsla(200,70%,60%,0.3); }
   .bg-dot.d4 { width: 5px;  height: 5px;  top: 32%; left: 52%; }
 
@@ -123,7 +123,7 @@
     width: 468px;
     background: #fff;
     border-radius: 4px;
-    box-shadow: 0px 10px 120px 3px hsla(211, 86%, 48%, 0.06);
+    box-shadow: 0px 10px 120px 3px hsla(262, 72%, 55%, 0.06);
     padding: 70px 60px;
     box-sizing: border-box;
   }
@@ -316,7 +316,7 @@
     width: 42px;
     height: 42px;
     border-radius: 10px;
-    background: linear-gradient(135deg, var(--brand), hsl(190 80% 55%));
+    background: linear-gradient(135deg, var(--brand), var(--accent));
     display: grid;
     place-items: center;
     color: white;

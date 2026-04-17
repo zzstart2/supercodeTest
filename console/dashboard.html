@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../assets/style.css"/>
 <style>
   .welcome {
-    background: linear-gradient(135deg, #0A0A0F 0%, #1a0a12 100%);
+    background: linear-gradient(135deg, hsl(240 10% 6%) 0%, hsl(262 20% 10%) 100%);
     color: white;
     border-radius: var(--radius-lg);
     padding: 32px;
@@ -19,7 +19,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 80% 30%, hsla(211, 86%, 48%, 0.2) 0%, transparent 50%);
+    background: radial-gradient(circle at 80% 30%, hsla(262, 72%, 55%, 0.2) 0%, transparent 50%);
   }
   .welcome h2 {
     color: white;
@@ -85,7 +85,7 @@
   }
 
   .balance-card {
-    background: linear-gradient(135deg, var(--brand) 0%, hsl(190 80% 55%) 100%);
+    background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
     color: white;
     border-radius: var(--radius-lg);
     padding: 24px;
@@ -630,7 +630,7 @@
 
     <div class="onboard-code hidden" id="code-python">
       <button class="copy" onclick="copyCode('python')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button>
-<pre><span class="ln"> 1</span><span style="color:#FF79C6;">from</span> openai <span style="color:#FF79C6;">import</span> OpenAI
+<pre><span class="ln"> 1</span><span style="color:#C084FC;">from</span> openai <span style="color:#C084FC;">import</span> OpenAI
 <span class="ln"> 2</span>
 <span class="ln"> 3</span>client = <span style="color:#8BE9FD;">OpenAI</span>(
 <span class="ln"> 4</span>    base_url=<span style="color:#F1FA8C;">"https://api.supercode.dev/v1"</span>,
