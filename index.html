@@ -6,24 +6,25 @@
 <title>SuperCode · LLM API 服务平台</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
-  /* ===== Hero ===== */
-  .hero {
+  /* ===== Token Plan Hero 区 ===== */
+  .tp-hero {
     background: radial-gradient(ellipse at top left, #1a0a12 0%, #0a0a0f 55%);
     color: var(--white);
-    padding: 140px 0 120px;
+    padding: 100px 0 60px;
+    text-align: center;
     position: relative;
     overflow: hidden;
   }
-  .hero::before {
+  .tp-hero::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(circle at 20% 30%, rgba(228, 46, 46, 0.25) 0%, transparent 40%),
-      radial-gradient(circle at 85% 70%, rgba(255, 107, 74, 0.12) 0%, transparent 40%);
+      radial-gradient(circle at 30% 20%, rgba(228, 46, 46, 0.25) 0%, transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(255, 107, 74, 0.12) 0%, transparent 40%);
     pointer-events: none;
   }
-  .hero::after {
+  .tp-hero::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -34,43 +35,96 @@
     pointer-events: none;
     mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
   }
-  .hero-inner {
+  .tp-hero-inner {
     position: relative;
     z-index: 1;
-    max-width: 1000px;
+    max-width: 800px;
+    margin: 0 auto;
   }
-  .hero h1 { color: var(--white); margin-bottom: 24px; }
-  .hero h1 .accent {
+  .tp-hero h1 {
+    color: var(--white);
+    font-size: clamp(36px, 5vw, 52px);
+    margin-bottom: 16px;
+  }
+  .tp-hero h1 .accent {
     background: linear-gradient(135deg, #FF4E4E 0%, #FFB088 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .hero-sub {
-    font-size: 20px;
+  .tp-hero .lead {
+    font-size: 18px;
     color: rgba(255, 255, 255, 0.7);
-    max-width: 620px;
+    margin: 0 auto 32px;
+    max-width: 640px;
+  }
+
+  /* 新模型高亮卡片 */
+  .model-highlights {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
     margin-bottom: 40px;
   }
-  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .hero-meta {
+  .model-hl {
     display: flex;
-    gap: 48px;
-    margin-top: 64px;
-    color: rgba(255, 255, 255, 0.75);
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 14px 20px;
+    backdrop-filter: blur(8px);
+    text-align: left;
+    min-width: 280px;
+    transition: border-color 0.2s;
   }
-  .hero-meta .item strong {
-    display: block;
-    color: var(--white);
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+  .model-hl:hover {
+    border-color: rgba(255, 255, 255, 0.25);
   }
-  .hero-meta .item span { font-size: 13px; color: rgba(255, 255, 255, 0.6); }
+  .model-hl .m-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .model-hl .m-icon.flash { background: linear-gradient(135deg, var(--brand), #FF6B4A); }
+  .model-hl .m-icon.multi { background: linear-gradient(135deg, #7C3AED, #3B82F6); }
+  .model-hl .m-info .m-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2px;
+  }
+  .model-hl .m-info .m-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .model-hl .m-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-weight: 500;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .m-tag.new { background: rgba(228, 46, 46, 0.2); color: #FF8E8E; }
+  .m-tag.open { background: rgba(124, 58, 237, 0.2); color: #C4B5FD; }
 
-  /* ===== Token Plan 区 ===== */
+  .tp-hero-ctas {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ===== Token Plan 卡片区 ===== */
   .tp-section {
-    padding: 100px 0 40px;
+    padding: 64px 0 40px;
     background: #FAFAFA;
   }
   .cp-cards {
@@ -198,7 +252,7 @@
   @media (max-width: 900px) {
     .cp-cards { grid-template-columns: 1fr; padding: 0 20px; }
     .plan-card { min-height: auto; }
-    .hero-meta { gap: 24px; }
+    .model-highlights { flex-direction: column; align-items: center; }
   }
 </style>
 </head>
@@ -224,52 +278,45 @@
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="container hero-inner">
-    <div class="eyebrow">🎁 公测期免费开放 · 现已支持 Token Plan</div>
-    <h1>
-      企业级大模型 API，<br/>
-      构建<span class="accent">AI 应用</span>的基石
-    </h1>
-    <p class="hero-sub">
-      兼容 OpenAI 接口格式，全链路模型矩阵，配套 Playground / SDK / 实时用量观测，5 分钟即可接入生产。
+<!-- Token Plan Hero -->
+<section class="tp-hero" id="token-plan">
+  <div class="container tp-hero-inner">
+    <div class="eyebrow" style="background:rgba(228,46,46,0.2); color:#FF8E8E;">NEW · 全新模型发布</div>
+    <h1>SuperCode <span class="accent">Token Plan</span></h1>
+    <p class="lead">
+      兼容 OpenAI 接口，按量透明计费，公测期 Free 档完全免费开放
     </p>
-    <div class="hero-ctas">
-      <a href="register.html" class="btn btn-primary btn-lg">免费开始 →</a>
-      <a href="#token-plan" class="btn btn-ghost btn-lg">查看 Token Plan</a>
+
+    <!-- 新模型高亮 -->
+    <div class="model-highlights">
+      <div class="model-hl">
+        <div class="m-icon flash">⚡</div>
+        <div class="m-info">
+          <div class="m-name">SenseNova-v6.7-Flash</div>
+          <div class="m-desc">高速推理文字模型 · 已加入 Token Plan</div>
+        </div>
+        <span class="m-tag new">NEW</span>
+      </div>
+      <div class="model-hl">
+        <div class="m-icon multi">🔮</div>
+        <div class="m-info">
+          <div class="m-name">SenseNova-U1-Mini</div>
+          <div class="m-desc">开源多模态模型 · Open Source</div>
+        </div>
+        <span class="m-tag open">开源</span>
+      </div>
     </div>
-    <div class="hero-meta">
-      <div class="item">
-        <strong>99.95%</strong>
-        <span>SLA 服务可用性</span>
-      </div>
-      <div class="item">
-        <strong>&lt; 200ms</strong>
-        <span>首 Token 延迟 (P50)</span>
-      </div>
-      <div class="item">
-        <strong>OpenAI</strong>
-        <span>完全兼容协议</span>
-      </div>
-      <div class="item">
-        <strong>12+</strong>
-        <span>模型矩阵</span>
-      </div>
+
+    <div class="tp-hero-ctas">
+      <a href="register.html" class="btn btn-primary btn-lg">免费开始 →</a>
+      <a href="docs.html" class="btn btn-ghost btn-lg">查看文档</a>
     </div>
   </div>
 </section>
 
-<!-- Token Plan -->
-<section class="tp-section" id="token-plan">
+<!-- Token Plan Cards -->
+<section class="tp-section">
   <div class="container">
-    <div class="text-center" style="max-width:700px;margin:0 auto;">
-      <div class="eyebrow">Token Plan</div>
-      <h2>灵活透明的按量方案</h2>
-      <p class="lead" style="margin:0 auto;">
-        公测期 Free 档免费开放 · Pro / Team 正在打磨中
-      </p>
-    </div>
 
     <div class="cp-cards">
       <!-- Lite -->
@@ -309,7 +356,7 @@
         <div class="plan-quota"><span>调用配额</span><span class="v">1,500 次 / 5 小时</span></div>
         <div class="plan-section-head">已开放能力</div>
         <ul class="plan-features">
-          <li class="ok"><span class="mark"></span>SuperCode 全系列文字模型</li>
+          <li class="ok"><span class="mark"></span>SenseNova-v6.7-Flash 等全系文字模型</li>
           <li class="ok"><span class="mark"></span>兼容 OpenAI SDK（base_url 一键替换）</li>
           <li class="ok"><span class="mark"></span>长上下文 · 多轮对话</li>
           <li class="ok"><span class="mark"></span>Playground 交互测试 + 参数调节</li>
