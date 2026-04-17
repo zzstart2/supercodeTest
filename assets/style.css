@@ -3,20 +3,19 @@
    ============================================================ */
 
 :root {
-  /* 新设计规范 — SenseNova 紫+青配色 */
-  --brand: hsl(262 72% 55%);       /* 主色/按钮 — 紫色 */
-  --brand-dark: hsl(262 72% 46%);
-  --brand-soft: hsl(262 60% 96%);  /* 紫色浅底 */
-  --accent: hsl(168 80% 42%);      /* 强调色 — 青绿 */
+  /* 设计规范 — 科技蓝配色 */
+  --brand: hsl(211 86% 48%);       /* 主色/按钮 */
+  --brand-dark: hsl(211 86% 40%);
+  --brand-soft: hsl(210 40% 96%);  /* 强调色/悬停背景 */
 
-  /* 中性色 */
-  --ink-900: hsl(210 20% 12%);
-  --ink-800: hsl(210 18% 18%);
-  --ink-700: hsl(210 14% 28%);
-  --ink-600: hsl(210 12% 35%);
-  --ink-500: hsl(210 10% 45%);
-  --ink-400: hsl(210 8% 60%);
-  --ink-300: hsl(210 10% 75%);
+  /* 文字 */
+  --ink-900: hsl(215 25% 16%);     /* 主文字 */
+  --ink-800: hsl(215 22% 22%);
+  --ink-700: hsl(215 20% 30%);
+  --ink-600: hsl(215 18% 38%);
+  --ink-500: hsl(215 16% 46%);     /* 弱化文字 */
+  --ink-400: hsl(215 12% 58%);
+  --ink-300: hsl(215 10% 72%);
   --ink-200: hsl(214 32% 91%);     /* 边框色 */
   --ink-100: hsl(210 40% 96%);     /* 强调色 */
   --white: hsl(0 0% 100%);         /* 卡片色 */
@@ -125,7 +124,7 @@ code, pre {
 .brand-mark {
   width: 28px;
   height: 28px;
-  background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%);
   border-radius: 6px;
   display: grid;
   place-items: center;
@@ -185,7 +184,7 @@ code, pre {
   background: var(--brand-dark);
   color: white;
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px hsla(262, 72%, 55%, 0.3);
+  box-shadow: 0 8px 20px hsla(211, 86%, 48%, 0.3);
 }
 
 .btn-ghost {
@@ -250,7 +249,7 @@ code, pre {
   display: inline-block;
   padding: 4px 12px;
   border-radius: 100px;
-  background: hsla(262, 72%, 55%, 0.08);
+  background: hsla(211, 86%, 48%, 0.08);
   color: var(--brand);
   font-size: 12px;
   font-weight: 600;
@@ -715,7 +714,7 @@ h3 {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--brand), var(--accent));
+  background: linear-gradient(135deg, var(--brand), hsl(200 80% 55%));
   display: grid;
   place-items: center;
   color: white;
@@ -845,7 +844,7 @@ h3 {
   position: relative;
 }
 
-.code-block .kw { color: #C084FC; }
+.code-block .kw { color: #93C5FD; }
 .code-block .str { color: #F1FA8C; }
 .code-block .cm { color: #6272A4; }
 .code-block .num { color: #BD93F9; }

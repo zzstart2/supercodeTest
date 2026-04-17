@@ -112,14 +112,14 @@ function renderLineChart(el, data, opts = {}) {
     <svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}">
       <defs>
         <linearGradient id="area-grad" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stop-color="hsl(262 72% 55%)" stop-opacity="0.25"/>
-          <stop offset="100%" stop-color="hsl(262 72% 55%)" stop-opacity="0"/>
+          <stop offset="0%" stop-color="hsl(211 86% 48%)" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="hsl(211 86% 48%)" stop-opacity="0"/>
         </linearGradient>
       </defs>
       ${yLines}
       <path d="${area}" fill="url(#area-grad)"/>
-      <path d="${path}" fill="none" stroke="hsl(262 72% 55%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      ${pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="#fff" stroke="hsl(262 72% 55%)" stroke-width="2"/>`).join('')}
+      <path d="${path}" fill="none" stroke="hsl(211 86% 48%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      ${pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="#fff" stroke="hsl(211 86% 48%)" stroke-width="2"/>`).join('')}
       ${xLabels}
     </svg>
   `;
@@ -138,7 +138,7 @@ function renderBarChart(el, data, opts = {}) {
     const x = pad.l + gap * i + (gap - barW) / 2;
     const barH = (d.v / max) * (h - pad.t - pad.b);
     const y = h - pad.b - barH;
-    return `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" rx="3" fill="hsl(262 72% 55%)" opacity="0.85"/>
+    return `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" rx="3" fill="hsl(211 86% 48%)" opacity="0.85"/>
             <text x="${x + barW / 2}" y="${h - 10}" font-size="11" fill="#999" text-anchor="middle">${d.x}</text>`;
   }).join('');
 
