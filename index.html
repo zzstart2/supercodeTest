@@ -8,7 +8,7 @@
 <style>
   /* ===== Token Plan Hero 区 ===== */
   .tp-hero {
-    background: radial-gradient(ellipse at top left, #1a0a12 0%, #0a0a0f 55%);
+    background: radial-gradient(ellipse at top left, hsl(211 30% 12%) 0%, hsl(211 25% 8%) 55%);
     color: var(--white);
     padding: 100px 0 80px;
     text-align: center;
@@ -20,8 +20,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(circle at 30% 20%, rgba(228, 46, 46, 0.25) 0%, transparent 40%),
-      radial-gradient(circle at 80% 60%, rgba(255, 107, 74, 0.12) 0%, transparent 40%);
+      radial-gradient(circle at 30% 20%, hsla(211, 86%, 48%, 0.25) 0%, transparent 40%),
+      radial-gradient(circle at 80% 60%, hsla(190, 80%, 65%, 0.12) 0%, transparent 40%);
     pointer-events: none;
   }
   .tp-hero::after {
@@ -47,7 +47,7 @@
     margin-bottom: 16px;
   }
   .tp-hero h1 .accent {
-    background: linear-gradient(135deg, #FF4E4E 0%, #FFB088 100%);
+    background: linear-gradient(135deg, hsl(211 86% 60%) 0%, hsl(190 80% 65%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -92,8 +92,8 @@
     font-size: 18px;
     flex-shrink: 0;
   }
-  .model-hl .m-icon.flash { background: linear-gradient(135deg, var(--brand), #FF6B4A); }
-  .model-hl .m-icon.multi { background: linear-gradient(135deg, #7C3AED, #3B82F6); }
+  .model-hl .m-icon.flash { background: linear-gradient(135deg, var(--brand), hsl(190 80% 55%)); }
+  .model-hl .m-icon.multi { background: linear-gradient(135deg, hsl(260 60% 55%), hsl(211 86% 48%)); }
   .model-hl .m-info .m-name {
     font-size: 14px;
     font-weight: 600;
@@ -112,8 +112,8 @@
     margin-left: auto;
     flex-shrink: 0;
   }
-  .m-tag.new { background: rgba(228, 46, 46, 0.2); color: #FF8E8E; }
-  .m-tag.open { background: rgba(124, 58, 237, 0.2); color: #C4B5FD; }
+  .m-tag.new { background: hsla(211, 86%, 48%, 0.2); color: hsl(211 86% 75%); }
+  .m-tag.open { background: hsla(260, 60%, 55%, 0.2); color: hsl(260 60% 80%); }
 
   .tp-hero-ctas {
     display: flex;
@@ -131,24 +131,23 @@
     padding: 0 32px;
   }
   .plan-card {
-    background: white;
+    background: var(--white);
     border: 1px solid var(--ink-200);
-    border-radius: 20px;
-    padding: 32px;
+    border-radius: 16px;
+    padding: 28px 24px;
     display: flex;
     flex-direction: column;
     position: relative;
-    min-height: 520px;
   }
   .plan-card.featured {
     border: 2px solid var(--brand);
-    box-shadow: 0 24px 48px -18px rgba(228, 46, 46, 0.22);
+    box-shadow: 0 16px 40px -12px hsla(211, 86%, 48%, 0.2);
   }
   .plan-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
   .plan-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
   .plan-name.featured-name { color: var(--brand); }
   .badge-hot {
-    background: linear-gradient(135deg, var(--brand), #FF6B4A);
+    background: var(--brand);
     color: white;
     padding: 4px 10px;
     border-radius: 100px;
@@ -167,7 +166,7 @@
   .plan-price-area { padding: 4px 0 20px; }
   .plan-price-discount-tag {
     display: inline-block; padding: 2px 8px;
-    background: #FEE2E2; color: var(--danger);
+    background: var(--brand-soft); color: var(--brand);
     border-radius: 100px; font-size: 11px; font-weight: 600; margin-bottom: 4px;
   }
   .plan-price {
@@ -196,7 +195,7 @@
     padding: 12px 14px; margin-bottom: 16px; font-size: 13px;
     display: flex; justify-content: space-between; align-items: center;
   }
-  .plan-card.featured .plan-quota { background: var(--brand-soft); color: var(--brand); }
+  .plan-card.featured .plan-quota { background: hsla(211, 86%, 48%, 0.08); color: var(--brand); }
   .plan-quota .v { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 15px; }
   .plan-section-head {
     font-size: 11px; font-weight: 600; text-transform: uppercase;
@@ -267,7 +266,7 @@
 <!-- Token Plan Hero -->
 <section class="tp-hero" id="token-plan">
   <div class="container tp-hero-inner">
-    <div class="eyebrow" style="background:rgba(228,46,46,0.2); color:#FF8E8E;">NEW · 全新模型发布</div>
+    <div class="eyebrow" style="background:hsla(211,86%,48%,0.2); color:hsl(211 86% 75%);">NEW · 全新模型发布</div>
     <h1>SuperCode <span class="accent">Token Plan</span></h1>
     <p class="lead">
       兼容 OpenAI 接口，按量透明计费，公测期 Free 档完全免费开放
