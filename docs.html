@@ -206,7 +206,7 @@
     </a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="pricing.html">Coding Plan</a>
+      <a href="index.html#token-plan">Token Plan</a>
       <a href="docs.html" class="active">文档</a>
       <a href="console/dashboard.html">控制台</a>
     </div>
@@ -230,7 +230,7 @@
     <ul>
       <li><a href="#chat">Chat Completions</a></li>
       <li><a href="#models">Models 列表</a></li>
-      <li><a href="#fim">FIM 补全 (Coding)</a></li>
+      <li><a href="#fim">文本补全</a></li>
     </ul>
     <h6>高级</h6>
     <ul>
@@ -355,14 +355,14 @@ resp = client.chat.completions.<span class="fn">create</span>(
           <tr><td><code>supercode-chat-pro</code></td><td>Chat</td><td>128K</td><td>通用对话（Pro 档）</td></tr>
           <tr><td><code>supercode-code-lite</code></td><td>Coding</td><td>64K</td><td>代码补全、重构</td></tr>
           <tr><td><code>supercode-code-pro</code></td><td>Coding</td><td>200K</td><td>仓库级代码理解</td></tr>
-          <tr><td><code>supercode-code-fim</code></td><td>Coding / FIM</td><td>64K</td><td>IDE 插件 Fill-in-the-Middle</td></tr>
+          <tr><td><code>supercode-code-fim</code></td><td>补全</td><td>64K</td><td>文本补全（prefix + suffix）</td></tr>
         </tbody>
       </table>
     </section>
 
     <section id="fim">
-      <h2>FIM 补全 (Coding)</h2>
-      <p>面向 Cursor / Continue / JetBrains AI 等 IDE 场景，提供 Fill-in-the-Middle 接口，插入 <code>prefix</code> 与 <code>suffix</code>，模型在中间生成。</p>
+      <h2>文本补全</h2>
+      <p>提供文本补全接口，支持插入 <code>prefix</code> 与 <code>suffix</code>，模型在中间生成。</p>
       <div class="endpoint">
         <span class="method post">POST</span>
         <span>/v1/completions</span>
@@ -436,7 +436,7 @@ resp = client.chat.completions.<span class="fn">create</span>(
       <li><a href="#auth">鉴权</a></li>
       <li><a href="#chat">Chat Completions</a></li>
       <li><a href="#models">Models 列表</a></li>
-      <li><a href="#fim">FIM 补全</a></li>
+      <li><a href="#fim">文本补全</a></li>
       <li><a href="#ratelimit">限流</a></li>
       <li><a href="#errors">错误码</a></li>
       <li><a href="#moderation">内容审核</a></li>

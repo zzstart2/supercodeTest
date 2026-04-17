@@ -5,8 +5,8 @@
 ## 页面结构
 
 ### 公开站点
-- `index.html` — 落地页（Hero / 特性 / Coding Plan 预览 / CTA）
-- `pricing.html` — Coding Plan 套餐页
+- `index.html` — 落地页（Hero / 特性 / Token Plan 预览 / CTA）
+- `pricing.html` — Token Plan 套餐页
 - `docs.html` — API 文档
 - `playground.html` — 体验中心（文本模型交互测试）
 - `login.html` / `register.html` — 手机号登录 / 注册

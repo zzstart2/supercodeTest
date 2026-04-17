@@ -6,7 +6,7 @@
 <title>SuperCode · LLM API 服务平台</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
-  /* Landing 专用样式 */
+  /* ===== Hero ===== */
   .hero {
     background: radial-gradient(ellipse at top left, #1a0a12 0%, #0a0a0f 55%);
     color: var(--white);
@@ -39,10 +39,7 @@
     z-index: 1;
     max-width: 1000px;
   }
-  .hero h1 {
-    color: var(--white);
-    margin-bottom: 24px;
-  }
+  .hero h1 { color: var(--white); margin-bottom: 24px; }
   .hero h1 .accent {
     background: linear-gradient(135deg, #FF4E4E 0%, #FFB088 100%);
     -webkit-background-clip: text;
@@ -55,11 +52,7 @@
     max-width: 620px;
     margin-bottom: 40px;
   }
-  .hero-ctas {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .hero-meta {
     display: flex;
     gap: 48px;
@@ -73,10 +66,7 @@
     font-weight: 700;
     letter-spacing: -0.02em;
   }
-  .hero-meta .item span {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.6);
-  }
+  .hero-meta .item span { font-size: 13px; color: rgba(255, 255, 255, 0.6); }
 
   /* 信任条 */
   .trust-bar {
@@ -120,69 +110,16 @@
     box-shadow: 0 20px 40px -12px rgba(228, 46, 46, 0.15);
   }
   .feature-card .icon {
-    width: 44px;
-    height: 44px;
+    width: 44px; height: 44px;
     border-radius: 10px;
     background: var(--brand-soft);
     color: var(--brand);
-    display: grid;
-    place-items: center;
+    display: grid; place-items: center;
     margin-bottom: 20px;
     font-size: 22px;
   }
-  .feature-card h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  .feature-card p {
-    font-size: 14px;
-    color: var(--ink-500);
-    margin: 0;
-  }
-
-  /* Benchmark */
-  .bench-section {
-    background: var(--ink-100);
-  }
-  .bench-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  .bench-table {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: var(--shadow);
-  }
-  .bench-row {
-    display: grid;
-    grid-template-columns: 1.2fr 2fr 60px;
-    align-items: center;
-    padding: 12px 4px;
-    border-bottom: 1px solid var(--ink-100);
-    font-size: 14px;
-  }
-  .bench-row:last-child { border-bottom: none; }
-  .bench-row .m { font-weight: 600; }
-  .bar {
-    height: 8px;
-    background: var(--ink-100);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .bar .fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--brand) 0%, #FF6B4A 100%);
-    border-radius: 10px;
-  }
-  .bench-row .v {
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    font-weight: 600;
-    color: var(--brand);
-  }
+  .feature-card h3 { font-size: 18px; margin-bottom: 8px; }
+  .feature-card p { font-size: 14px; color: var(--ink-500); margin: 0; }
 
   /* 代码演示区 */
   .demo-section {
@@ -190,12 +127,8 @@
     color: var(--white);
     padding: 100px 0;
   }
-  .demo-section h2 {
-    color: var(--white);
-  }
-  .demo-section .lead {
-    color: rgba(255,255,255,0.7);
-  }
+  .demo-section h2 { color: var(--white); }
+  .demo-section .lead { color: rgba(255,255,255,0.7); }
   .demo-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -204,68 +137,134 @@
     align-items: center;
   }
 
-  /* Pricing 卡片 */
-  .pricing-grid {
+  /* ===== Token Plan 区 ===== */
+  .tp-section {
+    padding: 100px 0 40px;
+    background: #FAFAFA;
+  }
+  .cp-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-top: 48px;
+    max-width: 1120px;
+    margin: 48px auto 0;
+    padding: 0 32px;
   }
-  .plan {
+  .plan-card {
+    background: white;
     border: 1px solid var(--ink-200);
-    border-radius: var(--radius-lg);
+    border-radius: 20px;
     padding: 32px;
-    background: var(--white);
-    position: relative;
     display: flex;
     flex-direction: column;
+    position: relative;
+    min-height: 520px;
   }
-  .plan.featured {
-    border-color: var(--brand);
-    border-width: 2px;
-    transform: scale(1.02);
+  .plan-card.featured {
+    border: 2px solid var(--brand);
+    box-shadow: 0 24px 48px -18px rgba(228, 46, 46, 0.22);
   }
-  .plan-tag {
-    position: absolute;
-    top: -12px;
-    left: 32px;
-    background: var(--brand);
+  .plan-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .plan-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+  .plan-name.featured-name { color: var(--brand); }
+  .badge-hot {
+    background: linear-gradient(135deg, var(--brand), #FF6B4A);
     color: white;
-    padding: 4px 12px;
+    padding: 4px 10px;
     border-radius: 100px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
   }
-  .plan h3 { font-size: 18px; margin-bottom: 4px; }
-  .plan .price {
-    font-size: 44px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin: 16px 0 4px;
-  }
-  .plan .price small {
-    font-size: 16px;
+  .badge-soon {
+    background: var(--ink-100);
     color: var(--ink-500);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 11px;
     font-weight: 500;
   }
-  .plan ul {
-    list-style: none;
-    padding: 0;
-    margin: 24px 0;
-    flex: 1;
+  .plan-tip { font-size: 13px; color: var(--ink-500); margin: 0 0 22px; }
+  .plan-price-area { padding: 4px 0 20px; }
+  .plan-price-discount-tag {
+    display: inline-block; padding: 2px 8px;
+    background: #FEE2E2; color: var(--danger);
+    border-radius: 100px; font-size: 11px; font-weight: 600; margin-bottom: 4px;
   }
-  .plan li {
-    padding: 8px 0;
-    font-size: 14px;
-    color: var(--ink-700);
+  .plan-price {
+    font-size: 56px; font-weight: 800;
+    letter-spacing: -0.04em; color: var(--ink-900);
+    line-height: 1.1; display: flex; align-items: baseline; gap: 4px;
+  }
+  .plan-card.featured .plan-price { color: var(--brand); }
+  .plan-price .unit { font-size: 16px; font-weight: 500; color: var(--ink-500); }
+  .plan-card.featured .plan-price .unit { color: var(--brand); opacity: 0.8; }
+  .plan-price-sub { font-size: 13px; color: var(--ink-500); margin: 6px 0 0; }
+  .plan-btn {
+    display: block; width: 100%; padding: 12px;
+    border-radius: 10px; font-size: 14px; font-weight: 500;
+    text-align: center; background: var(--ink-100); color: var(--ink-500);
+    border: none; cursor: not-allowed; margin-bottom: 18px;
+    pointer-events: none; text-decoration: none;
+  }
+  .plan-btn.active {
+    background: var(--brand); color: white;
+    cursor: pointer; pointer-events: auto;
+  }
+  .plan-btn.active:hover { background: var(--brand-dark); transform: translateY(-1px); color: white; }
+  .plan-quota {
+    background: var(--ink-100); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 16px; font-size: 13px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .plan-card.featured .plan-quota { background: var(--brand-soft); color: var(--brand); }
+  .plan-quota .v { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 15px; }
+  .plan-section-head {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-400); margin: 8px 0 10px;
+  }
+  .plan-features { list-style: none; padding: 0; margin: 0; flex: 1; }
+  .plan-features li {
+    padding: 7px 0; font-size: 13.5px; color: var(--ink-700);
+    display: flex; gap: 10px; align-items: flex-start; line-height: 1.5;
+  }
+  .plan-features li .mark {
+    flex-shrink: 0; width: 16px; height: 16px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 10px; font-weight: 700; margin-top: 2px;
+  }
+  .plan-features li.ok .mark { background: #D1FAE5; color: #065F46; }
+  .plan-features li.ok .mark::before { content: '✓'; }
+  .plan-features li.no .mark { background: var(--ink-100); color: var(--ink-400); }
+  .plan-features li.no .mark::before { content: '×'; }
+  .plan-features li.no { color: var(--ink-400); }
+  .plan-card.soon {
+    background: linear-gradient(180deg, #FAFAFA 0%, #F4F4F8 100%);
+  }
+  .plan-card.soon .plan-price { color: var(--ink-400); font-size: 44px; }
+  .beta-banner {
+    max-width: 1120px;
+    margin: 32px auto 0;
+    padding: 14px 20px;
+    background: #FFFBEA;
+    border: 1px solid #FDE68A;
+    border-radius: 12px;
+    color: #92400E;
+    font-size: 13px;
     display: flex;
+    align-items: center;
     gap: 10px;
   }
-  .plan li::before {
-    content: '✓';
-    color: var(--brand);
-    font-weight: 700;
+
+  /* FAQ */
+  .faq-section { padding: 80px 0 40px; background: #FAFAFA; }
+  .faq-wrap { max-width: 800px; margin: 0 auto; padding: 0 32px; }
+  .faq-wrap h2 { text-align: center; margin-bottom: 32px; }
+  .faq-item {
+    background: white; border: 1px solid var(--ink-200);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 10px;
   }
+  .faq-item h4 { margin: 0 0 6px; font-size: 15px; }
+  .faq-item p { margin: 0; color: var(--ink-500); font-size: 14px; }
+  .faq-item code { background: var(--ink-100); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
 
   /* CTA */
   .cta-section {
@@ -273,14 +272,15 @@
     color: white;
     padding: 100px 0;
     text-align: center;
-    background-image:
-      radial-gradient(circle at 50% 30%, rgba(228, 46, 46, 0.25) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 50% 30%, rgba(228, 46, 46, 0.25) 0%, transparent 50%);
   }
   .cta-section h2 { color: white; }
 
   @media (max-width: 900px) {
-    .feature-grid, .pricing-grid { grid-template-columns: 1fr; }
-    .bench-grid, .demo-grid { grid-template-columns: 1fr; gap: 32px; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .cp-cards { grid-template-columns: 1fr; padding: 0 20px; }
+    .plan-card { min-height: auto; }
+    .demo-grid { grid-template-columns: 1fr; gap: 32px; }
     .hero-meta { gap: 24px; }
   }
 </style>
@@ -296,7 +296,7 @@
     </a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="pricing.html">Coding Plan</a>
+      <a href="#token-plan">Token Plan</a>
       <a href="docs.html">文档</a>
       <a href="console/dashboard.html">控制台</a>
     </div>
@@ -310,17 +310,17 @@
 <!-- Hero -->
 <section class="hero">
   <div class="container hero-inner">
-    <div class="eyebrow">🎁 公测期免费开放 · 现已支持 Coding Plan</div>
+    <div class="eyebrow">🎁 公测期免费开放 · 现已支持 Token Plan</div>
     <h1>
       企业级大模型 API，<br/>
       构建<span class="accent">AI 应用</span>的基石
     </h1>
     <p class="hero-sub">
-      兼容 OpenAI 接口格式，从 Chat 到 Coding 全链路模型矩阵，配套 Playground / SDK / 实时用量观测，5 分钟即可接入生产。
+      兼容 OpenAI 接口格式，全链路模型矩阵，配套 Playground / SDK / 实时用量观测，5 分钟即可接入生产。
     </p>
     <div class="hero-ctas">
       <a href="register.html" class="btn btn-primary btn-lg">免费开始 →</a>
-      <a href="playground.html" class="btn btn-ghost btn-lg">体验中心</a>
+      <a href="#token-plan" class="btn btn-ghost btn-lg">查看 Token Plan</a>
     </div>
     <div class="hero-meta">
       <div class="item">
@@ -379,14 +379,14 @@
         <p>统一鉴权、动态路由、负载均衡。Key 级别 RPM/TPM 限流，超限返回标准 429，支持多 Key 隔离与权限标签。</p>
       </div>
       <div class="feature-card">
-        <div class="icon">💻</div>
-        <h3>Coding Plan 差异化</h3>
-        <p>专为代码场景优化的长上下文与 FIM (Fill-in-the-Middle) 接口。即插即用 Cursor、Continue、JetBrains AI 等 IDE 插件。</p>
+        <div class="icon">💎</div>
+        <h3>灵活的 Token Plan</h3>
+        <p>按需选择 Free / Pro / Team 档位，按 Token 透明计量，公测期 Free 档完全免费。支持长上下文与多轮对话。</p>
       </div>
       <div class="feature-card">
         <div class="icon">📊</div>
         <h3>实时用量 Dashboard</h3>
-        <p>按 Key、模型、时间维度追踪 prompt_tokens 与 completion_tokens，可视化趋势曲线，余额与配额告警。</p>
+        <p>按 Key、模型、时间维度追踪 prompt_tokens 与 completion_tokens，可视化趋势曲线，配额告警。</p>
       </div>
       <div class="feature-card">
         <div class="icon">🎮</div>
@@ -401,7 +401,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- 代码演示 -->
 <section class="demo-section">
@@ -429,7 +428,7 @@ response = client.chat.completions.<span class="fn">create</span>(
     model=<span class="str">"supercode-chat-pro"</span>,
     messages=[
         {<span class="str">"role"</span>: <span class="str">"user"</span>,
-         <span class="str">"content"</span>: <span class="str">"用 Python 实现快速排序"</span>}
+         <span class="str">"content"</span>: <span class="str">"帮我写一封商务合作邮件"</span>}
     ],
     stream=<span class="kw">True</span>,
 )
@@ -441,54 +440,118 @@ response = client.chat.completions.<span class="fn">create</span>(
   </div>
 </section>
 
-<!-- Coding Plan 预览 -->
-<section class="section">
+<!-- Token Plan -->
+<section class="tp-section" id="token-plan">
   <div class="container">
     <div class="text-center" style="max-width:700px;margin:0 auto;">
-      <div class="eyebrow">Coding Plan</div>
-      <h2>为开发者而生的套餐方案</h2>
+      <div class="eyebrow">Token Plan</div>
+      <h2>灵活透明的按量方案</h2>
       <p class="lead" style="margin:0 auto;">
         公测期 Free 档免费开放 · Pro / Team 正在打磨中
       </p>
     </div>
 
-    <div class="pricing-grid">
-      <div class="plan featured">
-        <span class="plan-tag">🎁 公测免费</span>
-        <h3>Free</h3>
-        <p class="text-small text-muted mb-0">个人开发者 · 公测期免费</p>
-        <div class="price">$0<small>/月</small></div>
-        <ul>
-                    <li>访问 SuperCode-Chat-Lite & Code 模型</li>
-          <li>1,500 次调用 / 5 小时 · 20 个 API Key</li>
-          <li>Playground 与 Coding 接入</li>
-          <li>社区支持</li>
+    <div class="cp-cards">
+      <!-- Lite -->
+      <div class="plan-card soon">
+        <div class="plan-head">
+          <h3 class="plan-name">Lite</h3>
+          <span class="badge-soon">即将上线</span>
+        </div>
+        <p class="plan-tip">适合轻量级应用，更高配额与稳定性</p>
+        <div class="plan-price-area">
+          <div class="plan-price">¥ --</div>
+          <p class="plan-price-sub">定价即将公布</p>
+        </div>
+        <button class="plan-btn" disabled>敬请期待</button>
+        <div class="plan-quota"><span>调用配额</span><span class="v">—</span></div>
+        <div class="plan-section-head">规划中的能力</div>
+        <ul class="plan-features">
+          <li class="no"><span class="mark"></span>更高 RPM / TPM 配额</li>
+          <li class="no"><span class="mark"></span>更大上下文窗口</li>
+          <li class="no"><span class="mark"></span>请求日志长期保留</li>
+          <li class="no"><span class="mark"></span>Email 工单支持</li>
         </ul>
-        <a href="register.html" class="btn btn-primary btn-block">免费开始</a>
       </div>
-      <div class="plan" style="background: linear-gradient(180deg, #FAFAFA 0%, #F4F4F8 100%); border-style: dashed; text-align:center; justify-content:center; display:flex; flex-direction: column;">
-        <span class="badge" style="background: var(--brand-soft); color: var(--brand); align-self: center; margin-bottom: 12px;">● 即将上线</span>
-        <h3>Pro</h3>
-        <p class="text-small text-muted" style="margin: 4px 0 20px;">成长型应用专业方案</p>
-        <div style="flex:1; display:grid; place-items:center;">
-          <span class="text-muted" style="font-size:28px; font-weight:700;">Coming Soon</span>
+
+      <!-- Free · 公测 -->
+      <div class="plan-card featured">
+        <div class="plan-head">
+          <h3 class="plan-name featured-name">Free · 公测</h3>
+          <span class="badge-hot">🔥 最受欢迎</span>
         </div>
-        <button class="btn btn-outline btn-block" disabled style="opacity:0.6;">敬请期待</button>
-      </div>
-      <div class="plan" style="background: linear-gradient(180deg, #FAFAFA 0%, #F4F4F8 100%); border-style: dashed; text-align:center; justify-content:center; display:flex; flex-direction: column;">
-        <span class="badge" style="background: var(--brand-soft); color: var(--brand); align-self: center; margin-bottom: 12px;">● 即将上线</span>
-        <h3>Team</h3>
-        <p class="text-small text-muted" style="margin: 4px 0 20px;">企业多成员与合规方案</p>
-        <div style="flex:1; display:grid; place-items:center;">
-          <span class="text-muted" style="font-size:28px; font-weight:700;">Coming Soon</span>
+        <div class="plan-price-area">
+          <span class="plan-price-discount-tag">公测免费 · 限时</span>
+          <div class="plan-price">¥ 0<span class="unit">/月</span></div>
+          <p class="plan-price-sub">公测期完全免费开放</p>
         </div>
-        <button class="btn btn-outline btn-block" disabled style="opacity:0.6;">敬请期待</button>
+        <a class="plan-btn active" href="register.html">立即开始 →</a>
+        <div class="plan-quota"><span>调用配额</span><span class="v">1,500 次 / 5 小时</span></div>
+        <div class="plan-section-head">已开放能力</div>
+        <ul class="plan-features">
+          <li class="ok"><span class="mark"></span>SuperCode 全系列文字模型</li>
+          <li class="ok"><span class="mark"></span>兼容 OpenAI SDK（base_url 一键替换）</li>
+          <li class="ok"><span class="mark"></span>长上下文 · 多轮对话</li>
+          <li class="ok"><span class="mark"></span>Playground 交互测试 + 参数调节</li>
+          <li class="ok"><span class="mark"></span>用量 Dashboard 透明观测</li>
+          <li class="ok"><span class="mark"></span>最多 20 个 API Key</li>
+        </ul>
       </div>
+
+      <!-- Pro -->
+      <div class="plan-card soon">
+        <div class="plan-head">
+          <h3 class="plan-name">Pro</h3>
+          <span class="badge-soon">即将上线</span>
+        </div>
+        <p class="plan-tip">面向成长型应用与团队，解锁工具调用与更多能力</p>
+        <div class="plan-price-area">
+          <div class="plan-price">¥ --</div>
+          <p class="plan-price-sub">定价即将公布</p>
+        </div>
+        <button class="plan-btn" disabled>敬请期待</button>
+        <div class="plan-quota"><span>调用配额</span><span class="v">—</span></div>
+        <div class="plan-section-head">规划中的能力</div>
+        <ul class="plan-features">
+          <li class="no"><span class="mark"></span>工具调用 (Function Calling)</li>
+          <li class="no"><span class="mark"></span>多模态输入能力</li>
+          <li class="no"><span class="mark"></span>更高峰值 RPM / TPM</li>
+          <li class="no"><span class="mark"></span>专属算力池与 SLA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="beta-banner">
+      <span>🎁</span>
+      <span>公测期限时免费开放，注册即可使用，<strong>每 5 小时 1,500 次调用</strong>，所有模型完全开放</span>
     </div>
   </div>
 </section>
 
-<!-- 最终 CTA -->
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-wrap">
+    <h2>常见问题</h2>
+    <div class="faq-item">
+      <h4>"1500 次调用 / 5 小时" 具体怎么计算？</h4>
+      <p>以 API Key 为维度，每个 Key 每滚动 5 小时最多可发起 1500 次请求（不区分模型）。超限返回 HTTP 429，响应头含 <code>Retry-After</code>。</p>
+    </div>
+    <div class="faq-item">
+      <h4>公测期真的不收费吗？</h4>
+      <p>是的。Free 档位在公测期完全免费使用，无需任何支付信息。Dashboard 会展示 token 消耗明细，便于你评估后续付费档位的成本。</p>
+    </div>
+    <div class="faq-item">
+      <h4>兼容哪些 SDK？</h4>
+      <p>完全兼容 OpenAI 官方 SDK。Python / Node.js / cURL 均支持，只需将 <code>base_url</code> 改为 <code>https://api.supercode.dev/v1</code>，API Key 使用 <code>sc-</code> 开头密钥。</p>
+    </div>
+    <div class="faq-item">
+      <h4>Pro / Lite 什么时候上线？</h4>
+      <p>我们会优先保障公测稳定性，Lite / Pro 预计在公测结束后逐步开放，订阅 Newsletter 可第一时间获得通知。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
 <section class="cta-section">
   <div class="container">
     <h2>即刻开始构建</h2>
@@ -519,7 +582,7 @@ response = client.chat.completions.<span class="fn">create</span>(
         <h5>产品</h5>
         <ul>
           <li><a href="index.html">平台概览</a></li>
-          <li><a href="pricing.html">Coding Plan</a></li>
+          <li><a href="#token-plan">Token Plan</a></li>
           <li><a href="playground.html">Playground</a></li>
           <li><a href="docs.html">模型列表</a></li>
         </ul>

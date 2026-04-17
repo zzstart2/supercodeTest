@@ -10,7 +10,7 @@
 | 所属功能块 | 当前文案 | 修改后 | Pages 链接 |
 |----------|--------|------|-----------|
 | 浏览器标题 | SuperCode · LLM API 服务平台 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
-| Hero · Eyebrow | 🎁 公测期免费开放 · 现已支持 Coding Plan | | [打开](https://zzstart2.github.io/velaTest/index.html) |
+| Hero · Eyebrow | 🎁 公测期免费开放 · 现已支持 Token Plan | | [打开](https://zzstart2.github.io/velaTest/index.html) |
 | Hero · H1 | 企业级大模型 API，构建 **AI 应用** 的基石 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
 | Hero · 副标题 | 兼容 OpenAI 接口格式，从 Chat 到 Coding 全链路模型矩阵，配套 Playground / SDK / 实时用量观测，5 分钟即可接入生产。 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
 | Hero · CTA 按钮 | 免费开始 → / 体验中心 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
@@ -25,8 +25,8 @@
 | 特性卡1 描述 | /v1/chat/completions、/v1/models 接口协议 1:1 对齐，SDK 无需改动，一行 base_url 即可迁移。支持 streaming 与非流式模式。 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
 | 特性卡2 标题 | 企业级 API Gateway | | [打开](https://zzstart2.github.io/velaTest/index.html) |
 | 特性卡2 描述 | 统一鉴权、动态路由、负载均衡。Key 级别 RPM/TPM 限流，超限返回标准 429，支持多 Key 隔离与权限标签。 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
-| 特性卡3 标题 | Coding Plan 差异化 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
-| 特性卡3 描述 | 专为代码场景优化的长上下文与 FIM (Fill-in-the-Middle) 接口。即插即用 Cursor、Continue、JetBrains AI 等 IDE 插件。 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
+| 特性卡3 标题 | Token Plan 差异化 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
+| 特性卡3 描述 | 专为代码场景优化的长上下文与 长上下文接口。灵活适配多种应用场景与开发环境。 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
 | 特性卡4 标题 | 实时用量 Dashboard | | [打开](https://zzstart2.github.io/velaTest/index.html) |
 | 特性卡4 描述 | 按 Key、模型、时间维度追踪 prompt_tokens 与 completion_tokens，可视化趋势曲线，余额与配额告警。 | | [打开](https://zzstart2.github.io/velaTest/index.html) |
 | 特性卡5 标题 | 交互式 Playground | | [打开](https://zzstart2.github.io/velaTest/index.html) |
@@ -44,27 +44,27 @@
 
 ---
 
-## 2. Coding Plan (pricing.html)
+## 2. Token Plan (pricing.html)
 
 | 所属功能块 | 当前文案 | 修改后 | Pages 链接 |
 |----------|--------|------|-----------|
 | Hero · H1 | 每一行 **代码**，都值得更好的大模型 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
-| Hero · 副标题 | 公测期免费开放 · 专注文字模型的 Coding 伙伴 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
+| Hero · 副标题 | 公测期免费开放 · 公测期文字模型全开放 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | Lite 卡 · 描述 | 适合小型 Repo 轻量迭代，更高配额与稳定性 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | Free 卡 · 标签 | 公测免费 · 限时 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | Free 卡 · 价格副标题 | 公测期完全免费开放 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | Free 卡 · 配额 | 1,500 次 / 5 小时 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
-| Free 卡 · 能力列表 | SuperCode-Chat-Lite / Code 系列文字模型 / 兼容 OpenAI SDK（base_url 一键替换）/ FIM 补全接口 · 长上下文 / Cursor · Continue · JetBrains AI 适配 / Playground 交互测试 + 参数调节 / 用量 Dashboard 透明观测 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
+| Free 卡 · 能力列表 | SuperCode-Chat-Lite / Code 系列文字模型 / 兼容 OpenAI SDK（base_url 一键替换）/ 长上下文 · 多轮对话 / Cursor · Continue · JetBrains AI 适配 / Playground 交互测试 + 参数调节 / 用量 Dashboard 透明观测 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | Pro 卡 · 描述 | 面向成长型应用与团队，解锁工具调用与更多能力 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
-| 公测说明条 | 公测期限时免费开放，注册即可使用，每 5 小时 1,500 次调用，所有 Coding 模型完全开放 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
+| 公测说明条 | 公测期限时免费开放，注册即可使用，每 5 小时 1,500 次调用，所有模型完全开放 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | FAQ Q1 | "1500 次调用 / 5 小时" 具体怎么计算？ | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | FAQ A1 | 以 API Key 为维度，每个 Key 每滚动 5 小时最多可发起 1500 次请求（不区分模型）。超限返回 HTTP 429，响应头含 Retry-After。 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | FAQ Q2 | 公测期真的不收费吗？ | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | FAQ A2 | 是的。Free 档位在公测期完全免费使用，无需任何支付信息。Dashboard 会展示 token 消耗明细，便于你评估后续付费档位的成本。 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | FAQ Q3 | 为什么暂不支持工具调用？ | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | FAQ A3 | 我们正在打磨 Function Calling 的稳定性与安全策略（防越狱、结果回写规范等），计划在 Pro 档位随 Beta 同步推出。 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
-| FAQ Q4 | 如何在 Cursor 里配置？ | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
-| FAQ A4 | 在 Cursor 设置 → Models → Override OpenAI Base URL 中填写 https://api.supercode.dev/v1，API Key 填写 sc- 开头的密钥即可。 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
+| FAQ Q4 | 如何配置 SDK 接入？ | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
+| FAQ A4 | 在 OpenAI SDK 中将 base_url 设置为 https://api.supercode.dev/v1，API Key 填写 sc- 开头的密钥即可。 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | FAQ Q5 | Pro / Lite 什么时候上线？ | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 | FAQ A5 | 我们会优先保障公测稳定性，Lite / Pro 预计在公测结束后逐步开放，订阅 Newsletter 可第一时间获得通知。 | | [打开](https://zzstart2.github.io/velaTest/pricing.html) |
 
@@ -89,9 +89,9 @@
 
 | 所属功能块 | 当前文案 | 修改后 | Pages 链接 |
 |----------|--------|------|-----------|
-| 左侧 Hero · H1 | 开启你的 **Coding AI 之旅** | | [打开](https://zzstart2.github.io/velaTest/register.html) |
+| 左侧 Hero · H1 | 开启你的 **AI 之旅** | | [打开](https://zzstart2.github.io/velaTest/register.html) |
 | 左侧 Hero · 副标题 | 在 30 秒内创建 SuperCode 账号，立即体验生产级大模型 API 服务。 | | [打开](https://zzstart2.github.io/velaTest/register.html) |
-| 左侧 · 福利列表 | 公测期完全免费开放 / 即刻获得 API Key，兼容 OpenAI SDK / 1,500 次调用 / 5 小时 · Coding 模型全开放 / 解锁 Playground 在线测试 | | [打开](https://zzstart2.github.io/velaTest/register.html) |
+| 左侧 · 福利列表 | 公测期完全免费开放 / 即刻获得 API Key，兼容 OpenAI SDK / 1,500 次调用 / 5 小时 · 模型全开放 / 解锁 Playground 在线测试 | | [打开](https://zzstart2.github.io/velaTest/register.html) |
 | 左侧 · SOC2 提示 | 我们遵循 SOC2 标准，你的数据始终受到保护。 | | [打开](https://zzstart2.github.io/velaTest/register.html) |
 | 表单 · 标题 | 创建账号 | | [打开](https://zzstart2.github.io/velaTest/register.html) |
 | 表单 · 副标题 | 立即接入，5 分钟接入生产 | | [打开](https://zzstart2.github.io/velaTest/register.html) |
@@ -104,7 +104,7 @@
 
 | 所属功能块 | 当前文案 | 修改后 | Pages 链接 |
 |----------|--------|------|-----------|
-| 告警横幅 | 🎁 公测期完全免费开放，所有 Coding 模型无限制使用，每 Key 限流 1,500 次 / 5 小时 | | [打开](https://zzstart2.github.io/velaTest/console/dashboard.html) |
+| 告警横幅 | 🎁 公测期完全免费开放，所有模型无限制使用，每 Key 限流 1,500 次 / 5 小时 | | [打开](https://zzstart2.github.io/velaTest/console/dashboard.html) |
 | 欢迎卡 · 标题 | 欢迎回来，xxxxx 👋 | | [打开](https://zzstart2.github.io/velaTest/console/dashboard.html) |
 | 欢迎卡 · 副标题 | 你的账户本月已调用 2.4M tokens，当前窗口剩余 1,240 次调用额度 | | [打开](https://zzstart2.github.io/velaTest/console/dashboard.html) |
 | 欢迎卡 · 按钮 | 快速接入 / 管理 API Keys / 查看文档 | | [打开](https://zzstart2.github.io/velaTest/console/dashboard.html) |
@@ -174,9 +174,9 @@
 
 | 所属功能块 | 当前文案 | 修改后 | Pages 链接 |
 |----------|--------|------|-----------|
-| 公共顶部 nav 链接 | 首页 / Coding Plan / 文档 / 控制台 | | 所有公共页面 |
+| 公共顶部 nav 链接 | 首页 / Token Plan / 文档 / 控制台 | | 所有公共页面 |
 | 公共 nav · 按钮 | 登录 / 免费注册 | | 所有公共页面 |
 | 控制台侧边栏 · 工作台 | 账户总览 / API Keys / 用量统计 | | 控制台页面 |
-| 控制台侧边栏 · 开发 | 文档 ↗ / Coding Plan ↗ | | 控制台页面 |
+| 控制台侧边栏 · 开发 | 文档 ↗ / Token Plan ↗ | | 控制台页面 |
 | 用户菜单 · 套餐标签 | 公测 Free | | 控制台页面 |
 | 用户菜单 · 操作项 | 修改密码 / 退出登录 | | 控制台页面 |
