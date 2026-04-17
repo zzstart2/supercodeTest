@@ -10,9 +10,25 @@
   .tp-hero {
     background: var(--page-bg);
     color: var(--ink-900);
-    padding: 100px 0 80px;
+    padding: 96px 0 48px;
     text-align: center;
     position: relative;
+    overflow: hidden;
+  }
+  /* 柔和辅助视觉 */
+  .tp-hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 600px;
+    background: radial-gradient(ellipse at center,
+      hsla(211, 86%, 48%, 0.08) 0%,
+      transparent 60%);
+    pointer-events: none;
+    z-index: 0;
   }
   .tp-hero-inner {
     position: relative;
@@ -20,61 +36,85 @@
     max-width: 800px;
     margin: 0 auto;
   }
+  .tp-hero .eyebrow {
+    margin-bottom: var(--s-5);
+  }
   .tp-hero h1 {
     color: var(--ink-900);
-    font-size: clamp(36px, 5vw, 52px);
-    margin-bottom: 16px;
+    margin-bottom: var(--s-5);
   }
   .tp-hero h1 .accent {
-    color: var(--brand);
-    -webkit-text-fill-color: var(--brand);
+    background: linear-gradient(135deg,
+      hsl(211 86% 48%) 0%,
+      hsl(200 80% 55%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .tp-hero .lead {
-    font-size: 18px;
+    font-size: 17px;
     color: var(--ink-500);
-    margin: 0 auto 32px;
-    max-width: 640px;
+    margin: 0 auto var(--s-8);
+    max-width: 580px;
+    line-height: 1.65;
   }
 
   .tp-hero-ctas {
     display: flex;
-    gap: 12px;
+    gap: var(--s-3);
     justify-content: center;
     flex-wrap: wrap;
-  }
-  .tp-hero-ctas .btn-ghost {
-    color: var(--ink-700);
-    border-color: var(--ink-200);
-  }
-  .tp-hero-ctas .btn-ghost:hover {
-    border-color: var(--brand);
-    color: var(--brand);
-    background: transparent;
   }
 
   .cp-cards {
     display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 24px;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--s-5);
     width: 90%;
-    max-width: 1000px;
-    margin: 56px auto 0;
+    max-width: 840px;
+    margin: var(--s-10) auto 0;
+    position: relative;
+    z-index: 1;
   }
   .plan-card {
     background: var(--white);
     border: 1px solid var(--ink-200);
-    border-radius: 16px;
-    padding: 36px 32px;
+    border-radius: var(--radius-xl);
+    padding: var(--s-8) var(--s-8);
     display: flex;
     flex-direction: column;
     position: relative;
+    transition: border-color var(--dur) var(--ease),
+                box-shadow var(--dur) var(--ease),
+                transform var(--dur) var(--ease);
   }
   .plan-card.featured {
-    border: 2px solid var(--brand);
-    box-shadow: 0 16px 40px -12px hsla(211, 86%, 48%, 0.2);
+    border: 1.5px solid var(--brand);
+    box-shadow: var(--shadow-md), 0 0 0 4px hsla(211, 86%, 48%, 0.06);
   }
-  .plan-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
-  .plan-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+  .plan-card.featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(180deg,
+      hsla(211, 86%, 48%, 0.03) 0%,
+      transparent 40%);
+    pointer-events: none;
+  }
+  .plan-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--s-2);
+  }
+  .plan-name {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
   .plan-name.featured-name { color: var(--brand); }
   .badge-hot {
     background: var(--brand);
@@ -83,6 +123,8 @@
     border-radius: 100px;
     font-size: 11px;
     font-weight: 600;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 8px hsla(211, 86%, 48%, 0.25);
   }
   .badge-soon {
     background: var(--ink-100);
@@ -91,82 +133,141 @@
     border-radius: 100px;
     font-size: 11px;
     font-weight: 500;
+    letter-spacing: 0.02em;
   }
-  .plan-tip { font-size: 13px; color: var(--ink-500); margin: 0 0 22px; }
-  .plan-price-area { padding: 4px 0 20px; }
+  .plan-tip {
+    font-size: 13px;
+    color: var(--ink-500);
+    margin: 0 0 var(--s-5);
+    line-height: 1.55;
+  }
+  .plan-price-area {
+    padding: var(--s-1) 0 var(--s-5);
+    position: relative;
+  }
   .plan-price-discount-tag {
-    display: inline-block; padding: 2px 8px;
-    background: var(--brand-soft); color: var(--brand);
-    border-radius: 100px; font-size: 11px; font-weight: 600; margin-bottom: 4px;
+    display: inline-block; padding: 3px 10px;
+    background: hsla(211, 86%, 48%, 0.1); color: var(--brand);
+    border-radius: 100px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--s-2);
   }
   .plan-price {
-    font-size: 56px; font-weight: 800;
+    font-family: var(--font-heading);
+    font-size: 48px; font-weight: 700;
     letter-spacing: -0.04em; color: var(--ink-900);
-    line-height: 1.1; display: flex; align-items: baseline; gap: 4px;
+    line-height: 1; display: flex; align-items: baseline; gap: 4px;
+    font-variant-numeric: tabular-nums;
   }
   .plan-card.featured .plan-price { color: var(--brand); }
-  .plan-price .unit { font-size: 16px; font-weight: 500; color: var(--ink-500); }
-  .plan-card.featured .plan-price .unit { color: var(--brand); opacity: 0.8; }
-  .plan-price-sub { font-size: 13px; color: var(--ink-500); margin: 6px 0 0; }
+  .plan-price .unit {
+    font-family: var(--font-sans);
+    font-size: 15px; font-weight: 500; color: var(--ink-500);
+    letter-spacing: -0.01em;
+  }
+  .plan-card.featured .plan-price .unit { color: var(--brand); opacity: 0.7; }
+  .plan-price-sub {
+    font-size: 13px; color: var(--ink-500);
+    margin: var(--s-2) 0 0;
+  }
   .plan-btn {
-    display: block; width: 100%; padding: 12px;
-    border-radius: 10px; font-size: 14px; font-weight: 500;
-    text-align: center; background: var(--ink-100); color: var(--ink-500);
-    border: none; cursor: not-allowed; margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px;
+    width: 100%; padding: 12px;
+    border-radius: var(--radius);
+    font-size: 14px; font-weight: 600;
+    font-family: var(--font-sans);
+    text-align: center;
+    background: var(--ink-100); color: var(--ink-400);
+    border: none; cursor: not-allowed;
+    margin-bottom: var(--s-5);
     pointer-events: none; text-decoration: none;
+    letter-spacing: -0.005em;
+    transition: all var(--dur) var(--ease);
   }
   .plan-btn.active {
     background: var(--brand); color: white;
     cursor: pointer; pointer-events: auto;
+    box-shadow: var(--shadow-brand), inset 0 1px 0 hsla(0,0%,100%,0.15);
   }
-  .plan-btn.active:hover { background: var(--brand-dark); transform: translateY(-1px); color: white; }
+  .plan-btn.active:hover {
+    background: var(--brand-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-brand-lg);
+  }
+  .plan-btn.active .arrow {
+    display: inline-block;
+    transition: transform var(--dur) var(--ease);
+  }
+  .plan-btn.active:hover .arrow { transform: translateX(3px); }
+
   .plan-quota {
-    background: var(--ink-100); border-radius: 10px;
-    padding: 12px 14px; margin-bottom: 16px; font-size: 13px;
-    display: flex; justify-content: space-between; align-items: center;
+    background: var(--ink-100);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    margin-bottom: var(--s-4);
+    font-size: 13px;
+    color: var(--ink-600);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .plan-card.featured .plan-quota { background: hsla(211, 86%, 48%, 0.08); color: var(--brand); }
-  .plan-quota .v { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 15px; }
+  .plan-card.featured .plan-quota {
+    background: hsla(211, 86%, 48%, 0.06);
+    color: var(--brand);
+    border: 1px solid hsla(211, 86%, 48%, 0.1);
+  }
+  .plan-quota .v {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    font-size: 14px;
+  }
+
   .plan-section-head {
     font-size: 11px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--ink-400); margin: 8px 0 10px;
+    letter-spacing: 0.08em; color: var(--ink-400);
+    margin: var(--s-2) 0 var(--s-3);
   }
   .plan-features { list-style: none; padding: 0; margin: 0; flex: 1; }
   .plan-features li {
-    padding: 7px 0; font-size: 13.5px; color: var(--ink-700);
-    display: flex; gap: 10px; align-items: flex-start; line-height: 1.5;
+    padding: 6px 0; font-size: 13.5px; color: var(--ink-700);
+    display: flex; gap: 10px; align-items: flex-start; line-height: 1.55;
   }
   .plan-features li .mark {
-    flex-shrink: 0; width: 16px; height: 16px; border-radius: 50%;
-    display: grid; place-items: center; font-size: 10px; font-weight: 700; margin-top: 2px;
+    flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 10px; font-weight: 700; margin-top: 1px;
   }
-  .plan-features li.ok .mark { background: #D1FAE5; color: #065F46; }
+  .plan-features li.ok .mark {
+    background: hsla(160, 70%, 40%, 0.12);
+    color: hsl(160, 70%, 30%);
+  }
   .plan-features li.ok .mark::before { content: '✓'; }
-  .plan-features li.no .mark { background: var(--ink-100); color: var(--ink-400); }
-  .plan-features li.no .mark::before { content: '×'; }
-  .plan-features li.no { color: var(--ink-400); }
+
   .plan-card.soon {
     background: var(--page-bg);
-    border-color: var(--ink-200);
-    border-style: dashed;
-    opacity: 0.7;
+    border: 1px dashed var(--ink-300);
+    opacity: 0.85;
+    transition: opacity var(--dur) var(--ease);
   }
-  .plan-card.soon:hover { opacity: 0.85; }
-  .plan-card.soon .plan-price { color: var(--ink-400); font-size: 44px; }
+  .plan-card.soon:hover { opacity: 1; }
+
   .beta-banner {
-    max-width: 1120px;
-    margin: 32px auto 0;
+    max-width: 840px;
+    margin: var(--s-6) auto 0;
     padding: 14px 20px;
-    background: hsla(211, 86%, 48%, 0.06);
-    border: 1px solid hsla(211, 86%, 48%, 0.12);
-    border-radius: 12px;
+    background: hsla(211, 86%, 48%, 0.05);
+    border: 1px solid hsla(211, 86%, 48%, 0.15);
+    border-radius: var(--radius-lg);
     color: var(--ink-600);
     font-size: 13px;
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 90%;
   }
-  .beta-banner strong { color: var(--brand); }
+  .beta-banner strong { color: var(--brand); font-weight: 600; }
 
   @media (max-width: 900px) {
     .cp-cards { grid-template-columns: 1fr; padding: 0 20px; }
@@ -206,7 +307,7 @@
     </p>
 
     <div class="tp-hero-ctas">
-      <a href="register.html" class="btn btn-primary btn-lg">免费开始 →</a>
+      <a href="register.html" class="btn btn-primary btn-lg">免费开始 <span class="arrow">→</span></a>
       <a href="docs.html" class="btn btn-ghost btn-lg">查看文档</a>
     </div>
   </div><!-- 关闭 container -->
@@ -223,7 +324,7 @@
           <div class="plan-price">¥ 0<span class="unit">/月</span></div>
           <p class="plan-price-sub">公测期完全免费开放</p>
         </div>
-        <a class="plan-btn active" href="register.html">立即开始 →</a>
+        <a class="plan-btn active" href="register.html">立即开始 <span class="arrow">→</span></a>
         <div class="plan-quota"><span>调用配额</span><span class="v">1,500 次 / 5 小时</span></div>
         <div class="plan-section-head">已开放能力</div>
         <ul class="plan-features">
@@ -236,24 +337,14 @@
         </ul>
       </div>
 
-      <!-- 右：Lite / Pro Coming Soon -->
+      <!-- 右：Coming Soon -->
       <div class="plan-card soon">
-        <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px dashed var(--ink-200);">
-          <div class="plan-head">
-            <h3 class="plan-name">Lite</h3>
-            <span class="badge-soon">即将上线</span>
-          </div>
-          <p class="plan-tip" style="margin-bottom:0;">适合轻量级应用，更高配额与稳定性</p>
+        <div class="plan-head">
+          <h3 class="plan-name">Lite / Pro / …</h3>
+          <span class="badge-soon">即将上线</span>
         </div>
-        <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px dashed var(--ink-200);">
-          <div class="plan-head">
-            <h3 class="plan-name">Pro</h3>
-            <span class="badge-soon">即将上线</span>
-          </div>
-          <p class="plan-tip" style="margin-bottom:0;">面向成长型应用与团队，更多能力</p>
-        </div>
-        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size: 15px; color: var(--ink-400);">更多套餐正在规划中，敬请期待</span>
+        <div style="flex:1; display:flex; align-items:center; justify-content:center; text-align:center;">
+          <span style="font-size: 15px; color: var(--ink-500);">更多付费计划 Coming Soon</span>
         </div>
       </div>
     </div>
