@@ -10,7 +10,7 @@
   .tp-hero {
     background: radial-gradient(ellipse at top left, #1a0a12 0%, #0a0a0f 55%);
     color: var(--white);
-    padding: 100px 0 60px;
+    padding: 100px 0 80px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -122,17 +122,12 @@
     flex-wrap: wrap;
   }
 
-  /* ===== Token Plan 卡片区 ===== */
-  .tp-section {
-    padding: 64px 0 40px;
-    background: #FAFAFA;
-  }
   .cp-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     max-width: 1120px;
-    margin: 48px auto 0;
+    margin: 56px auto 0;
     padding: 0 32px;
   }
   .plan-card {
@@ -222,22 +217,24 @@
   .plan-features li.no .mark::before { content: '×'; }
   .plan-features li.no { color: var(--ink-400); }
   .plan-card.soon {
-    background: linear-gradient(180deg, #FAFAFA 0%, #F4F4F8 100%);
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(255, 255, 255, 0.3);
   }
   .plan-card.soon .plan-price { color: var(--ink-400); font-size: 44px; }
   .beta-banner {
     max-width: 1120px;
     margin: 32px auto 0;
     padding: 14px 20px;
-    background: #FFFBEA;
-    border: 1px solid #FDE68A;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    color: #92400E;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 13px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
+  .beta-banner strong { color: white; }
 
   @media (max-width: 900px) {
     .cp-cards { grid-template-columns: 1fr; padding: 0 20px; }
@@ -257,7 +254,6 @@
     </a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="#token-plan">Token Plan</a>
       <a href="docs.html">文档</a>
       <a href="console/dashboard.html">控制台</a>
     </div>
@@ -301,12 +297,6 @@
       <a href="register.html" class="btn btn-primary btn-lg">免费开始 →</a>
       <a href="docs.html" class="btn btn-ghost btn-lg">查看文档</a>
     </div>
-  </div>
-</section>
-
-<!-- Token Plan Cards -->
-<section class="tp-section">
-  <div class="container">
 
     <div class="cp-cards">
       <!-- Lite -->
@@ -402,7 +392,6 @@
         <h5>产品</h5>
         <ul>
           <li><a href="index.html">平台概览</a></li>
-          <li><a href="#token-plan">Token Plan</a></li>
           <li><a href="playground.html">Playground</a></li>
           <li><a href="docs.html">模型列表</a></li>
         </ul>
