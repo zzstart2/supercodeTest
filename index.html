@@ -6,34 +6,13 @@
 <title>SuperCode · LLM API 服务平台</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
-  /* ===== Token Plan Hero 区 ===== */
+  /* ===== Token Plan Hero 区（浅色） ===== */
   .tp-hero {
-    background: radial-gradient(ellipse at top left, hsl(211 30% 12%) 0%, hsl(211 25% 8%) 55%);
-    color: var(--white);
+    background: var(--page-bg);
+    color: var(--ink-900);
     padding: 100px 0 80px;
     text-align: center;
     position: relative;
-    overflow: hidden;
-  }
-  .tp-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 30% 20%, hsla(211, 86%, 48%, 0.25) 0%, transparent 40%),
-      radial-gradient(circle at 80% 60%, hsla(190, 80%, 65%, 0.12) 0%, transparent 40%);
-    pointer-events: none;
-  }
-  .tp-hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
   }
   .tp-hero-inner {
     position: relative;
@@ -42,19 +21,17 @@
     margin: 0 auto;
   }
   .tp-hero h1 {
-    color: var(--white);
+    color: var(--ink-900);
     font-size: clamp(36px, 5vw, 52px);
     margin-bottom: 16px;
   }
   .tp-hero h1 .accent {
-    background: linear-gradient(135deg, hsl(211 86% 60%) 0%, hsl(190 80% 65%) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--brand);
+    -webkit-text-fill-color: var(--brand);
   }
   .tp-hero .lead {
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--ink-500);
     margin: 0 auto 32px;
     max-width: 640px;
   }
@@ -71,17 +48,17 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--white);
+    border: 1px solid var(--ink-200);
     border-radius: 14px;
     padding: 14px 20px;
-    backdrop-filter: blur(8px);
     text-align: left;
     min-width: 280px;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
   .model-hl:hover {
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: var(--brand);
+    box-shadow: 0 4px 16px hsla(211, 86%, 48%, 0.08);
   }
   .model-hl .m-icon {
     width: 40px;
@@ -97,12 +74,12 @@
   .model-hl .m-info .m-name {
     font-size: 14px;
     font-weight: 600;
-    color: white;
+    color: var(--ink-900);
     margin-bottom: 2px;
   }
   .model-hl .m-info .m-desc {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--ink-500);
   }
   .model-hl .m-tag {
     font-size: 10px;
@@ -112,14 +89,23 @@
     margin-left: auto;
     flex-shrink: 0;
   }
-  .m-tag.new { background: hsla(211, 86%, 48%, 0.2); color: hsl(211 86% 75%); }
-  .m-tag.open { background: hsla(260, 60%, 55%, 0.2); color: hsl(260 60% 80%); }
+  .m-tag.new { background: hsla(211, 86%, 48%, 0.1); color: var(--brand); }
+  .m-tag.open { background: hsla(260, 60%, 55%, 0.1); color: hsl(260 60% 45%); }
 
   .tp-hero-ctas {
     display: flex;
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
+  }
+  .tp-hero-ctas .btn-ghost {
+    color: var(--ink-700);
+    border-color: var(--ink-200);
+  }
+  .tp-hero-ctas .btn-ghost:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+    background: transparent;
   }
 
   .cp-cards {
@@ -216,24 +202,24 @@
   .plan-features li.no .mark::before { content: '×'; }
   .plan-features li.no { color: var(--ink-400); }
   .plan-card.soon {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: var(--page-bg);
+    border-color: var(--ink-200);
   }
   .plan-card.soon .plan-price { color: var(--ink-400); font-size: 44px; }
   .beta-banner {
     max-width: 1120px;
     margin: 32px auto 0;
     padding: 14px 20px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: hsla(211, 86%, 48%, 0.06);
+    border: 1px solid hsla(211, 86%, 48%, 0.12);
     border-radius: 12px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--ink-600);
     font-size: 13px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
-  .beta-banner strong { color: white; }
+  .beta-banner strong { color: var(--brand); }
 
   @media (max-width: 900px) {
     .cp-cards { grid-template-columns: 1fr; padding: 0 20px; }
@@ -266,7 +252,7 @@
 <!-- Token Plan Hero -->
 <section class="tp-hero" id="token-plan">
   <div class="container tp-hero-inner">
-    <div class="eyebrow" style="background:hsla(211,86%,48%,0.2); color:hsl(211 86% 75%);">NEW · 全新模型发布</div>
+    <div class="eyebrow">NEW · 全新模型发布</div>
     <h1>SuperCode <span class="accent">Token Plan</span></h1>
     <p class="lead">
       兼容 OpenAI 接口，按量透明计费，公测期 Free 档完全免费开放
@@ -379,7 +365,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="brand" style="color:white; margin-bottom: 16px;">
+        <div class="brand" style="color:var(--ink-900); margin-bottom: 16px;">
           <span class="brand-mark">S</span>
           SuperCode
         </div>
