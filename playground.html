@@ -101,18 +101,18 @@
   }
 
   .billing-tip {
-    background: #FFFBEA;
-    border-bottom: 1px solid #FDE68A;
+    background: var(--brand-soft);
+    border-bottom: 1px solid hsla(262, 72%, 55%, 0.15);
     padding: 10px 32px;
     font-size: 13px;
-    color: #92400E;
+    color: var(--brand);
     display: flex;
     align-items: center;
     gap: 8px;
   }
   .billing-tip .close {
     margin-left: auto;
-    color: #92400E;
+    color: var(--brand);
     opacity: 0.6;
     cursor: pointer;
     padding: 0 4px;
@@ -477,7 +477,7 @@
 
     <div class="billing-tip">
       <span>⚠️</span>
-      <span>模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href="index.html#token-plan" style="color:#92400E; font-weight:600;">产品定价</a>。</span>
+      <span>模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href="index.html#token-plan" style="color:var(--brand); font-weight:600;">产品定价</a>。</span>
       <span class="close">×</span>
     </div>
 

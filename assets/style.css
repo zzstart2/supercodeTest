@@ -483,10 +483,11 @@ h3 {
 /* 顶部主导航 */
 .console-topbar {
   height: var(--nav-h);
-  background: rgba(10, 10, 15, 0.95);
+  background: hsla(0, 0%, 100%, 0.92);
   backdrop-filter: saturate(180%) blur(14px);
-  color: var(--white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  color: var(--ink-900);
+  border-bottom: 1px solid var(--ink-200);
   padding: 0 24px;
   display: flex;
   align-items: center;
@@ -497,7 +498,7 @@ h3 {
 }
 
 .console-topbar .brand {
-  color: white;
+  color: var(--ink-900);
   font-size: 16px;
 }
 
@@ -508,8 +509,8 @@ h3 {
 }
 
 .console-topbar .badge {
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.8);
+  background: var(--brand-soft);
+  color: var(--brand);
 }
 
 /* 主体区域 */
@@ -517,7 +518,7 @@ h3 {
   display: grid;
   grid-template-columns: 200px 1fr;
   min-height: calc(100vh - var(--nav-h));
-  background: #FAFAFA;
+  background: var(--page-bg);
 }
 
 /* 左侧次级导航 */
