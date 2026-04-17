@@ -7,39 +7,29 @@
 <link rel="stylesheet" href="../assets/style.css"/>
 <style>
   .welcome {
-    background: linear-gradient(135deg, hsl(211 86% 48%) 0%, hsl(211 86% 52%) 100%);
-    color: white;
+    background: var(--white);
+    border: 1px solid var(--ink-200);
     border-radius: var(--radius-lg);
-    padding: 32px;
+    padding: 28px 32px;
     margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
-  }
-  .welcome::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 80% 30%, hsla(211, 86%, 70%, 0.25) 0%, transparent 50%);
   }
   .welcome h2 {
-    color: white;
-    margin: 0 0 8px;
-    font-size: 22px;
-    position: relative;
-    z-index: 1;
+    color: var(--ink-900);
+    margin: 0 0 6px;
+    font-size: 20px;
   }
   .welcome p {
-    color: rgba(255,255,255,0.7);
+    color: var(--ink-500);
     margin: 0;
-    position: relative;
-    z-index: 1;
+    font-size: 14px;
+  }
+  .welcome p strong {
+    color: var(--brand);
   }
   .welcome-actions {
     display: flex;
     gap: 12px;
-    margin-top: 20px;
-    position: relative;
-    z-index: 1;
+    margin-top: 16px;
   }
 
   .dash-grid {
@@ -85,14 +75,14 @@
   }
 
   .balance-card {
-    background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%);
-    color: white;
+    background: var(--white);
+    border: 1px solid var(--ink-200);
     border-radius: var(--radius-lg);
     padding: 24px;
   }
   .balance-card .label {
     font-size: 12px;
-    opacity: 0.8;
+    color: var(--ink-500);
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
@@ -101,10 +91,11 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     margin: 6px 0 4px;
+    color: var(--brand);
   }
   .balance-card .meta {
     font-size: 13px;
-    opacity: 0.85;
+    color: var(--ink-500);
   }
   .balance-card .actions {
     margin-top: 20px;
@@ -112,43 +103,21 @@
     gap: 8px;
   }
   .balance-card .actions .btn {
-    background: white;
-    color: var(--brand);
+    background: var(--brand);
+    color: white;
+    border: none;
   }
   .balance-card .actions .btn:hover {
+    background: var(--brand-dark);
     transform: translateY(-1px);
-    color: var(--brand-dark);
   }
   .balance-card .btn-ghost {
-    background: rgba(255,255,255,0.15);
-    color: white;
+    background: var(--brand-soft);
+    color: var(--brand);
     border-color: transparent;
   }
-  .balance-card .btn-ghost:hover { background: rgba(255,255,255,0.25); color: white;}
+  .balance-card .btn-ghost:hover { background: var(--ink-100); }
 
-  .recent-activity {
-    background: white;
-    border: 1px solid var(--ink-200);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-  }
-  .activity-row {
-    display: grid;
-    grid-template-columns: 16px 1fr auto auto;
-    gap: 12px;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--ink-100);
-    font-size: 13.5px;
-  }
-  .activity-row:last-child { border-bottom: none; }
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--success);
-  }
-  .dot.err { background: var(--danger); }
 
   /* API 接入抽屉 */
   .drawer-overlay {
@@ -443,8 +412,8 @@
         <p>你的账户本月已调用 <strong style="color:white;">2.4M tokens</strong>，当前窗口剩余 <strong style="color:white;">1,240</strong> 次调用额度</p>
         <div class="welcome-actions">
           <button class="btn btn-primary btn-sm" onclick="document.getElementById('api-drawer').classList.add('open')">快速接入</button>
-          <a href="api-keys.html" class="btn btn-ghost btn-sm" style="color:white; border-color: rgba(255,255,255,0.2);">管理 API Keys</a>
-          <a href="../docs.html" class="btn btn-ghost btn-sm" style="color:white; border-color: rgba(255,255,255,0.2);">查看文档</a>
+          <a href="api-keys.html" class="btn btn-outline btn-sm">管理 API Keys</a>
+          <a href="../docs.html" class="btn btn-outline btn-sm">查看文档</a>
         </div>
       </div>
 
@@ -507,58 +476,6 @@
         </div>
       </div>
 
-      <!-- 最近调用 -->
-      <div class="recent-activity mt-3">
-        <div class="chart-head">
-          <h3>最近 API 调用</h3>
-          <a href="usage.html" class="text-small" style="color: var(--brand);">查看全部 →</a>
-        </div>
-        <div class="activity-row">
-          <span class="dot"></span>
-          <div>
-            <strong>supercode-code-pro</strong> · chat.completions
-            <div class="text-small text-muted">prod-key · 2.4k tokens · 384ms</div>
-          </div>
-          <span class="badge badge-success">200 OK</span>
-          <span class="text-small text-muted">2 秒前</span>
-        </div>
-        <div class="activity-row">
-          <span class="dot"></span>
-          <div>
-            <strong>supercode-chat-pro</strong> · chat.completions
-            <div class="text-small text-muted">dev-key · 512 tokens · 162ms</div>
-          </div>
-          <span class="badge badge-success">200 OK</span>
-          <span class="text-small text-muted">8 秒前</span>
-        </div>
-        <div class="activity-row">
-          <span class="dot err"></span>
-          <div>
-            <strong>supercode-code-pro</strong> · chat.completions
-            <div class="text-small text-muted">prod-key · rate_limit_exceeded</div>
-          </div>
-          <span class="badge badge-danger">429</span>
-          <span class="text-small text-muted">14 秒前</span>
-        </div>
-        <div class="activity-row">
-          <span class="dot"></span>
-          <div>
-            <strong>supercode-code-fim</strong> · completions
-            <div class="text-small text-muted">ide-key (Cursor) · 128 tokens · 98ms</div>
-          </div>
-          <span class="badge badge-success">200 OK</span>
-          <span class="text-small text-muted">21 秒前</span>
-        </div>
-        <div class="activity-row">
-          <span class="dot"></span>
-          <div>
-            <strong>supercode-chat-pro</strong> · models
-            <div class="text-small text-muted">web-key · 12ms</div>
-          </div>
-          <span class="badge badge-success">200 OK</span>
-          <span class="text-small text-muted">1 分钟前</span>
-        </div>
-      </div>
     </div>
   </main>
 </div>
