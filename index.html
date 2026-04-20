@@ -66,6 +66,57 @@
     flex-wrap: wrap;
   }
 
+  .tp-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-3);
+    max-width: 780px;
+    margin: 0 auto var(--s-8);
+  }
+  .tp-hl {
+    background: var(--white);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    text-align: left;
+    transition: border-color var(--dur) var(--ease),
+                box-shadow var(--dur) var(--ease),
+                transform var(--dur) var(--ease);
+  }
+  .tp-hl:hover {
+    border-color: hsla(211, 86%, 48%, 0.35);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+  .tp-hl-key {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .tp-hl-num {
+    background: linear-gradient(135deg,
+      hsl(211 86% 48%) 0%,
+      hsl(200 80% 55%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .tp-hl-desc {
+    font-size: 13px;
+    color: var(--ink-500);
+    line-height: 1.55;
+  }
+  @media (max-width: 720px) {
+    .tp-highlights { grid-template-columns: 1fr; max-width: 420px; }
+  }
+
   .cp-cards {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -312,6 +363,21 @@
     <p class="lead">
       兼容 OpenAI 接口 · 按量透明计费 · 公测期内免费开放
     </p>
+
+    <div class="tp-highlights">
+      <div class="tp-hl">
+        <div class="tp-hl-key">同体量 · 行业领先</div>
+        <div class="tp-hl-desc">对标 GPT、Claude 国际一线水平</div>
+      </div>
+      <div class="tp-hl">
+        <div class="tp-hl-key">Token 消耗 <span class="tp-hl-num">-60%</span></div>
+        <div class="tp-hl-desc">原生多模态架构，成本显著降低</div>
+      </div>
+      <div class="tp-hl">
+        <div class="tp-hl-key">复杂长链路任务</div>
+        <div class="tp-hl-desc">订票 · 填表 · 跨站研究全覆盖</div>
+      </div>
+    </div>
 
     <div class="tp-hero-ctas">
       <a href="register.html" class="btn btn-primary btn-lg">免费开始 <span class="arrow">→</span></a>
