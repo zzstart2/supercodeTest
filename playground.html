@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Playground · SenseNova</title>
+<title data-zh="Playground · SenseNova" data-en="Playground · SenseNova">Playground · SenseNova</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
   body { background: #FAFAFA; }
@@ -417,14 +417,15 @@
       SenseNova
     </a>
     <div class="nav-links">
-      <a href="index.html">Token Plan</a>
-      <a href="docs.html">文档</a>
-      <a href="console/dashboard.html">控制台</a>
+      <a href="index.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
+      <a href="docs.html" data-zh="文档" data-en="Docs">文档</a>
+      <a href="console/dashboard.html" data-zh="控制台" data-en="Console">控制台</a>
     </div>
     <div class="nav-cta">
-      <a href="https://www.sensetime.com" target="_blank" class="btn btn-ghost btn-sm">商汤官网</a>
-      <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
-      <a href="register.html" class="btn btn-primary btn-sm">免费注册</a>
+      <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
+      <a href="https://www.sensetime.com" target="_blank" class="btn btn-ghost btn-sm" data-zh="商汤官网" data-en="SenseTime">商汤官网</a>
+      <a href="login.html" class="btn btn-ghost btn-sm" data-zh="登录" data-en="Sign in">登录</a>
+      <a href="register.html" class="btn btn-primary btn-sm" data-zh="免费注册" data-en="Sign up free">免费注册</a>
     </div>
   </div>
 </nav>
@@ -432,58 +433,58 @@
 <div class="pg-layout">
   <!-- 左侧：模型分类 -->
   <aside class="pg-left">
-    <h4>模型体验</h4>
+    <h4 data-zh="模型体验" data-en="Models">模型体验</h4>
     <div class="cat-item active">
-      <span class="cat-left"><span class="cat-ico">📝</span>文本模型</span>
+      <span class="cat-left"><span class="cat-ico">📝</span><span data-zh="文本模型" data-en="Text models">文本模型</span></span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">👁</span>视觉模型</span>
-      <span class="cat-tag">即将上线</span>
+      <span class="cat-left"><span class="cat-ico">👁</span><span data-zh="视觉模型" data-en="Vision models">视觉模型</span></span>
+      <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🎨</span>图像模型</span>
-      <span class="cat-tag">即将上线</span>
+      <span class="cat-left"><span class="cat-ico">🎨</span><span data-zh="图像模型" data-en="Image models">图像模型</span></span>
+      <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🎬</span>视频模型</span>
-      <span class="cat-tag">即将上线</span>
+      <span class="cat-left"><span class="cat-ico">🎬</span><span data-zh="视频模型" data-en="Video models">视频模型</span></span>
+      <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🎙</span>语音模型</span>
-      <span class="cat-tag">即将上线</span>
+      <span class="cat-left"><span class="cat-ico">🎙</span><span data-zh="语音模型" data-en="Voice models">语音模型</span></span>
+      <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
 
-    <h4>应用体验</h4>
+    <h4 data-zh="应用体验" data-en="Applications">应用体验</h4>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🤖</span>智能体</span>
-      <span class="cat-tag">即将上线</span>
+      <span class="cat-left"><span class="cat-ico">🤖</span><span data-zh="智能体" data-en="Agents">智能体</span></span>
+      <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🧩</span>MCP 工具</span>
-      <span class="cat-tag">即将上线</span>
+      <span class="cat-left"><span class="cat-ico">🧩</span><span data-zh="MCP 工具" data-en="MCP tools">MCP 工具</span></span>
+      <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
   </aside>
 
   <!-- 中间：主区 -->
   <main class="pg-main">
     <div class="pg-topbar">
-      <h3>文本模型</h3>
+      <h3 data-zh="文本模型" data-en="Text models">文本模型</h3>
       <div class="flex" style="gap:8px;">
-        <span class="badge badge-success">● 在线</span>
+        <span class="badge badge-success" data-zh="● 在线" data-en="● Online">● 在线</span>
         <a href="index.html#token-plan" class="btn btn-primary btn-sm">🔥 Token Plan</a>
-        <button class="btn btn-outline btn-sm">PK 添加模型比较</button>
+        <button class="btn btn-outline btn-sm" data-zh="PK 添加模型比较" data-en="PK Compare models">PK 添加模型比较</button>
       </div>
     </div>
 
     <div class="billing-tip">
       <span>⚠️</span>
-      <span>模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href="index.html#token-plan" style="color:var(--brand); font-weight:600;">产品定价</a>。</span>
+      <span data-zh-html="模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href=&quot;index.html#token-plan&quot; style=&quot;color:var(--brand); font-weight:600;&quot;>产品定价</a>。" data-en-html="Playground usage is metered by actual consumption, but currently free during public beta. See <a href=&quot;index.html#token-plan&quot; style=&quot;color:var(--brand); font-weight:600;&quot;>pricing</a> for details.">模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href="index.html#token-plan" style="color:var(--brand); font-weight:600;">产品定价</a>。</span>
       <span class="close">×</span>
     </div>
 
     <!-- 居中 Hero -->
     <div class="pg-hero">
-      <h1 class="pg-hero-title">极速体验 <span class="accent">文本模型</span> 开启智能对话</h1>
+      <h1 class="pg-hero-title" data-zh-html="极速体验 <span class=&quot;accent&quot;>文本模型</span> 开启智能对话" data-en-html="Try <span class=&quot;accent&quot;>text models</span> and start chatting instantly">极速体验 <span class="accent">文本模型</span> 开启智能对话</h1>
 
       <!-- 组合输入 -->
       <div class="composer-card">
@@ -494,24 +495,24 @@
             <span>SenseNova-Chat-Lite</span>
             <span class="arrow">▼</span>
           </div>
-          <div class="mode-chip">
+          <div class="mode-chip" data-zh="深度思考 ▼" data-en="Deep thinking ▼">
             深度思考 ▼
           </div>
           <span style="color: var(--ink-400); font-size: 13px; margin-left: 2px;">⇄</span>
         </div>
 
         <!-- 输入区 -->
-        <textarea class="composer-textarea" placeholder="向我发指令，我可以完成对话聊天、创作文章、生成代码等多种任务..."></textarea>
+        <textarea class="composer-textarea" placeholder="向我发指令，我可以完成对话聊天、创作文章、生成代码等多种任务..." data-zh-placeholder="向我发指令，我可以完成对话聊天、创作文章、生成代码等多种任务..." data-en-placeholder="Send me an instruction — I can chat, write articles, generate code, and more..."></textarea>
 
         <!-- 工具栏 -->
         <div class="composer-toolbar">
           <div class="flex" style="gap:2px;">
-            <button class="tool-btn" title="附件">📎</button>
-            <button class="tool-btn disabled" title="工具调用（暂不可用）">
+            <button class="tool-btn" title="附件" data-zh-title="附件" data-en-title="Attachments">📎</button>
+            <button class="tool-btn disabled" title="工具调用（暂不可用）" data-zh-title="工具调用（暂不可用）" data-en-title="Tool calling (unavailable)" data-zh="🔧 工具" data-en="🔧 Tools">
               🔧 工具
             </button>
           </div>
-          <button class="send-btn" title="发送 ⌘+Enter">
+          <button class="send-btn" title="发送 ⌘+Enter" data-zh-title="发送 ⌘+Enter" data-en-title="Send ⌘+Enter">
             <svg viewBox="0 0 16 16"><path d="M14.5 1.5L7 9M14.5 1.5L10 14l-3-5-5-3z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -519,15 +520,15 @@
 
       <!-- 快捷场景 -->
       <div class="quick-chips">
-        <button class="q-chip"><span>💻</span>前端开发</button>
-        <button class="q-chip"><span>🔍</span>代码审阅</button>
-        <button class="q-chip"><span>🧪</span>单元测试生成</button>
-        <button class="q-chip"><span>📦</span>算法实现</button>
-        <button class="q-chip"><span>🐛</span>Bug 排查</button>
-        <button class="q-chip"><span>📝</span>文档生成</button>
+        <button class="q-chip"><span>💻</span><span data-zh="前端开发" data-en="Frontend dev">前端开发</span></button>
+        <button class="q-chip"><span>🔍</span><span data-zh="代码审阅" data-en="Code review">代码审阅</span></button>
+        <button class="q-chip"><span>🧪</span><span data-zh="单元测试生成" data-en="Generate unit tests">单元测试生成</span></button>
+        <button class="q-chip"><span>📦</span><span data-zh="算法实现" data-en="Algorithm implementation">算法实现</span></button>
+        <button class="q-chip"><span>🐛</span><span data-zh="Bug 排查" data-en="Bug triage">Bug 排查</span></button>
+        <button class="q-chip"><span>📝</span><span data-zh="文档生成" data-en="Generate docs">文档生成</span></button>
       </div>
 
-      <div class="footer-tip">
+      <div class="footer-tip" data-zh="以上内容均由 AI 模型生成，结果仅供参考，请勿作为决策唯一依据。" data-en="All content is AI-generated and for reference only — do not rely on it as the sole basis for decisions.">
         以上内容均由 AI 模型生成，结果仅供参考，请勿作为决策唯一依据。
       </div>
     </div>
@@ -538,9 +539,21 @@
     <div class="group">
       <div class="sp-head">
         <h4>System Prompt</h4>
-        <span class="link">Prompt 示例</span>
+        <span class="link" data-zh="Prompt 示例" data-en="Prompt examples">Prompt 示例</span>
       </div>
-      <textarea class="sp-textarea"># 通用 Prompt
+      <textarea class="sp-textarea" data-zh-value="# 通用 Prompt
+**理解问题**
+- 仔细分析问题的词汇、语法和语义。
+- 考虑上下文信息，明确问题意图。
+**语言风格**
+- 使用自然、易懂的语言。
+- 避免专业术语，根据受众调整语言难度。" data-en-value="# General Prompt
+**Understand the question**
+- Carefully analyze its vocabulary, grammar, and semantics.
+- Consider context to clarify intent.
+**Language style**
+- Use natural, easy-to-read language.
+- Avoid jargon; adjust difficulty to the audience."># 通用 Prompt
 **理解问题**
 - 仔细分析问题的词汇、语法和语义。
 - 考虑上下文信息，明确问题意图。
@@ -550,10 +563,10 @@
     </div>
 
     <div class="group">
-      <h4>参数设置</h4>
+      <h4 data-zh="参数设置" data-en="Parameters">参数设置</h4>
 
       <div class="param-row">
-        <label>温度</label>
+        <label data-zh="温度" data-en="Temperature">温度</label>
         <div class="param-ctrl">
           <input type="range" min="0" max="2" step="0.01" value="0.6" oninput="document.getElementById('v-temp').value=this.value"/>
           <input class="param-num" id="v-temp" value="0.60"/>
@@ -561,7 +574,7 @@
       </div>
 
       <div class="param-row">
-        <label>核采样</label>
+        <label data-zh="核采样" data-en="Top-p">核采样</label>
         <div class="param-ctrl">
           <input type="range" min="0" max="1" step="0.01" value="0.7" oninput="document.getElementById('v-topp').value=this.value"/>
           <input class="param-num" id="v-topp" value="0.70"/>
@@ -569,7 +582,7 @@
       </div>
 
       <div class="param-row">
-        <label>重复惩罚</label>
+        <label data-zh="重复惩罚" data-en="Repetition penalty">重复惩罚</label>
         <div class="param-ctrl">
           <input type="range" min="1" max="2" step="0.01" value="1.05" oninput="document.getElementById('v-rep').value=this.value"/>
           <input class="param-num" id="v-rep" value="1.05"/>
@@ -577,7 +590,7 @@
       </div>
 
       <div class="param-row">
-        <label>最大输出 tokens 数</label>
+        <label data-zh="最大输出 tokens 数" data-en="Max output tokens">最大输出 tokens 数</label>
         <div class="param-ctrl">
           <input type="range" min="256" max="8192" step="256" value="1024" oninput="document.getElementById('v-mt').value=this.value"/>
           <input class="param-num" id="v-mt" value="1024"/>
@@ -600,7 +613,11 @@
   document.querySelectorAll('.q-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       const ta = document.querySelector('.composer-textarea');
-      ta.value = `请帮我完成「${chip.textContent.trim()}」相关任务：`;
+      const label = (chip.querySelector('span:last-child') || chip).textContent.trim();
+      const lang = document.documentElement.dataset.lang || 'zh';
+      ta.value = lang === 'en'
+        ? `Please help me with a「${label}」task:`
+        : `请帮我完成「${label}」相关任务：`;
       ta.focus();
     });
   });

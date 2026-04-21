@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>登录 · SenseNova</title>
+<title data-zh="登录 · SenseNova" data-en="Sign in · SenseNova">登录 · SenseNova</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
   html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
@@ -393,6 +393,7 @@
       <span class="brand-mark"></span>
       SenseNova
     </a>
+    <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
   </header>
 
   <!-- 三、右侧登录面板 -->
@@ -400,12 +401,12 @@
     <div class="content-card">
 
       <!-- 4.1 标题 -->
-      <h2 class="login-title">欢迎登录</h2>
+      <h2 class="login-title" data-zh="欢迎登录" data-en="Welcome back">欢迎登录</h2>
 
       <!-- 4.2 Tab -->
       <div class="login-tabs">
-        <div class="t active" onclick="switchMode(this,'pw')">密码登录</div>
-        <div class="t" onclick="switchMode(this,'sms')">验证码登录</div>
+        <div class="t active" onclick="switchMode(this,'pw')" data-zh="密码登录" data-en="Password">密码登录</div>
+        <div class="t" onclick="switchMode(this,'sms')" data-zh="验证码登录" data-en="SMS Code">验证码登录</div>
       </div>
 
       <!-- 4.3 表单 -->
@@ -416,12 +417,12 @@
           <div class="lf-field">
             <div class="lf-input-wrap">
               <select><option>+86</option><option>+852</option><option>+65</option><option>+1</option></select>
-              <input type="tel" placeholder="请输入手机号" required/>
+              <input type="tel" placeholder="请输入手机号" data-zh-placeholder="请输入手机号" data-en-placeholder="Enter your phone number" required/>
             </div>
           </div>
           <div class="lf-field">
             <div class="lf-input-wrap">
-              <input type="password" placeholder="请输入密码" id="pwd-input"/>
+              <input type="password" placeholder="请输入密码" data-zh-placeholder="请输入密码" data-en-placeholder="Enter your password" id="pwd-input"/>
               <button type="button" class="field-icon" onclick="togglePwd()">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z"/>
@@ -433,7 +434,7 @@
           </div>
           <div class="lf-links">
             <span></span>
-            <a class="forget" href="#">忘记密码</a>
+            <a class="forget" href="#" data-zh="忘记密码" data-en="Forgot password">忘记密码</a>
           </div>
         </div>
 
@@ -442,35 +443,35 @@
           <div class="lf-field">
             <div class="lf-input-wrap">
               <select><option>+86</option><option>+852</option><option>+65</option><option>+1</option></select>
-              <input type="tel" placeholder="请输入手机号" required/>
+              <input type="tel" placeholder="请输入手机号" data-zh-placeholder="请输入手机号" data-en-placeholder="Enter your phone number" required/>
             </div>
           </div>
           <div class="lf-field">
             <div class="lf-sms-wrap">
-              <input type="text" placeholder="请输入验证码"/>
-              <button type="button" class="sms-send">发送验证码</button>
+              <input type="text" placeholder="请输入验证码" data-zh-placeholder="请输入验证码" data-en-placeholder="Enter verification code"/>
+              <button type="button" class="sms-send" data-zh="发送验证码" data-en="Send code">发送验证码</button>
             </div>
           </div>
           <div class="lf-links">
             <span></span>
-            <a class="forget" href="#">忘记密码</a>
+            <a class="forget" href="#" data-zh="忘记密码" data-en="Forgot password">忘记密码</a>
           </div>
         </div>
 
         <!-- 4.4 登录按钮 -->
-        <button type="submit" class="login-btn">登 录</button>
+        <button type="submit" class="login-btn" data-zh="登 录" data-en="Sign In">登 录</button>
       </form>
 
       <!-- 4.5 协议 -->
-      <p class="login-agreement">登录即代表您同意 SenseNova <a href="#">用户协议</a> 和 <a href="#">隐私政策</a></p>
+      <p class="login-agreement" data-zh-html="登录即代表您同意 SenseNova <a href=&quot;#&quot;>用户协议</a> 和 <a href=&quot;#&quot;>隐私政策</a>" data-en-html="By signing in you agree to SenseNova's <a href=&quot;#&quot;>Terms of Service</a> and <a href=&quot;#&quot;>Privacy Policy</a>">登录即代表您同意 SenseNova <a href="#">用户协议</a> 和 <a href="#">隐私政策</a></p>
 
       <!-- 4.6 注册引导 -->
-      <p class="login-register">没有账号？ <a href="register.html">去注册</a></p>
+      <p class="login-register" data-zh-html="没有账号？ <a href=&quot;register.html&quot;>去注册</a>" data-en-html="Don't have an account? <a href=&quot;register.html&quot;>Sign up</a>">没有账号？ <a href="register.html">去注册</a></p>
 
       <!-- 4.7 产品推广条 -->
       <div class="login-promo">
         <div class="promo-mark">S</div>
-        <div class="promo-text">SenseNova 大模型，依托平台强大的基础支撑，提供高效易用的全栈大模型服务</div>
+        <div class="promo-text" data-zh="SenseNova 大模型，依托平台强大的基础支撑，提供高效易用的全栈大模型服务" data-en="SenseNova LLM — a full-stack, production-ready LLM service backed by powerful platform infrastructure.">SenseNova 大模型，依托平台强大的基础支撑，提供高效易用的全栈大模型服务</div>
       </div>
 
     </div>
@@ -497,5 +498,6 @@ function togglePwd() {
   else { inp.type = 'password'; slash.style.display = 'none'; }
 }
 </script>
+<script src="assets/app.js"></script>
 </body>
 </html>

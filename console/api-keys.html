@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>API Keys · SenseNova</title>
+<title data-zh="API Keys · SenseNova" data-en="API Keys · SenseNova">API Keys · SenseNova</title>
 <link rel="stylesheet" href="../assets/style.css"/>
 <style>
   .keys-card {
@@ -105,34 +105,42 @@
 </head>
 <body>
 
-<!-- 顶部主导航 -->
+<!-- 顶部主导航（与 Token Plan 站点导航保持一致） -->
 <nav class="console-topbar">
-  <a class="brand" href="../index.html">
-    <span class="brand-mark"></span>
-    SenseNova
-  </a>
-  <div class="right">
-    <span class="badge badge-success">公测 Free</span>
-    <div class="user-menu">
-      <div class="user-avatar">W</div>
-      <div class="user-dropdown">
-        <div class="info">
-          <div class="name">xxxxx</div>
-          <div class="meta"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px; color:var(--ink-400);"><rect x="4" y="1" width="8" height="14" rx="2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg> +86 xxx ****xxxx</div>
-          <div class="meta">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"></span>
+      SenseNova
+    </a>
+    <div class="nav-links">
+      <a href="../index.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
+      <a href="../docs.html" data-zh="文档" data-en="Docs">文档</a>
+      <a href="dashboard.html" class="active" data-zh="控制台" data-en="Console">控制台</a>
+    </div>
+    <div class="nav-cta">
+      <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
+      <span class="badge badge-success" data-zh="公测 Free" data-en="Beta · Free">公测 Free</span>
+      <div class="user-menu">
+        <div class="user-avatar">W</div>
+        <div class="user-dropdown">
+          <div class="info">
+            <div class="name">xxxxx</div>
+            <div class="meta"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px; color:var(--ink-400);"><rect x="4" y="1" width="8" height="14" rx="2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg> +86 xxx ****xxxx</div>
+            <div class="meta" data-zh-html="当前套餐：<strong style=&quot;color:var(--brand);&quot;>Free · 公测</strong>" data-en-html="Current plan: <strong style=&quot;color:var(--brand);&quot;>Free · Beta</strong>">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+          </div>
+          <button class="menu-item"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span> <span data-zh="修改密码" data-en="Change password">修改密码</span></button>
+          <a class="menu-item danger" href="../login.html"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2H3.5A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14H6"/><path d="M10 11l3-3-3-3"/><path d="M13 8H6"/></svg></span> <span data-zh="退出登录" data-en="Sign out">退出登录</span></a>
         </div>
-        <button class="menu-item"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span> 修改密码</button>
-        <a class="menu-item danger" href="../login.html"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2H3.5A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14H6"/><path d="M10 11l3-3-3-3"/><path d="M13 8H6"/></svg></span> 退出登录</a>
       </div>
     </div>
   </div>
 </nav>
 <div class="app-layout">
   <aside class="sidebar">
-    <div class="side-section">工作台</div>
+    <div class="side-section" data-zh="工作台" data-en="Workspace">工作台</div>
     <a class="side-link" href="dashboard.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="7" height="7" rx="1.5"/><rect x="10" y="1" width="7" height="7" rx="1.5"/><rect x="1" y="10" width="7" height="7" rx="1.5"/><rect x="10" y="10" width="7" height="7" rx="1.5"/></svg></span>
-      账户总览
+      <span data-zh="账户总览" data-en="Dashboard">账户总览</span>
     </a>
     <a class="side-link active" href="api-keys.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="3.5"/><path d="M9.5 9.5L15 15"/><path d="M13 13v2h2"/></svg></span>
@@ -140,12 +148,12 @@
     </a>
     <a class="side-link" href="usage.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="10" width="3" height="6" rx=".5"/><rect x="7.5" y="5" width="3" height="11" rx=".5"/><rect x="13" y="2" width="3" height="14" rx=".5"/></svg></span>
-      用量统计
+      <span data-zh="用量统计" data-en="Usage">用量统计</span>
     </a>
-    <div class="side-section">开发</div>
+    <div class="side-section" data-zh="开发" data-en="Develop">开发</div>
     <a class="side-link" href="../docs.html" target="_blank">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h7l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M11 2v4h4"/></svg></span>
-      文档<span class="ext">↗</span>
+      <span data-zh="文档" data-en="Docs">文档</span><span class="ext">↗</span>
     </a>
     <a class="side-link" href="../index.html#token-plan" target="_blank">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5A1.5 1.5 0 013.5 2H9l7 7-6 6-7-7V3.5z"/><circle cx="6" cy="6" r="1" fill="currentColor" stroke="none"/></svg></span>
@@ -158,9 +166,9 @@
       <div class="page-head" style="align-items: center;">
         <div>
           <h2 class="page-title" style="font-size:22px; margin:0 0 4px;">API Keys</h2>
-          <p class="page-desc" style="margin:0;">创建、注销 API 密钥，用于应用接入 SenseNova。最多可创建 20 个 Keys。</p>
+          <p class="page-desc" style="margin:0;" data-zh="创建、注销 API 密钥，用于应用接入 SenseNova。最多可创建 20 个 Keys。" data-en="Create and revoke API Keys for integrating applications with SenseNova. Up to 20 Keys.">创建、注销 API 密钥，用于应用接入 SenseNova。最多可创建 20 个 Keys。</p>
         </div>
-        <button class="btn btn-primary" onclick="document.getElementById('m-create').classList.add('open')">
+        <button class="btn btn-primary" onclick="document.getElementById('m-create').classList.add('open')" data-zh="+ 创建 API Key" data-en="+ Create API Key">
           + 创建 API Key
         </button>
       </div>
@@ -168,7 +176,7 @@
       <!-- 紧凑版安全提醒 -->
       <div class="flex" style="background: #EFF6FF; border: 1px solid #BFDBFE; color: #1E40AF; padding: 8px 14px; border-radius: var(--radius); font-size: 13px; margin-bottom: 20px; gap: 8px;">
         <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px;"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span>
-        <span>Key 仅在创建时完整显示一次，请妥善保存到环境变量或密钥管理服务。</span>
+        <span data-zh="Key 仅在创建时完整显示一次，请妥善保存到环境变量或密钥管理服务。" data-en="The full Key is shown only once at creation — store it in an environment variable or a secrets manager.">Key 仅在创建时完整显示一次，请妥善保存到环境变量或密钥管理服务。</span>
       </div>
 
       <!-- Keys 表格（精简版） -->
@@ -176,82 +184,82 @@
         <table class="table">
           <thead>
             <tr>
-              <th>名称</th>
-              <th>Key (掩码)</th>
-              <th>创建时间</th>
-              <th>最后使用</th>
-              <th>已用 Tokens</th>
-              <th>状态</th>
+              <th data-zh="名称" data-en="Name">名称</th>
+              <th data-zh="Key (掩码)" data-en="Key (masked)">Key (掩码)</th>
+              <th data-zh="创建时间" data-en="Created">创建时间</th>
+              <th data-zh="最后使用" data-en="Last used">最后使用</th>
+              <th data-zh="已用 Tokens" data-en="Tokens used">已用 Tokens</th>
+              <th data-zh="状态" data-en="Status">状态</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>prod-key</strong></td>
-              <td><span class="key-mask">sn-••••••••••3f8a</span> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-prod-key-3f8a')" title="复制"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>
+              <td><span class="key-mask">sn-••••••••••3f8a</span> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-prod-key-3f8a')" title="复制" data-zh-title="复制" data-en-title="Copy"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>
               <td class="text-small text-muted">2026-02-18</td>
-              <td class="text-small text-muted">2 秒前</td>
+              <td class="text-small text-muted" data-zh="2 秒前" data-en="2s ago">2 秒前</td>
               <td><strong>1.82M</strong></td>
               <td><span class="badge badge-success">● Active</span></td>
               <td>
-                <button class="btn btn-sm btn-danger">注销</button>
+                <button class="btn btn-sm btn-danger" data-zh="注销" data-en="Revoke">注销</button>
               </td>
             </tr>
             <tr>
               <td><strong>dev-key</strong></td>
-              <td><span class="key-mask">sn-••••••••••91d2</span> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-dev-key-91d2')" title="复制"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>
+              <td><span class="key-mask">sn-••••••••••91d2</span> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-dev-key-91d2')" title="复制" data-zh-title="复制" data-en-title="Copy"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>
               <td class="text-small text-muted">2026-02-22</td>
-              <td class="text-small text-muted">12 分钟前</td>
+              <td class="text-small text-muted" data-zh="12 分钟前" data-en="12m ago">12 分钟前</td>
               <td><strong>342K</strong></td>
               <td><span class="badge badge-success">● Active</span></td>
               <td>
-                <button class="btn btn-sm btn-danger">注销</button>
+                <button class="btn btn-sm btn-danger" data-zh="注销" data-en="Revoke">注销</button>
               </td>
             </tr>
             <tr>
               <td><strong>ide-key</strong></td>
-              <td><span class="key-mask">sn-••••••••••7e4c</span> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-ide-key-7e4c')" title="复制"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>
+              <td><span class="key-mask">sn-••••••••••7e4c</span> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-ide-key-7e4c')" title="复制" data-zh-title="复制" data-en-title="Copy"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>
               <td class="text-small text-muted">2026-03-02</td>
-              <td class="text-small text-muted">21 秒前</td>
+              <td class="text-small text-muted" data-zh="21 秒前" data-en="21s ago">21 秒前</td>
               <td><strong>468K</strong></td>
               <td><span class="badge badge-success">● Active</span></td>
               <td>
-                <button class="btn btn-sm btn-danger">注销</button>
+                <button class="btn btn-sm btn-danger" data-zh="注销" data-en="Revoke">注销</button>
               </td>
             </tr>
             <tr>
               <td><strong>web-key</strong></td>
-              <td><span class="key-mask">sn-••••••••••a1b2</span> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-web-key-a1b2')" title="复制"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>
+              <td><span class="key-mask">sn-••••••••••a1b2</span> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-web-key-a1b2')" title="复制" data-zh-title="复制" data-en-title="Copy"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td>
               <td class="text-small text-muted">2026-03-14</td>
-              <td class="text-small text-muted">3 小时前</td>
+              <td class="text-small text-muted" data-zh="3 小时前" data-en="3h ago">3 小时前</td>
               <td><strong>56K</strong></td>
               <td><span class="badge badge-success">● Active</span></td>
               <td>
-                <button class="btn btn-sm btn-danger">注销</button>
+                <button class="btn btn-sm btn-danger" data-zh="注销" data-en="Revoke">注销</button>
               </td>
             </tr>
             <tr>
               <td><strong>legacy-key</strong></td>
               <td><span class="key-mask">sn-••••••••••bc03</span></td>
               <td class="text-small text-muted">2026-01-08</td>
-              <td class="text-small text-muted">30 天前</td>
+              <td class="text-small text-muted" data-zh="30 天前" data-en="30d ago">30 天前</td>
               <td><strong>—</strong></td>
-              <td><span class="badge badge-neutral">● 已注销</span></td>
+              <td><span class="badge badge-neutral" data-zh="● 已注销" data-en="● Revoked">● 已注销</span></td>
               <td>
-                <button class="btn btn-sm btn-outline">查看</button>
+                <button class="btn btn-sm btn-outline" data-zh="查看" data-en="View">查看</button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <p class="text-small text-muted mt-2">当前已使用 <strong>4</strong> / 20 可用 Keys</p>
+      <p class="text-small text-muted mt-2" data-zh-html="当前已使用 <strong>4</strong> / 20 可用 Keys" data-en-html="<strong>4</strong> / 20 Keys in use">当前已使用 <strong>4</strong> / 20 可用 Keys</p>
 
       <!-- 使用示例 -->
       <div class="mt-4">
-        <h3>快速使用示例</h3>
+        <h3 data-zh="快速使用示例" data-en="Quick-start example">快速使用示例</h3>
         <div class="code-block mt-2">
-          <button class="code-copy">复制</button>
+          <button class="code-copy" data-zh="复制" data-en="Copy">复制</button>
 <pre><span class="cm"># 设置环境变量</span>
 <span class="kw">export</span> SENSENOVA_API_KEY=<span class="str">"sn-xxxxxxxxxxxxxxxxxxxx"</span>
 
@@ -270,18 +278,18 @@ client = <span class="fn">OpenAI</span>(
 <!-- 创建 Key 模态框 -->
 <div class="modal-overlay" id="m-create">
   <div class="modal">
-    <h3>创建新的 API Key</h3>
-    <p class="desc">为 Key 命名，便于区分不同应用场景</p>
+    <h3 data-zh="创建新的 API Key" data-en="Create a new API Key">创建新的 API Key</h3>
+    <p class="desc" data-zh="为 Key 命名，便于区分不同应用场景" data-en="Name your Key so you can tell them apart">为 Key 命名，便于区分不同应用场景</p>
 
     <div class="form-field">
-      <label>名称</label>
-      <input class="input" placeholder="例如 prod-backend / ide-cursor"/>
-      <div class="helper">仅用于内部展示识别，不会发送给模型</div>
+      <label data-zh="名称" data-en="Name">名称</label>
+      <input class="input" placeholder="例如 prod-backend / ide-cursor" data-zh-placeholder="例如 prod-backend / ide-cursor" data-en-placeholder="e.g. prod-backend / ide-cursor"/>
+      <div class="helper" data-zh="仅用于内部展示识别，不会发送给模型" data-en="For display only — never sent to the model">仅用于内部展示识别，不会发送给模型</div>
     </div>
 
     <div class="flex" style="justify-content: flex-end; gap: 8px; margin-top: 24px;">
-      <button class="btn btn-outline" onclick="document.getElementById('m-create').classList.remove('open')">取消</button>
-      <button class="btn btn-primary" onclick="showCreated()">创建并生成 Key</button>
+      <button class="btn btn-outline" onclick="document.getElementById('m-create').classList.remove('open')" data-zh="取消" data-en="Cancel">取消</button>
+      <button class="btn btn-primary" onclick="showCreated()" data-zh="创建并生成 Key" data-en="Create & generate Key">创建并生成 Key</button>
     </div>
   </div>
 </div>
@@ -289,18 +297,18 @@ client = <span class="fn">OpenAI</span>(
 <!-- 成功弹窗 -->
 <div class="modal-overlay" id="m-success">
   <div class="modal">
-    <h3>🎉 Key 创建成功</h3>
-    <p class="desc">这是您的 API Key，<strong style="color: var(--danger);">只会显示一次</strong>，请立即复制保存：</p>
+    <h3 data-zh="🎉 Key 创建成功" data-en="🎉 Key created">🎉 Key 创建成功</h3>
+    <p class="desc" data-zh-html="这是您的 API Key，<strong style=&quot;color: var(--danger);&quot;>只会显示一次</strong>，请立即复制保存：" data-en-html="Here's your API Key — <strong style=&quot;color: var(--danger);&quot;>shown only once</strong>, copy it now:">这是您的 API Key，<strong style="color: var(--danger);">只会显示一次</strong>，请立即复制保存：</p>
 
     <div class="success-key">
       <span>sn-a7f9d4b8c3e6210fa8b47c9d3e6f2a1b</span>
-      <button class="btn btn-sm btn-primary" onclick="navigator.clipboard.writeText('sn-a7f9d4b8c3e6210fa8b47c9d3e6f2a1b'); this.textContent='✓'">复制</button>
+      <button class="btn btn-sm btn-primary" onclick="navigator.clipboard.writeText('sn-a7f9d4b8c3e6210fa8b47c9d3e6f2a1b'); this.textContent='✓'" data-zh="复制" data-en="Copy">复制</button>
     </div>
 
-    <div class="helper">建议保存到环境变量或专业密钥管理服务中。</div>
+    <div class="helper" data-zh="建议保存到环境变量或专业密钥管理服务中。" data-en="We recommend storing it in an environment variable or a dedicated secrets manager.">建议保存到环境变量或专业密钥管理服务中。</div>
 
     <div class="flex" style="justify-content: flex-end; margin-top: 24px;">
-      <button class="btn btn-primary" onclick="document.getElementById('m-success').classList.remove('open')">我已保存</button>
+      <button class="btn btn-primary" onclick="document.getElementById('m-success').classList.remove('open')" data-zh="我已保存" data-en="I've saved it">我已保存</button>
     </div>
   </div>
 </div>

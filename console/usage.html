@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>用量统计 · SenseNova</title>
+<title data-zh="用量统计 · SenseNova" data-en="Usage · SenseNova">用量统计 · SenseNova</title>
 <link rel="stylesheet" href="../assets/style.css"/>
 <style>
   .filter-bar {
@@ -103,34 +103,42 @@
 </head>
 <body>
 
-<!-- 顶部主导航 -->
+<!-- 顶部主导航（与 Token Plan 站点导航保持一致） -->
 <nav class="console-topbar">
-  <a class="brand" href="../index.html">
-    <span class="brand-mark"></span>
-    SenseNova
-  </a>
-  <div class="right">
-    <span class="badge badge-success">公测 Free</span>
-    <div class="user-menu">
-      <div class="user-avatar">W</div>
-      <div class="user-dropdown">
-        <div class="info">
-          <div class="name">xxxxx</div>
-          <div class="meta"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px; color:var(--ink-400);"><rect x="4" y="1" width="8" height="14" rx="2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg> +86 xxx ****xxxx</div>
-          <div class="meta">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"></span>
+      SenseNova
+    </a>
+    <div class="nav-links">
+      <a href="../index.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
+      <a href="../docs.html" data-zh="文档" data-en="Docs">文档</a>
+      <a href="dashboard.html" class="active" data-zh="控制台" data-en="Console">控制台</a>
+    </div>
+    <div class="nav-cta">
+      <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
+      <span class="badge badge-success" data-zh="公测 Free" data-en="Beta · Free">公测 Free</span>
+      <div class="user-menu">
+        <div class="user-avatar">W</div>
+        <div class="user-dropdown">
+          <div class="info">
+            <div class="name">xxxxx</div>
+            <div class="meta"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px; color:var(--ink-400);"><rect x="4" y="1" width="8" height="14" rx="2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg> +86 xxx ****xxxx</div>
+            <div class="meta" data-zh-html="当前套餐：<strong style=&quot;color:var(--brand);&quot;>Free · 公测</strong>" data-en-html="Current plan: <strong style=&quot;color:var(--brand);&quot;>Free · Beta</strong>">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+          </div>
+          <button class="menu-item"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span> <span data-zh="修改密码" data-en="Change password">修改密码</span></button>
+          <a class="menu-item danger" href="../login.html"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2H3.5A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14H6"/><path d="M10 11l3-3-3-3"/><path d="M13 8H6"/></svg></span> <span data-zh="退出登录" data-en="Sign out">退出登录</span></a>
         </div>
-        <button class="menu-item"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span> 修改密码</button>
-        <a class="menu-item danger" href="../login.html"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2H3.5A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14H6"/><path d="M10 11l3-3-3-3"/><path d="M13 8H6"/></svg></span> 退出登录</a>
       </div>
     </div>
   </div>
 </nav>
 <div class="app-layout">
   <aside class="sidebar">
-    <div class="side-section">工作台</div>
+    <div class="side-section" data-zh="工作台" data-en="Workspace">工作台</div>
     <a class="side-link" href="dashboard.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="7" height="7" rx="1.5"/><rect x="10" y="1" width="7" height="7" rx="1.5"/><rect x="1" y="10" width="7" height="7" rx="1.5"/><rect x="10" y="10" width="7" height="7" rx="1.5"/></svg></span>
-      账户总览
+      <span data-zh="账户总览" data-en="Dashboard">账户总览</span>
     </a>
     <a class="side-link" href="api-keys.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="3.5"/><path d="M9.5 9.5L15 15"/><path d="M13 13v2h2"/></svg></span>
@@ -138,12 +146,12 @@
     </a>
     <a class="side-link active" href="usage.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="10" width="3" height="6" rx=".5"/><rect x="7.5" y="5" width="3" height="11" rx=".5"/><rect x="13" y="2" width="3" height="14" rx=".5"/></svg></span>
-      用量统计
+      <span data-zh="用量统计" data-en="Usage">用量统计</span>
     </a>
-    <div class="side-section">开发</div>
+    <div class="side-section" data-zh="开发" data-en="Develop">开发</div>
     <a class="side-link" href="../docs.html" target="_blank">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h7l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M11 2v4h4"/></svg></span>
-      文档<span class="ext">↗</span>
+      <span data-zh="文档" data-en="Docs">文档</span><span class="ext">↗</span>
     </a>
     <a class="side-link" href="../index.html#token-plan" target="_blank">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5A1.5 1.5 0 013.5 2H9l7 7-6 6-7-7V3.5z"/><circle cx="6" cy="6" r="1" fill="currentColor" stroke="none"/></svg></span>
@@ -155,28 +163,28 @@
     <div class="app-body">
       <div class="page-head" style="align-items: center;">
         <div>
-          <h2 class="page-title" style="font-size:22px; margin:0 0 4px;">用量统计</h2>
-          <p class="page-desc" style="margin:0;">按 Key / 模型 / 日期维度追踪 prompt + completion tokens · 可导出 CSV 用于内部账务</p>
+          <h2 class="page-title" style="font-size:22px; margin:0 0 4px;" data-zh="用量统计" data-en="Usage">用量统计</h2>
+          <p class="page-desc" style="margin:0;" data-zh="按 Key / 模型 / 日期维度追踪 prompt + completion tokens · 可导出 CSV 用于内部账务" data-en="Track prompt + completion tokens by Key / model / date · Export to CSV for internal accounting">按 Key / 模型 / 日期维度追踪 prompt + completion tokens · 可导出 CSV 用于内部账务</p>
         </div>
-        <button class="btn btn-outline">导出 CSV</button>
+        <button class="btn btn-outline" data-zh="导出 CSV" data-en="Export CSV">导出 CSV</button>
       </div>
 
       <!-- 筛选条 -->
       <div class="filter-bar">
         <div>
-          <label>时间范围</label>
+          <label data-zh="时间范围" data-en="Date range">时间范围</label>
           <select>
-            <option>最近 7 天</option>
-            <option selected>最近 30 天</option>
-            <option>本月</option>
-            <option>上月</option>
-            <option>自定义</option>
+            <option data-zh="最近 7 天" data-en="Last 7 days">最近 7 天</option>
+            <option selected data-zh="最近 30 天" data-en="Last 30 days">最近 30 天</option>
+            <option data-zh="本月" data-en="This month">本月</option>
+            <option data-zh="上月" data-en="Last month">上月</option>
+            <option data-zh="自定义" data-en="Custom">自定义</option>
           </select>
         </div>
         <div>
           <label>API Key</label>
           <select>
-            <option>全部 Keys</option>
+            <option data-zh="全部 Keys" data-en="All Keys">全部 Keys</option>
             <option>prod-key</option>
             <option>dev-key</option>
             <option>ide-key</option>
@@ -184,9 +192,9 @@
           </select>
         </div>
         <div>
-          <label>模型</label>
+          <label data-zh="模型" data-en="Model">模型</label>
           <select>
-            <option>全部模型</option>
+            <option data-zh="全部模型" data-en="All models">全部模型</option>
             <option>sensenova-chat-pro</option>
             <option>sensenova-chat-lite</option>
             <option>sensenova-code-pro</option>
@@ -194,37 +202,37 @@
           </select>
         </div>
         <div>
-          <label>聚合粒度</label>
+          <label data-zh="聚合粒度" data-en="Granularity">聚合粒度</label>
           <select>
-            <option>按日</option>
-            <option>按小时</option>
+            <option data-zh="按日" data-en="By day">按日</option>
+            <option data-zh="按小时" data-en="By hour">按小时</option>
           </select>
         </div>
         <div style="margin-left:auto;">
-          <button class="btn btn-outline btn-sm">重置</button>
-          <button class="btn btn-primary btn-sm">应用</button>
+          <button class="btn btn-outline btn-sm" data-zh="重置" data-en="Reset">重置</button>
+          <button class="btn btn-primary btn-sm" data-zh="应用" data-en="Apply">应用</button>
         </div>
       </div>
 
       <!-- 统计卡 -->
       <div class="stat-grid">
         <div class="stat-card">
-          <div class="label">周期 Tokens</div>
+          <div class="label" data-zh="周期 Tokens" data-en="Tokens this period">周期 Tokens</div>
           <div class="value">8.94M</div>
           <div class="trend trend-up">↗ prompt 2.1M · completion 6.8M</div>
         </div>
         <div class="stat-card">
-          <div class="label">请求数</div>
+          <div class="label" data-zh="请求数" data-en="Requests">请求数</div>
           <div class="value">48,231</div>
-          <div class="trend trend-up">↗ 成功率 99.76%</div>
+          <div class="trend trend-up" data-zh="↗ 成功率 99.76%" data-en="↗ Success rate 99.76%">↗ 成功率 99.76%</div>
         </div>
         <div class="stat-card">
-          <div class="label">活跃 API Keys</div>
+          <div class="label" data-zh="活跃 API Keys" data-en="Active API Keys">活跃 API Keys</div>
           <div class="value">4 <span style="font-size:14px; color: var(--ink-500);">/ 20</span></div>
-          <div class="trend text-muted">上限 20 个</div>
+          <div class="trend text-muted" data-zh="上限 20 个" data-en="20 max">上限 20 个</div>
         </div>
         <div class="stat-card">
-          <div class="label">平均每请求 Tokens</div>
+          <div class="label" data-zh="平均每请求 Tokens" data-en="Avg tokens per request">平均每请求 Tokens</div>
           <div class="value">185</div>
           <div class="trend trend-down">↘ -12 tokens</div>
         </div>
@@ -233,7 +241,7 @@
       <!-- 趋势图 -->
       <div class="chart-wrap mt-3">
         <div class="flex-between">
-          <h3>每日 Token 用量</h3>
+          <h3 data-zh="每日 Token 用量" data-en="Daily token usage">每日 Token 用量</h3>
           <div class="legend">
             <span><span class="swatch" style="background: var(--brand);"></span>Prompt</span>
             <span><span class="swatch" style="background: #FFA88E;"></span>Completion</span>
@@ -245,7 +253,7 @@
       <!-- 按模型 & 按 Key 分解 -->
       <div class="breakdown-grid">
         <div class="chart-wrap" style="margin:0;">
-          <h3>按模型分布 (Tokens)</h3>
+          <h3 data-zh="按模型分布 (Tokens)" data-en="Tokens by model">按模型分布 (Tokens)</h3>
           <div class="legend">
             <span><span class="swatch" style="background: var(--brand);"></span>Prompt</span>
             <span><span class="swatch" style="background: #FFA88E;"></span>Completion</span>
@@ -285,10 +293,10 @@
         </div>
 
         <div class="chart-wrap" style="margin:0;">
-          <h3>按 API Key 分布 (Tokens)</h3>
+          <h3 data-zh="按 API Key 分布 (Tokens)" data-en="Tokens by API Key">按 API Key 分布 (Tokens)</h3>
           <div class="legend">
-            <span><span class="swatch" style="background: var(--brand);"></span>已用</span>
-            <span><span class="swatch" style="background: var(--ink-200);"></span>余量 / 限额</span>
+            <span><span class="swatch" style="background: var(--brand);"></span><span data-zh="已用" data-en="Used">已用</span></span>
+            <span><span class="swatch" style="background: var(--ink-200);"></span><span data-zh="余量 / 限额" data-en="Remaining / quota">余量 / 限额</span></span>
           </div>
           <div class="stack-row">
             <span>prod-key</span>
@@ -324,17 +332,17 @@
       <!-- 明细表 -->
       <div class="keys-card mt-3" style="background: white; border: 1px solid var(--ink-200); border-radius: var(--radius-lg); overflow: hidden;">
         <div style="padding: 20px 24px; border-bottom: 1px solid var(--ink-200);">
-          <h3 style="margin:0; font-size:16px;">日用量明细</h3>
+          <h3 style="margin:0; font-size:16px;" data-zh="日用量明细" data-en="Daily usage breakdown">日用量明细</h3>
         </div>
         <table class="table">
           <thead>
             <tr>
-              <th>日期</th>
+              <th data-zh="日期" data-en="Date">日期</th>
               <th>Prompt Tokens</th>
               <th>Completion Tokens</th>
-              <th>总请求数</th>
-              <th>错误数</th>
-              <th>平均延迟 (P50)</th>
+              <th data-zh="总请求数" data-en="Total requests">总请求数</th>
+              <th data-zh="错误数" data-en="Errors">错误数</th>
+              <th data-zh="平均延迟 (P50)" data-en="Avg latency (P50)">平均延迟 (P50)</th>
             </tr>
           </thead>
           <tbody>
@@ -349,7 +357,7 @@
         </table>
       </div>
 
-      <p class="text-small text-muted mt-2" style="text-align:center;">
+      <p class="text-small text-muted mt-2" style="text-align:center;" data-zh-html="仅显示最近 7 天，<a href=&quot;#&quot; style=&quot;color: var(--brand);&quot;>查看完整 30 天 →</a>" data-en-html="Showing last 7 days, <a href=&quot;#&quot; style=&quot;color: var(--brand);&quot;>view full 30 days →</a>">
         仅显示最近 7 天，<a href="#" style="color: var(--brand);">查看完整 30 天 →</a>
       </p>
     </div>

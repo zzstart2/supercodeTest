@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SenseNova · LLM API 服务平台</title>
+<title data-zh="SenseNova · LLM API 服务平台" data-en="SenseNova · LLM API Platform">SenseNova · LLM API 服务平台</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
   /* ===== Token Plan Hero 区（浅色） ===== */
@@ -293,14 +293,15 @@
       SenseNova
     </a>
     <div class="nav-links">
-      <a href="index.html">Token Plan</a>
-      <a href="docs.html">文档</a>
-      <a href="console/dashboard.html">控制台</a>
+      <a href="index.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
+      <a href="docs.html" data-zh="文档" data-en="Docs">文档</a>
+      <a href="console/dashboard.html" data-zh="控制台" data-en="Console">控制台</a>
     </div>
     <div class="nav-cta">
-      <a href="https://www.sensetime.com" target="_blank" class="btn btn-ghost btn-sm">商汤官网</a>
-      <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
-      <a href="register.html" class="btn btn-primary btn-sm">免费注册</a>
+      <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
+      <a href="https://www.sensetime.com" target="_blank" class="btn btn-ghost btn-sm" data-zh="商汤官网" data-en="SenseTime">商汤官网</a>
+      <a href="login.html" class="btn btn-ghost btn-sm" data-zh="登录" data-en="Sign in">登录</a>
+      <a href="register.html" class="btn btn-primary btn-sm" data-zh="免费注册" data-en="Sign up free">免费注册</a>
     </div>
   </div>
 </nav>
@@ -309,14 +310,14 @@
 <section class="tp-hero" id="token-plan">
   <div class="container tp-hero-inner">
     <div class="eyebrow">Token Plan</div>
-    <h1>SenseNova <span class="accent">Token Plan</span></h1>
-    <p class="lead">
+    <h1 data-zh-html="SenseNova <span class=&quot;accent&quot;>Token Plan</span>" data-en-html="SenseNova <span class=&quot;accent&quot;>Token Plan</span>">SenseNova <span class="accent">Token Plan</span></h1>
+    <p class="lead" data-zh="兼容 OpenAI 接口 · 按量透明计费 · 公测期内免费开放" data-en="OpenAI-compatible API · Transparent usage-based billing · Free during public beta">
       兼容 OpenAI 接口 · 按量透明计费 · 公测期内免费开放
     </p>
 
     <div class="tp-hero-ctas">
-      <a href="register.html" class="btn btn-primary btn-lg">免费开始 <span class="arrow">→</span></a>
-      <a href="docs.html" class="btn btn-ghost btn-lg">查看文档</a>
+      <a href="register.html" class="btn btn-primary btn-lg" data-zh-html="免费开始 <span class=&quot;arrow&quot;>→</span>" data-en-html="Start free <span class=&quot;arrow&quot;>→</span>">免费开始 <span class="arrow">→</span></a>
+      <a href="docs.html" class="btn btn-ghost btn-lg" data-zh="查看文档" data-en="Read the docs">查看文档</a>
     </div>
   </div><!-- 关闭 container -->
 
@@ -324,24 +325,24 @@
       <!-- 左：Free · 公测 -->
       <div class="plan-card featured">
         <div class="plan-head">
-          <h3 class="plan-name featured-name">Free · 公测</h3>
-          <span class="badge-hot">🔥 当前可用</span>
+          <h3 class="plan-name featured-name" data-zh="Free · 公测" data-en="Free · Public Beta">Free · 公测</h3>
+          <span class="badge-hot" data-zh="🔥 当前可用" data-en="🔥 Available now">🔥 当前可用</span>
         </div>
         <div class="plan-price-area">
-          <span class="plan-price-discount-tag">公测免费 · 限时</span>
-          <div class="plan-price">¥ 0<span class="unit">/月</span></div>
-          <p class="plan-price-sub">公测期完全免费开放</p>
+          <span class="plan-price-discount-tag" data-zh="公测免费 · 限时" data-en="Free during beta · Limited time">公测免费 · 限时</span>
+          <div class="plan-price" data-zh-html="¥ 0<span class=&quot;unit&quot;>/月</span>" data-en-html="¥ 0<span class=&quot;unit&quot;>/mo</span>">¥ 0<span class="unit">/月</span></div>
+          <p class="plan-price-sub" data-zh="公测期完全免费开放" data-en="Completely free during public beta">公测期完全免费开放</p>
         </div>
-        <a class="plan-btn active" href="register.html">立即开始 <span class="arrow">→</span></a>
-        <div class="plan-quota"><span>单模型配额</span><span class="v">1,500 次 / 5 小时</span></div>
-        <div class="plan-quota-note">每个模型独立计数 · 同账户所有 Key 共享</div>
-        <div class="plan-section-head">已开放能力</div>
+        <a class="plan-btn active" href="register.html" data-zh-html="立即开始 <span class=&quot;arrow&quot;>→</span>" data-en-html="Get started <span class=&quot;arrow&quot;>→</span>">立即开始 <span class="arrow">→</span></a>
+        <div class="plan-quota"><span data-zh="单模型配额" data-en="Per-model quota">单模型配额</span><span class="v" data-zh="1,500 次 / 5 小时" data-en="1,500 calls / 5 hours">1,500 次 / 5 小时</span></div>
+        <div class="plan-quota-note" data-zh="每个模型独立计数 · 同账户所有 Key 共享" data-en="Counted per model · Shared across all Keys in the account">每个模型独立计数 · 同账户所有 Key 共享</div>
+        <div class="plan-section-head" data-zh="已开放能力" data-en="Available features">已开放能力</div>
         <ul class="plan-features">
-          <li class="ok"><span class="mark"></span>SenseNova-v6.7-Flash 等全系文字模型</li>
-          <li class="ok"><span class="mark"></span>同体量行业领先，对标 GPT、Claude 国际一线水平</li>
-          <li class="ok"><span class="mark"></span>原生多模态架构，Token 消耗降低 60%</li>
-          <li class="ok"><span class="mark"></span>支持复杂长链路任务，订票填表跨站研究全覆盖</li>
-          <li class="ok"><span class="mark"></span>最多 20 个 API Key</li>
+          <li class="ok"><span class="mark"></span><span data-zh="SenseNova-v6.7-Flash 等全系文字模型" data-en="Full SenseNova-v6.7-Flash text model lineup">SenseNova-v6.7-Flash 等全系文字模型</span></li>
+          <li class="ok"><span class="mark"></span><span data-zh="同体量行业领先，对标 GPT、Claude 国际一线水平" data-en="Best-in-class at its size, on par with GPT and Claude">同体量行业领先，对标 GPT、Claude 国际一线水平</span></li>
+          <li class="ok"><span class="mark"></span><span data-zh="原生多模态架构，Token 消耗降低 60%" data-en="Native multimodal architecture, 60% lower token usage">原生多模态架构，Token 消耗降低 60%</span></li>
+          <li class="ok"><span class="mark"></span><span data-zh="支持复杂长链路任务，订票填表跨站研究全覆盖" data-en="Handles complex long-horizon tasks: booking, form-filling, cross-site research">支持复杂长链路任务，订票填表跨站研究全覆盖</span></li>
+          <li class="ok"><span class="mark"></span><span data-zh="最多 20 个 API Key" data-en="Up to 20 API Keys">最多 20 个 API Key</span></li>
         </ul>
       </div>
 
@@ -349,17 +350,17 @@
       <div class="plan-card soon">
         <div class="plan-head">
           <h3 class="plan-name">Lite / Pro / …</h3>
-          <span class="badge-soon">即将上线</span>
+          <span class="badge-soon" data-zh="即将上线" data-en="Coming soon">即将上线</span>
         </div>
         <div style="flex:1; display:flex; align-items:center; justify-content:center; text-align:center;">
-          <span style="font-size: 15px; color: var(--ink-500);">更多付费计划 Coming Soon</span>
+          <span style="font-size: 15px; color: var(--ink-500);" data-zh="更多付费计划 Coming Soon" data-en="More paid plans coming soon">更多付费计划 Coming Soon</span>
         </div>
       </div>
     </div>
 
   <div class="beta-banner">
     <span>🎁</span>
-    <span>公测期限时免费开放，注册即可使用，<strong>每个模型 5 小时 1,500 次调用</strong>（同账户所有 Key 共享），所有模型完全开放</span>
+    <span data-zh-html="公测期限时免费开放，注册即可使用，<strong>每个模型 5 小时 1,500 次调用</strong>（同账户所有 Key 共享），所有模型完全开放" data-en-html="Free during public beta — sign up to start using it. <strong>1,500 calls per model every 5 hours</strong> (shared across all Keys in the account), all models fully open.">公测期限时免费开放，注册即可使用，<strong>每个模型 5 小时 1,500 次调用</strong>（同账户所有 Key 共享），所有模型完全开放</span>
   </div>
 </section>
 

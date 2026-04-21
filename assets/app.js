@@ -1,6 +1,61 @@
 // Nova AI Platform - 共用交互脚本
 
+// ============================================================
+// i18n：基于 data-zh / data-en 属性的轻量化中英切换
+// ============================================================
+const I18N_LANG_KEY = 'sn_lang';
+function getLang() {
+  const saved = localStorage.getItem(I18N_LANG_KEY);
+  return saved === 'en' ? 'en' : 'zh';
+}
+function applyI18n(lang) {
+  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+  document.documentElement.setAttribute('data-lang', lang);
+  document.querySelectorAll('[data-zh], [data-en]').forEach(el => {
+    if (el.tagName === 'TITLE') return;
+    const htmlAttr = el.getAttribute('data-' + lang + '-html');
+    if (htmlAttr != null) { el.innerHTML = htmlAttr; return; }
+    const textAttr = el.getAttribute('data-' + lang);
+    if (textAttr != null) el.textContent = textAttr;
+  });
+  document.querySelectorAll('[data-zh-html], [data-en-html]').forEach(el => {
+    const v = el.getAttribute('data-' + lang + '-html');
+    if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-zh-placeholder], [data-en-placeholder]').forEach(el => {
+    const v = el.getAttribute('data-' + lang + '-placeholder');
+    if (v != null) el.placeholder = v;
+  });
+  document.querySelectorAll('[data-zh-title], [data-en-title]').forEach(el => {
+    const v = el.getAttribute('data-' + lang + '-title');
+    if (v != null) el.title = v;
+  });
+  document.querySelectorAll('[data-zh-value], [data-en-value]').forEach(el => {
+    const v = el.getAttribute('data-' + lang + '-value');
+    if (v != null) el.value = v;
+  });
+  const titleEl = document.querySelector('title[data-zh], title[data-en]');
+  if (titleEl) {
+    const v = titleEl.getAttribute('data-' + lang);
+    if (v != null) document.title = v;
+  }
+  document.querySelectorAll('.lang-toggle').forEach(b => {
+    b.textContent = lang === 'en' ? '中文' : 'EN';
+    b.setAttribute('aria-label', lang === 'en' ? '切换到中文' : 'Switch to English');
+  });
+}
+function toggleLang() {
+  const next = getLang() === 'en' ? 'zh' : 'en';
+  localStorage.setItem(I18N_LANG_KEY, next);
+  applyI18n(next);
+}
+window.toggleLang = toggleLang;
+// 尽早同步 lang 属性，避免 FOUC
+(function(){ document.documentElement.setAttribute('data-lang', getLang()); })();
+
 document.addEventListener('DOMContentLoaded', () => {
+  applyI18n(getLang());
+
   // 高亮当前导航
   const path = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a, .side-link').forEach(a => {

@@ -232,6 +232,43 @@ code, pre {
   color: var(--brand);
 }
 
+/* 语言切换按钮 */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border: 1px solid var(--ink-200);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--ink-700);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  line-height: 1;
+  height: 28px;
+}
+.lang-toggle::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23666' stroke-width='1.5'><circle cx='8' cy='8' r='6.5'/><path d='M1.5 8h13M8 1.5c2 2 3 4 3 6.5s-1 4.5-3 6.5c-2-2-3-4-3-6.5s1-4.5 3-6.5z'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.lang-toggle:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+.lang-toggle:hover::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%230F6FE3' stroke-width='1.5'><circle cx='8' cy='8' r='6.5'/><path d='M1.5 8h13M8 1.5c2 2 3 4 3 6.5s-1 4.5-3 6.5c-2-2-3-4-3-6.5s1-4.5 3-6.5z'/></svg>");
+}
+
 /* ============================================================
    按钮
    ============================================================ */
@@ -581,32 +618,54 @@ h4 {
    控制台布局：顶部主导航 + 左侧次级功能导航
    ============================================================ */
 
-/* 顶部主导航 */
+/* 顶部主导航（控制台 - 与 Token Plan 站点导航保持一致） */
 .console-topbar {
-  height: var(--nav-h);
-  background: hsla(0, 0%, 100%, 0.92);
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
-  color: var(--ink-900);
-  border-bottom: 1px solid var(--ink-200);
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 100;
+  background: hsla(0, 0%, 100%, 0.88);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--ink-200);
+  color: var(--ink-900);
+  height: var(--nav-h);
+}
+
+.console-topbar .nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .console-topbar .brand {
   color: var(--ink-900);
-  font-size: 16px;
+  font-size: 18px;
 }
 
-.console-topbar .right {
+.console-topbar .nav-links {
   display: flex;
-  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+  flex: 1;
+}
+.console-topbar .nav-links a {
+  color: var(--ink-500);
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.console-topbar .nav-links a:hover,
+.console-topbar .nav-links a.active {
+  color: var(--ink-900);
+}
+
+.console-topbar .nav-cta {
+  display: flex;
   gap: 12px;
+  align-items: center;
 }
 
 .console-topbar .badge {

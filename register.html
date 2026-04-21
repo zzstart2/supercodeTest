@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>注册 · SenseNova</title>
+<title data-zh="注册 · SenseNova" data-en="Sign up · SenseNova">注册 · SenseNova</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
   body { background: var(--ink-100); }
@@ -123,30 +123,33 @@
     </a>
 
     <div>
-      <h1>开启你的<br/><span style="background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AI 之旅</span></h1>
-      <p>在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。</p>
+      <h1 data-zh-html="开启你的<br/><span style=&quot;background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;&quot;>AI 之旅</span>" data-en-html="Start your<br/><span style=&quot;background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;&quot;>AI journey</span>">开启你的<br/><span style="background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AI 之旅</span></h1>
+      <p data-zh="在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。" data-en="Create a SenseNova account in 30 seconds and start using our production-grade LLM API right away.">在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。</p>
 
       <ul class="bonus-list">
-        <li>公测期完全免费开放</li>
-        <li>即刻获得 API Key，兼容 OpenAI SDK</li>
-        <li>每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放</li>
-        <li>解锁 Playground 在线测试</li>
+        <li data-zh="公测期完全免费开放" data-en="Completely free during public beta">公测期完全免费开放</li>
+        <li data-zh="即刻获得 API Key，兼容 OpenAI SDK" data-en="Instant API Key, works with the OpenAI SDK">即刻获得 API Key，兼容 OpenAI SDK</li>
+        <li data-zh="每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放" data-en="1,500 calls per model every 5 hours (shared across all Keys) · All models open">每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放</li>
+        <li data-zh="解锁 Playground 在线测试" data-en="Unlock the online Playground">解锁 Playground 在线测试</li>
       </ul>
     </div>
 
-    <div class="text-small" style="color: rgba(255,255,255,0.4);">
+    <div class="text-small" style="color: rgba(255,255,255,0.4);" data-zh="我们遵循 SOC2 标准，你的数据始终受到保护。" data-en="We follow SOC2 standards — your data is always protected.">
       我们遵循 SOC2 标准，你的数据始终受到保护。
     </div>
   </div>
 
   <div class="auth-form-wrap">
     <div class="auth-form">
-      <h2>创建账号</h2>
-      <p class="sub">立即接入，5 分钟接入生产</p>
+      <div style="display:flex; justify-content:flex-end; margin-bottom: 12px;">
+        <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
+      </div>
+      <h2 data-zh="创建账号" data-en="Create account">创建账号</h2>
+      <p class="sub" data-zh="立即接入，5 分钟接入生产" data-en="Integrate in 5 minutes, ship to production">立即接入，5 分钟接入生产</p>
 
-      <form onsubmit="event.preventDefault(); alert('注册成功！欢迎来到 SenseNova 🎉'); location.href='console/dashboard.html';">
+      <form onsubmit="event.preventDefault(); alert((document.documentElement.dataset.lang==='en'?'Registration successful! Welcome to SenseNova 🎉':'注册成功！欢迎来到 SenseNova 🎉')); location.href='console/dashboard.html';">
         <div class="form-field">
-          <label>手机号</label>
+          <label data-zh="手机号" data-en="Phone number">手机号</label>
           <div class="phone-input">
             <select class="cc">
               <option>+86</option>
@@ -155,41 +158,41 @@
               <option>+60</option>
               <option>+1</option>
             </select>
-            <input type="tel" placeholder="请输入手机号" required/>
+            <input type="tel" placeholder="请输入手机号" data-zh-placeholder="请输入手机号" data-en-placeholder="Enter your phone number" required/>
           </div>
-          <div class="helper">我们将发送验证码短信到此手机号</div>
+          <div class="helper" data-zh="我们将发送验证码短信到此手机号" data-en="We'll send a verification code to this number">我们将发送验证码短信到此手机号</div>
         </div>
 
         <div class="form-field">
-          <label>短信验证码</label>
+          <label data-zh="短信验证码" data-en="SMS code">短信验证码</label>
           <div class="sms-group">
-            <input class="input" type="text" placeholder="6 位验证码" required/>
-            <button type="button" class="sms-btn">发送验证码</button>
+            <input class="input" type="text" placeholder="6 位验证码" data-zh-placeholder="6 位验证码" data-en-placeholder="6-digit code" required/>
+            <button type="button" class="sms-btn" data-zh="发送验证码" data-en="Send code">发送验证码</button>
           </div>
         </div>
 
         <div class="form-field">
-          <label>设置密码</label>
-          <input class="input" type="password" placeholder="至少 8 位，含字母与数字" required/>
+          <label data-zh="设置密码" data-en="Set password">设置密码</label>
+          <input class="input" type="password" placeholder="至少 8 位，含字母与数字" data-zh-placeholder="至少 8 位，含字母与数字" data-en-placeholder="At least 8 characters, letters + numbers" required/>
           <div class="strength"><div class="strength-fill"></div></div>
-          <div class="helper">密码强度：中等 · 建议添加特殊字符</div>
+          <div class="helper" data-zh="密码强度：中等 · 建议添加特殊字符" data-en="Password strength: medium · Add special characters for stronger">密码强度：中等 · 建议添加特殊字符</div>
         </div>
 
         <label class="flex" style="font-size:13px; color: var(--ink-700); margin: 4px 0 20px; align-items: flex-start;">
           <input type="checkbox" required style="margin-top: 2px;"/>
-          <span>
+          <span data-zh-html="我已阅读并同意 <a href=&quot;#&quot; style=&quot;color:var(--brand);&quot;>服务条款</a> 与 <a href=&quot;#&quot; style=&quot;color:var(--brand);&quot;>隐私政策</a>" data-en-html="I have read and agree to the <a href=&quot;#&quot; style=&quot;color:var(--brand);&quot;>Terms of Service</a> and <a href=&quot;#&quot; style=&quot;color:var(--brand);&quot;>Privacy Policy</a>">
             我已阅读并同意 <a href="#" style="color:var(--brand);">服务条款</a> 与 <a href="#" style="color:var(--brand);">隐私政策</a>
           </span>
         </label>
 
-        <button type="submit" class="btn btn-primary btn-block btn-lg">创建账号 · 免费开始</button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" data-zh="创建账号 · 免费开始" data-en="Create account · Start free">创建账号 · 免费开始</button>
 
-        <div class="verify-tip">
+        <div class="verify-tip" data-zh="🎁 注册成功即可使用 · 公测期完全免费开放" data-en="🎁 Ready to use right after signup · Completely free during public beta">
           🎁 注册成功即可使用 · 公测期完全免费开放
         </div>
       </form>
 
-      <p class="auth-foot">
+      <p class="auth-foot" data-zh-html="已有账号？<a href=&quot;login.html&quot;>立即登录</a>" data-en-html="Already have an account? <a href=&quot;login.html&quot;>Sign in</a>">
         已有账号？<a href="login.html">立即登录</a>
       </p>
     </div>

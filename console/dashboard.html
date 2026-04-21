@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>账户总览 · SenseNova</title>
+<title data-zh="账户总览 · SenseNova" data-en="Dashboard · SenseNova">账户总览 · SenseNova</title>
 <link rel="stylesheet" href="../assets/style.css"/>
 <style>
   .welcome {
@@ -402,24 +402,32 @@
 </head>
 <body>
 
-<!-- 顶部主导航 -->
+<!-- 顶部主导航（与 Token Plan 站点导航保持一致） -->
 <nav class="console-topbar">
-  <a class="brand" href="../index.html">
-    <span class="brand-mark"></span>
-    SenseNova
-  </a>
-  <div class="right">
-    <span class="badge badge-success">公测 Free</span>
-    <div class="user-menu">
-      <div class="user-avatar">W</div>
-      <div class="user-dropdown">
-        <div class="info">
-          <div class="name">xxxxx</div>
-          <div class="meta"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px; color:var(--ink-400);"><rect x="4" y="1" width="8" height="14" rx="2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg> +86 xxx ****xxxx</div>
-          <div class="meta">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"></span>
+      SenseNova
+    </a>
+    <div class="nav-links">
+      <a href="../index.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
+      <a href="../docs.html" data-zh="文档" data-en="Docs">文档</a>
+      <a href="dashboard.html" class="active" data-zh="控制台" data-en="Console">控制台</a>
+    </div>
+    <div class="nav-cta">
+      <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
+      <span class="badge badge-success" data-zh="公测 Free" data-en="Beta · Free">公测 Free</span>
+      <div class="user-menu">
+        <div class="user-avatar">W</div>
+        <div class="user-dropdown">
+          <div class="info">
+            <div class="name">xxxxx</div>
+            <div class="meta"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px; color:var(--ink-400);"><rect x="4" y="1" width="8" height="14" rx="2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg> +86 xxx ****xxxx</div>
+            <div class="meta" data-zh-html="当前套餐：<strong style=&quot;color:var(--brand);&quot;>Free · 公测</strong>" data-en-html="Current plan: <strong style=&quot;color:var(--brand);&quot;>Free · Beta</strong>">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
+          </div>
+          <button class="menu-item"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span> <span data-zh="修改密码" data-en="Change password">修改密码</span></button>
+          <a class="menu-item danger" href="../login.html"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2H3.5A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14H6"/><path d="M10 11l3-3-3-3"/><path d="M13 8H6"/></svg></span> <span data-zh="退出登录" data-en="Sign out">退出登录</span></a>
         </div>
-        <button class="menu-item"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span> 修改密码</button>
-        <a class="menu-item danger" href="../login.html"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2H3.5A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14H6"/><path d="M10 11l3-3-3-3"/><path d="M13 8H6"/></svg></span> 退出登录</a>
       </div>
     </div>
   </div>
@@ -428,10 +436,10 @@
 <div class="app-layout">
   <!-- 左侧次级导航 -->
   <aside class="sidebar">
-    <div class="side-section">工作台</div>
+    <div class="side-section" data-zh="工作台" data-en="Workspace">工作台</div>
     <a class="side-link active" href="dashboard.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="7" height="7" rx="1.5"/><rect x="10" y="1" width="7" height="7" rx="1.5"/><rect x="1" y="10" width="7" height="7" rx="1.5"/><rect x="10" y="10" width="7" height="7" rx="1.5"/></svg></span>
-      账户总览
+      <span data-zh="账户总览" data-en="Dashboard">账户总览</span>
     </a>
     <a class="side-link" href="api-keys.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="3.5"/><path d="M9.5 9.5L15 15"/><path d="M13 13v2h2"/></svg></span>
@@ -439,12 +447,12 @@
     </a>
     <a class="side-link" href="usage.html">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="10" width="3" height="6" rx=".5"/><rect x="7.5" y="5" width="3" height="11" rx=".5"/><rect x="13" y="2" width="3" height="14" rx=".5"/></svg></span>
-      用量统计
+      <span data-zh="用量统计" data-en="Usage">用量统计</span>
     </a>
-    <div class="side-section">开发</div>
+    <div class="side-section" data-zh="开发" data-en="Develop">开发</div>
     <a class="side-link" href="../docs.html" target="_blank">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h7l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M11 2v4h4"/></svg></span>
-      文档<span class="ext">↗</span>
+      <span data-zh="文档" data-en="Docs">文档</span><span class="ext">↗</span>
     </a>
     <a class="side-link" href="../index.html#token-plan" target="_blank">
       <span class="s-ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5A1.5 1.5 0 013.5 2H9l7 7-6 6-7-7V3.5z"/><circle cx="6" cy="6" r="1" fill="currentColor" stroke="none"/></svg></span>
@@ -456,44 +464,44 @@
   <main class="app-main">
 
     <div class="app-body">
-      <h2 class="page-title" style="font-size:22px; margin:0 0 20px;">账户总览</h2>
+      <h2 class="page-title" style="font-size:22px; margin:0 0 20px;" data-zh="账户总览" data-en="Dashboard">账户总览</h2>
 
       <!-- 告警横幅 -->
       <div class="alert-banner">
-        <span>🎁 公测期完全免费开放，每个模型 5 小时 1,500 次调用（同账户所有 Key 共享）</span>
-        <a href="../index.html#token-plan" class="text-small" style="color: var(--brand); font-weight:600;">了解详情 →</a>
+        <span data-zh="🎁 公测期完全免费开放，每个模型 5 小时 1,500 次调用（同账户所有 Key 共享）" data-en="🎁 Completely free during public beta — 1,500 calls per model every 5 hours (shared across all Keys in the account)">🎁 公测期完全免费开放，每个模型 5 小时 1,500 次调用（同账户所有 Key 共享）</span>
+        <a href="../index.html#token-plan" class="text-small" style="color: var(--brand); font-weight:600;" data-zh="了解详情 →" data-en="Learn more →">了解详情 →</a>
       </div>
 
       <!-- 欢迎卡 -->
       <div class="welcome">
-        <h2>欢迎回来，xxxxx 👋</h2>
-        <p>你的账户本月已调用 <strong>2.4M tokens</strong>，各模型 5 小时窗口独立计数 · 账户下所有 Key 共享配额</p>
+        <h2 data-zh="欢迎回来，xxxxx 👋" data-en="Welcome back, xxxxx 👋">欢迎回来，xxxxx 👋</h2>
+        <p data-zh-html="你的账户本月已调用 <strong>2.4M tokens</strong>，各模型 5 小时窗口独立计数 · 账户下所有 Key 共享配额" data-en-html="Your account has used <strong>2.4M tokens</strong> this month. Each model has its own 5-hour window · quota is shared across all Keys in the account">你的账户本月已调用 <strong>2.4M tokens</strong>，各模型 5 小时窗口独立计数 · 账户下所有 Key 共享配额</p>
         <div class="welcome-actions">
-          <button class="btn btn-primary btn-sm" onclick="document.getElementById('api-drawer').classList.add('open')">快速接入</button>
-          <a href="api-keys.html" class="btn btn-outline btn-sm">管理 API Keys</a>
-          <a href="../docs.html" class="btn btn-outline btn-sm">查看文档</a>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('api-drawer').classList.add('open')" data-zh="快速接入" data-en="Quick start">快速接入</button>
+          <a href="api-keys.html" class="btn btn-outline btn-sm" data-zh="管理 API Keys" data-en="Manage API Keys">管理 API Keys</a>
+          <a href="../docs.html" class="btn btn-outline btn-sm" data-zh="查看文档" data-en="Read the docs">查看文档</a>
         </div>
       </div>
 
       <!-- 统计卡片 -->
       <div class="stat-grid">
         <div class="stat-card">
-          <div class="label">本月 Token 用量</div>
+          <div class="label" data-zh="本月 Token 用量" data-en="Tokens this month">本月 Token 用量</div>
           <div class="value">2.41M</div>
-          <div class="trend trend-up">↗ +18.2% 较上月</div>
+          <div class="trend trend-up" data-zh="↗ +18.2% 较上月" data-en="↗ +18.2% vs last month">↗ +18.2% 较上月</div>
         </div>
         <div class="stat-card">
-          <div class="label">请求总数</div>
+          <div class="label" data-zh="请求总数" data-en="Total requests">请求总数</div>
           <div class="value">12,487</div>
           <div class="trend trend-up">↗ +24.5%</div>
         </div>
         <div class="stat-card">
-          <div class="label">平均延迟 (P50)</div>
+          <div class="label" data-zh="平均延迟 (P50)" data-en="Average latency (P50)">平均延迟 (P50)</div>
           <div class="value">186 <span style="font-size:14px; color: var(--ink-500);">ms</span></div>
-          <div class="trend trend-down">↘ -12ms 优化中</div>
+          <div class="trend trend-down" data-zh="↘ -12ms 优化中" data-en="↘ -12ms improving">↘ -12ms 优化中</div>
         </div>
         <div class="stat-card">
-          <div class="label">错误率</div>
+          <div class="label" data-zh="错误率" data-en="Error rate">错误率</div>
           <div class="value">0.24<span style="font-size:14px; color: var(--ink-500);">%</span></div>
           <div class="trend trend-down">↘ -0.1%</div>
         </div>
@@ -503,7 +511,7 @@
       <div class="dash-grid mt-3">
         <div class="chart-card">
           <div class="chart-head">
-            <h3>Token 用量趋势</h3>
+            <h3 data-zh="Token 用量趋势" data-en="Token usage trend">Token 用量趋势</h3>
             <div class="range-group">
               <button>24H</button>
               <button class="active">7D</button>
@@ -516,35 +524,35 @@
 
         <div>
           <div class="balance-card">
-            <div class="label">当前窗口调用余量 · 按模型</div>
+            <div class="label" data-zh="当前窗口调用余量 · 按模型" data-en="Remaining in current window · by model">当前窗口调用余量 · 按模型</div>
             <div class="quota-rows">
               <div class="quota-row">
                 <div class="quota-row-head">
                   <span class="quota-model">SenseNova-Chat-Pro</span>
-                  <span class="quota-nums"><strong>82.7%</strong> <span class="quota-total">剩余</span></span>
+                  <span class="quota-nums"><strong>82.7%</strong> <span class="quota-total" data-zh="剩余" data-en="remaining">剩余</span></span>
                 </div>
                 <div class="quota-bar"><div class="quota-bar-fill" style="width: 82.7%"></div></div>
-                <div class="quota-meta">2h 15m 后重置</div>
+                <div class="quota-meta" data-zh="2h 15m 后重置" data-en="Resets in 2h 15m">2h 15m 后重置</div>
               </div>
               <div class="quota-row">
                 <div class="quota-row-head">
                   <span class="quota-model">SenseNova-Code-Pro</span>
-                  <span class="quota-nums"><strong>63.3%</strong> <span class="quota-total">剩余</span></span>
+                  <span class="quota-nums"><strong>63.3%</strong> <span class="quota-total" data-zh="剩余" data-en="remaining">剩余</span></span>
                 </div>
                 <div class="quota-bar"><div class="quota-bar-fill" style="width: 63.3%"></div></div>
-                <div class="quota-meta">2h 15m 后重置</div>
+                <div class="quota-meta" data-zh="2h 15m 后重置" data-en="Resets in 2h 15m">2h 15m 后重置</div>
               </div>
             </div>
-            <div class="meta" style="margin-top:14px;">每模型 1,500 次 / 5 小时 · 同账户所有 Key 共享</div>
+            <div class="meta" style="margin-top:14px;" data-zh="每模型 1,500 次 / 5 小时 · 同账户所有 Key 共享" data-en="1,500 calls per model / 5 hours · shared across all Keys">每模型 1,500 次 / 5 小时 · 同账户所有 Key 共享</div>
             <div class="actions">
-              <a href="api-keys.html" class="btn btn-sm">新增 API Key</a>
-              <a href="usage.html" class="btn btn-ghost btn-sm">查看用量</a>
+              <a href="api-keys.html" class="btn btn-sm" data-zh="新增 API Key" data-en="New API Key">新增 API Key</a>
+              <a href="usage.html" class="btn btn-ghost btn-sm" data-zh="查看用量" data-en="View usage">查看用量</a>
             </div>
           </div>
 
           <div class="chart-card mt-2">
             <div class="chart-head">
-              <h3 style="font-size:14px;">模型使用分布</h3>
+              <h3 style="font-size:14px;" data-zh="模型使用分布" data-en="Model usage breakdown">模型使用分布</h3>
             </div>
             <div id="chart-models"></div>
           </div>
@@ -559,20 +567,20 @@
 <div class="drawer-overlay" id="api-drawer" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="drawer">
     <div class="drawer-head">
-      <h3>API 接入</h3>
+      <h3 data-zh="API 接入" data-en="API integration">API 接入</h3>
       <button class="drawer-close" onclick="document.getElementById('api-drawer').classList.remove('open')">×</button>
     </div>
 
     <!-- Step 1 -->
     <span class="step-label">Step 1</span>
     <div class="step-title">
-      获取 API Key
-      <a class="link" href="api-keys.html">管理 API Key →</a>
+      <span data-zh="获取 API Key" data-en="Get an API Key">获取 API Key</span>
+      <a class="link" href="api-keys.html" data-zh="管理 API Key →" data-en="Manage API Keys →">管理 API Key →</a>
     </div>
-    <p class="step-desc">API Key 是访问 SenseNova 大模型服务的凭证，长期有效，请妥善保管。</p>
+    <p class="step-desc" data-zh="API Key 是访问 SenseNova 大模型服务的凭证，长期有效，请妥善保管。" data-en="An API Key is the credential for accessing the SenseNova LLM service. It's long-lived — keep it safe.">API Key 是访问 SenseNova 大模型服务的凭证，长期有效，请妥善保管。</p>
 
     <table class="drawer-key-table" id="drawer-keys">
-      <thead><tr><th>名称</th><th>API Key</th></tr></thead>
+      <thead><tr><th data-zh="名称" data-en="Name">名称</th><th>API Key</th></tr></thead>
       <tbody>
         <tr><td>prod-key</td><td><code>sn-••••••3f8a</code> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-prod-3f8a')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td></tr>
         <tr><td>dev-key</td><td><code>sn-••••••91d2</code> <button class="cp-btn" onclick="copyKey(this,'sn-xxxx-dev-91d2')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg></button></td></tr>
@@ -583,25 +591,25 @@
     <!-- 内联创建 -->
     <div id="inline-create" class="hidden" style="margin-top:12px;">
       <div style="display:flex; gap:8px;">
-        <input class="input" id="new-key-name" placeholder="请输入 API Key 名称" style="flex:1; font-size:13px; padding:8px 12px;"/>
-        <button class="btn btn-primary btn-sm" onclick="createKeyInline()">创建</button>
-        <button class="btn btn-outline btn-sm" onclick="document.getElementById('inline-create').classList.add('hidden')">取消</button>
+        <input class="input" id="new-key-name" placeholder="请输入 API Key 名称" data-zh-placeholder="请输入 API Key 名称" data-en-placeholder="Enter API Key name" style="flex:1; font-size:13px; padding:8px 12px;"/>
+        <button class="btn btn-primary btn-sm" onclick="createKeyInline()" data-zh="创建" data-en="Create">创建</button>
+        <button class="btn btn-outline btn-sm" onclick="document.getElementById('inline-create').classList.add('hidden')" data-zh="取消" data-en="Cancel">取消</button>
       </div>
     </div>
-    <button class="btn btn-outline btn-sm mt-2" id="show-create-btn" onclick="document.getElementById('inline-create').classList.remove('hidden'); document.getElementById('new-key-name').focus(); this.classList.add('hidden');">+ 创建新的 API Key</button>
+    <button class="btn btn-outline btn-sm mt-2" id="show-create-btn" onclick="document.getElementById('inline-create').classList.remove('hidden'); document.getElementById('new-key-name').focus(); this.classList.add('hidden');" data-zh="+ 创建新的 API Key" data-en="+ Create new API Key">+ 创建新的 API Key</button>
 
     <div class="step-divider"></div>
 
     <!-- Step 2 -->
     <span class="step-label">Step 2</span>
     <div class="step-title">
-      快速接入测试
-      <a class="link" href="../docs.html" target="_blank">开发文档 →</a>
+      <span data-zh="快速接入测试" data-en="Quick integration test">快速接入测试</span>
+      <a class="link" href="../docs.html" target="_blank" data-zh="开发文档 →" data-en="Developer docs →">开发文档 →</a>
     </div>
 
     <div class="code-tabs">
-      <span class="ct active" onclick="switchCodeTab(this,'curl')">cURL 代码示例</span>
-      <span class="ct" onclick="switchCodeTab(this,'python')">Python SDK 示例</span>
+      <span class="ct active" onclick="switchCodeTab(this,'curl')" data-zh="cURL 代码示例" data-en="cURL example">cURL 代码示例</span>
+      <span class="ct" onclick="switchCodeTab(this,'python')" data-zh="Python SDK 示例" data-en="Python SDK example">Python SDK 示例</span>
     </div>
 
     <div class="onboard-code" id="code-curl">
