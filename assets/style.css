@@ -88,6 +88,25 @@ html, body {
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* 通用 icon（Lucide 风格内联 SVG）
+   - 默认 16×16，viewBox 24×24，1.5px stroke
+   - 跟随 currentColor，与文本 baseline 对齐 */
+.ico {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -3px;
+}
+.ico-sm { width: 14px; height: 14px; }
+.ico-md { width: 18px; height: 18px; }
+.ico-lg { width: 20px; height: 20px; }
+.ico-xl { width: 24px; height: 24px; }
 button:focus-visible, a:focus-visible, input:focus-visible,
 select:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--brand);
@@ -679,6 +698,9 @@ h4 {
   grid-template-columns: 200px 1fr;
   min-height: calc(100vh - var(--nav-h));
   background: var(--page-bg);
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* 左侧次级导航 */
@@ -788,6 +810,12 @@ h4 {
   border: 1px solid var(--ink-200);
   border-radius: var(--radius-lg);
   padding: 20px;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.stat-card:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
 }
 
 .stat-card .label {

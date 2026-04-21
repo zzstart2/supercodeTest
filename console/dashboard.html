@@ -12,6 +12,7 @@
     border-radius: var(--radius-lg);
     padding: 28px 32px;
     margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
   }
   .welcome h2 {
     color: var(--ink-900);
@@ -43,6 +44,7 @@
     border: 1px solid var(--ink-200);
     border-radius: var(--radius-lg);
     padding: 24px;
+    box-shadow: var(--shadow-xs);
   }
   .chart-head {
     display: flex;
@@ -79,6 +81,7 @@
     border: 1px solid var(--ink-200);
     border-radius: var(--radius-lg);
     padding: 24px;
+    box-shadow: var(--shadow-xs);
   }
   .balance-card .label {
     font-size: 12px;
@@ -397,7 +400,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
   }
+  .alert-banner .banner-msg { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+  .alert-banner .ico { color: var(--brand); flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -469,8 +475,11 @@
 
       <!-- 告警横幅 -->
       <div class="alert-banner">
-        <span data-zh="🎁 公测期完全免费开放，每个模型 5 小时 1,500 次调用（同账户所有 Key 共享）" data-en="🎁 Completely free during public beta — 1,500 calls per model every 5 hours (shared across all Keys in the account)">🎁 公测期完全免费开放，每个模型 5 小时 1,500 次调用（同账户所有 Key 共享）</span>
-        <a href="../index.html#token-plan" class="text-small" style="color: var(--brand); font-weight:600;" data-zh="了解详情 →" data-en="Learn more →">了解详情 →</a>
+        <div class="banner-msg">
+          <svg class="ico" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+          <span data-zh="公测期完全免费开放，每个模型 5 小时 1,500 次调用（同账户所有 Key 共享）" data-en="Completely free during public beta — 1,500 calls per model every 5 hours (shared across all Keys in the account)">公测期完全免费开放，每个模型 5 小时 1,500 次调用（同账户所有 Key 共享）</span>
+        </div>
+        <a href="../index.html#token-plan" class="text-small" style="color: var(--brand); font-weight:600; white-space: nowrap;" data-zh="了解详情 →" data-en="Learn more →">了解详情 →</a>
       </div>
 
       <!-- 欢迎卡 -->

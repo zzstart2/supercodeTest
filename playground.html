@@ -68,8 +68,12 @@
     height: 18px;
     display: grid;
     place-items: center;
-    font-size: 14px;
+    color: var(--ink-400);
+    flex-shrink: 0;
   }
+  .cat-item:hover .cat-ico { color: var(--ink-700); }
+  .cat-item.active .cat-ico { color: var(--brand); }
+  .cat-ico .ico { width: 16px; height: 16px; }
   .cat-tag {
     font-size: 10px;
     padding: 1px 6px;
@@ -435,32 +439,32 @@
   <aside class="pg-left">
     <h4 data-zh="模型体验" data-en="Models">模型体验</h4>
     <div class="cat-item active">
-      <span class="cat-left"><span class="cat-ico">📝</span><span data-zh="文本模型" data-en="Text models">文本模型</span></span>
+      <span class="cat-left"><span class="cat-ico"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span data-zh="文本模型" data-en="Text models">文本模型</span></span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">👁</span><span data-zh="视觉模型" data-en="Vision models">视觉模型</span></span>
+      <span class="cat-left"><span class="cat-ico"><svg class="ico" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span data-zh="视觉模型" data-en="Vision models">视觉模型</span></span>
       <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🎨</span><span data-zh="图像模型" data-en="Image models">图像模型</span></span>
+      <span class="cat-left"><span class="cat-ico"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span><span data-zh="图像模型" data-en="Image models">图像模型</span></span>
       <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🎬</span><span data-zh="视频模型" data-en="Video models">视频模型</span></span>
+      <span class="cat-left"><span class="cat-ico"><svg class="ico" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span><span data-zh="视频模型" data-en="Video models">视频模型</span></span>
       <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🎙</span><span data-zh="语音模型" data-en="Voice models">语音模型</span></span>
+      <span class="cat-left"><span class="cat-ico"><svg class="ico" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></span><span data-zh="语音模型" data-en="Voice models">语音模型</span></span>
       <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
 
     <h4 data-zh="应用体验" data-en="Applications">应用体验</h4>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🤖</span><span data-zh="智能体" data-en="Agents">智能体</span></span>
+      <span class="cat-left"><span class="cat-ico"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8.01" y2="16"/><line x1="16" y1="16" x2="16.01" y2="16"/></svg></span><span data-zh="智能体" data-en="Agents">智能体</span></span>
       <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
     <div class="cat-item disabled">
-      <span class="cat-left"><span class="cat-ico">🧩</span><span data-zh="MCP 工具" data-en="MCP tools">MCP 工具</span></span>
+      <span class="cat-left"><span class="cat-ico"><svg class="ico" viewBox="0 0 24 24"><path d="M14 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/><path d="M8 10v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-2"/><circle cx="12.5" cy="12.5" r="1.5"/></svg></span><span data-zh="MCP 工具" data-en="MCP tools">MCP 工具</span></span>
       <span class="cat-tag" data-zh="即将上线" data-en="Coming soon">即将上线</span>
     </div>
   </aside>
@@ -471,13 +475,13 @@
       <h3 data-zh="文本模型" data-en="Text models">文本模型</h3>
       <div class="flex" style="gap:8px;">
         <span class="badge badge-success" data-zh="● 在线" data-en="● Online">● 在线</span>
-        <a href="index.html#token-plan" class="btn btn-primary btn-sm">🔥 Token Plan</a>
+        <a href="index.html#token-plan" class="btn btn-primary btn-sm"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Token Plan</a>
         <button class="btn btn-outline btn-sm" data-zh="PK 添加模型比较" data-en="PK Compare models">PK 添加模型比较</button>
       </div>
     </div>
 
     <div class="billing-tip">
-      <span>⚠️</span>
+      <svg class="ico" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       <span data-zh-html="模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href=&quot;index.html#token-plan&quot; style=&quot;color:var(--brand); font-weight:600;&quot;>产品定价</a>。" data-en-html="Playground usage is metered by actual consumption, but currently free during public beta. See <a href=&quot;index.html#token-plan&quot; style=&quot;color:var(--brand); font-weight:600;&quot;>pricing</a> for details.">模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href="index.html#token-plan" style="color:var(--brand); font-weight:600;">产品定价</a>。</span>
       <span class="close">×</span>
     </div>
@@ -507,12 +511,13 @@
         <!-- 工具栏 -->
         <div class="composer-toolbar">
           <div class="flex" style="gap:2px;">
-            <button class="tool-btn" title="附件" data-zh-title="附件" data-en-title="Attachments">📎</button>
-            <button class="tool-btn disabled" title="工具调用（暂不可用）" data-zh-title="工具调用（暂不可用）" data-en-title="Tool calling (unavailable)" data-zh="🔧 工具" data-en="🔧 Tools">
-              🔧 工具
+            <button class="tool-btn" title="附件" data-zh-title="附件" data-en-title="Attachments" aria-label="Attachments"><svg class="ico" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg></button>
+            <button class="tool-btn disabled" title="工具调用（暂不可用）" data-zh-title="工具调用（暂不可用）" data-en-title="Tool calling (unavailable)">
+              <svg class="ico" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              <span data-zh="工具" data-en="Tools">工具</span>
             </button>
           </div>
-          <button class="send-btn" title="发送 ⌘+Enter" data-zh-title="发送 ⌘+Enter" data-en-title="Send ⌘+Enter">
+          <button class="send-btn" title="发送 ⌘+Enter" data-zh-title="发送 ⌘+Enter" data-en-title="Send ⌘+Enter" aria-label="Send">
             <svg viewBox="0 0 16 16"><path d="M14.5 1.5L7 9M14.5 1.5L10 14l-3-5-5-3z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -520,12 +525,12 @@
 
       <!-- 快捷场景 -->
       <div class="quick-chips">
-        <button class="q-chip"><span>💻</span><span data-zh="前端开发" data-en="Frontend dev">前端开发</span></button>
-        <button class="q-chip"><span>🔍</span><span data-zh="代码审阅" data-en="Code review">代码审阅</span></button>
-        <button class="q-chip"><span>🧪</span><span data-zh="单元测试生成" data-en="Generate unit tests">单元测试生成</span></button>
-        <button class="q-chip"><span>📦</span><span data-zh="算法实现" data-en="Algorithm implementation">算法实现</span></button>
-        <button class="q-chip"><span>🐛</span><span data-zh="Bug 排查" data-en="Bug triage">Bug 排查</span></button>
-        <button class="q-chip"><span>📝</span><span data-zh="文档生成" data-en="Generate docs">文档生成</span></button>
+        <button class="q-chip"><svg class="ico" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span data-zh="前端开发" data-en="Frontend dev">前端开发</span></button>
+        <button class="q-chip"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span data-zh="代码审阅" data-en="Code review">代码审阅</span></button>
+        <button class="q-chip"><svg class="ico" viewBox="0 0 24 24"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg><span data-zh="单元测试生成" data-en="Generate unit tests">单元测试生成</span></button>
+        <button class="q-chip"><svg class="ico" viewBox="0 0 24 24"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg><span data-zh="算法实现" data-en="Algorithm implementation">算法实现</span></button>
+        <button class="q-chip"><svg class="ico" viewBox="0 0 24 24"><rect x="8" y="6" width="8" height="14" rx="4"/><path d="M19 7l-3 2M5 7l3 2M19 19l-3-2M5 19l3-2M20 13h-4M4 13h4M15 6l1-3M9 6L8 3"/></svg><span data-zh="Bug 排查" data-en="Bug triage">Bug 排查</span></button>
+        <button class="q-chip"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span data-zh="文档生成" data-en="Generate docs">文档生成</span></button>
       </div>
 
       <div class="footer-tip" data-zh="以上内容均由 AI 模型生成，结果仅供参考，请勿作为决策唯一依据。" data-en="All content is AI-generated and for reference only — do not rely on it as the sole basis for decisions.">

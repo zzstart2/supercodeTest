@@ -31,9 +31,9 @@
   .bonus-list li {
     list-style: none; padding: 10px 0;
     color: rgba(255, 255, 255, 0.85); font-size: 14px;
-    display: flex; gap: 12px;
+    display: flex; gap: 12px; align-items: flex-start;
   }
-  .bonus-list li::before { content: '✓'; color: var(--brand); font-weight: 700; }
+  .bonus-list li .ico { color: var(--brand); flex-shrink: 0; margin-top: 3px; }
 
   .auth-form-wrap {
     background: white; padding: 48px 64px;
@@ -58,7 +58,11 @@
     border-radius: var(--radius);
     font-size: 13px;
     margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
+  .verify-tip .ico { color: #059669; flex-shrink: 0; }
 
   .phone-input {
     display: flex;
@@ -127,10 +131,10 @@
       <p data-zh="在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。" data-en="Create a SenseNova account in 30 seconds and start using our production-grade LLM API right away.">在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。</p>
 
       <ul class="bonus-list">
-        <li data-zh="公测期完全免费开放" data-en="Completely free during public beta">公测期完全免费开放</li>
-        <li data-zh="即刻获得 API Key，兼容 OpenAI SDK" data-en="Instant API Key, works with the OpenAI SDK">即刻获得 API Key，兼容 OpenAI SDK</li>
-        <li data-zh="每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放" data-en="1,500 calls per model every 5 hours (shared across all Keys) · All models open">每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放</li>
-        <li data-zh="解锁 Playground 在线测试" data-en="Unlock the online Playground">解锁 Playground 在线测试</li>
+        <li><svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-zh="公测期完全免费开放" data-en="Completely free during public beta">公测期完全免费开放</span></li>
+        <li><svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-zh="即刻获得 API Key，兼容 OpenAI SDK" data-en="Instant API Key, works with the OpenAI SDK">即刻获得 API Key，兼容 OpenAI SDK</span></li>
+        <li><svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-zh="每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放" data-en="1,500 calls per model every 5 hours (shared across all Keys) · All models open">每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放</span></li>
+        <li><svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-zh="解锁 Playground 在线测试" data-en="Unlock the online Playground">解锁 Playground 在线测试</span></li>
       </ul>
     </div>
 
@@ -187,8 +191,9 @@
 
         <button type="submit" class="btn btn-primary btn-block btn-lg" data-zh="创建账号 · 免费开始" data-en="Create account · Start free">创建账号 · 免费开始</button>
 
-        <div class="verify-tip" data-zh="🎁 注册成功即可使用 · 公测期完全免费开放" data-en="🎁 Ready to use right after signup · Completely free during public beta">
-          🎁 注册成功即可使用 · 公测期完全免费开放
+        <div class="verify-tip">
+          <svg class="ico" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+          <span data-zh="注册成功即可使用 · 公测期完全免费开放" data-en="Ready to use right after signup · Completely free during public beta">注册成功即可使用 · 公测期完全免费开放</span>
         </div>
       </form>
 
