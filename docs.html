@@ -86,7 +86,7 @@
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 13px;
-    color: hsl(211 86% 40%);
+    color: hsl(245 75% 52%);
   }
   .docs-content .callout {
     background: var(--brand-soft);
@@ -97,8 +97,8 @@
     font-size: 14px;
   }
   .docs-content .callout.info {
-    background: #EFF6FF;
-    border-color: #3B82F6;
+    background: var(--indigo-soft);
+    border-color: var(--indigo);
   }
   .docs-content .callout.warn {
     background: #FEF3C7;
@@ -166,8 +166,8 @@
     letter-spacing: 0.04em;
     margin-right: 8px;
   }
-  .method.post { background: #DCFCE7; color: #065F46; }
-  .method.get { background: #DBEAFE; color: #1D4ED8; }
+  .method.post { background: #EDE9FE; color: #6D28D9; }
+  .method.get { background: #E0E7FF; color: #4338CA; }
 
   .endpoint {
     background: var(--ink-100);
@@ -254,8 +254,81 @@
     margin-left: 4px;
     vertical-align: middle;
   }
+
+  /* 简化版模型列表（模型总览） */
+  .model-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 760px) { .model-list { grid-template-columns: 1fr; } }
+  .model-row {
+    border: 1px solid var(--ink-200);
+    border-radius: 14px;
+    padding: 18px 20px;
+    background: #fff;
+    transition: border-color var(--dur) var(--ease);
+  }
+  .model-row:hover { border-color: var(--brand-200); }
+  .model-row-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .model-row-head h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink-900);
+  }
+  .model-row-sub {
+    color: var(--ink-500);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 14px;
+  }
+  .model-row-id {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--ink-100);
+    border-radius: 8px;
+    padding: 5px 6px 5px 10px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+  }
+  .model-row-id .mid-label {
+    color: var(--ink-400);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+  }
+  .model-row-id code {
+    background: transparent;
+    padding: 0;
+    color: var(--ink-900);
+    font-weight: 600;
+  }
+  .copy-btn {
+    border: 0;
+    background: transparent;
+    color: var(--brand);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .copy-btn:hover { background: var(--brand-soft); }
+  .copy-btn.copied { color: var(--success); }
   .pill.u1 { background: #EDE9FE; color: #6D28D9; }
-  .pill.flash { background: #DBEAFE; color: #1D4ED8; }
+  .pill.flash { background: #E0E7FF; color: #4338CA; }
   .pill.beta { background: #FEF3C7; color: #92400E; }
   .pill.deprecated { background: #FEE2E2; color: #991B1B; }
 
@@ -274,12 +347,9 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a class="brand" href="index.html">
-      <span class="brand-mark"></span>
-      SenseNova
-    </a>
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="SenseNova 日日新" class="brand-logo"/></a>
     <div class="nav-links">
-      <a href="index.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
+      <a href="tokenplan.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
       <a href="docs.html" class="active" data-zh="文档" data-en="Docs">文档</a>
       <a href="console/dashboard.html" data-zh="控制台" data-en="Console">控制台</a>
     </div>
@@ -304,8 +374,8 @@
     <h6 data-zh="模型" data-en="Models">模型</h6>
     <ul>
       <li><a href="#models-overview" data-zh="模型总览" data-en="Model overview">模型总览</a></li>
-      <li><a href="#model-u1">SenseNova U1</a></li>
-      <li><a href="#model-flash">SenseNova 6.7 Flash</a></li>
+      <li><a href="#model-u1">SenseNova U1 Fast</a></li>
+      <li><a href="#model-flash">SenseNova 6.7 Flash-Lite</a></li>
     </ul>
     <h6 data-zh="API 参考" data-en="API Reference">API 参考</h6>
     <ul>
@@ -368,7 +438,7 @@ client = <span class="fn">OpenAI</span>(
 )
 
 resp = client.chat.completions.<span class="fn">create</span>(
-    model=<span class="str">"SenseNova-U1"</span>,
+    model=<span class="str">"sensenova-u1-fast"</span>,
     messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"Hello!"</span>}],
 )
 
@@ -386,7 +456,7 @@ resp = client.chat.completions.<span class="fn">create</span>(
 });
 
 <span class="kw">const</span> resp = <span class="kw">await</span> client.chat.completions.<span class="fn">create</span>({
-  model: <span class="str">"SenseNova-U1"</span>,
+  model: <span class="str">"sensenova-u1-fast"</span>,
   messages: [{ role: <span class="str">"user"</span>, content: <span class="str">"Hello!"</span> }],
 });
 
@@ -400,7 +470,7 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
   -H <span class="str">"Authorization: Bearer sn-xxxxxxxxxxxxxxxxxxxx"</span> \
   -H <span class="str">"Content-Type: application/json"</span> \
   -d <span class="str">'{
-    "model": "SenseNova-U1",
+    "model": "sensenova-u1-fast",
     "messages": [{"role": "user", "content": "Hello!"}]
   }'</span></pre>
         </div>
@@ -425,39 +495,41 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
         SenseNova 当前开放两款核心模型，均采用原生多模态架构，兼顾效果与成本，可稳定支撑数据分析、PPT 生成、深度调研报告、信息图生成等复杂长链路办公任务。
       </p>
 
-      <div class="model-grid">
-        <div class="model-card">
-          <h4>SenseNova U1 <span class="pill u1" data-zh="旗舰" data-en="Flagship">旗舰</span></h4>
-          <p class="tagline" data-zh="多模态理解与生成一体的旗舰模型" data-en="Unified multimodal understanding & generation flagship">多模态理解与生成一体的旗舰模型</p>
-          <ul>
-            <li data-zh="理解生成一体，面向更高上限的多模态能力" data-en="Unified understanding & generation with a higher multimodal ceiling">理解生成一体，面向更高上限的多模态能力</li>
-            <li data-zh="多模态理解能力强，适合复杂内容解析" data-en="Strong multimodal comprehension for complex content parsing">多模态理解能力强，适合复杂内容解析</li>
-            <li data-zh="图像生成能力突出，支持更丰富的内容表达" data-en="Excellent image generation for richer content expression">图像生成能力突出，支持更丰富的内容表达</li>
-            <li data-zh="更适合高质量内容生产与复杂任务场景" data-en="Best suited for high-quality content production and complex tasks">更适合高质量内容生产与复杂任务场景</li>
-          </ul>
-          <span class="mid">model ID: <code>SenseNova-U1</code></span>
-        </div>
+      <ul class="model-list">
+        <li class="model-row">
+          <div class="model-row-head">
+            <h4>SenseNova U1 Fast</h4>
+            <span class="pill u1" data-zh="旗舰" data-en="Flagship">旗舰</span>
+          </div>
+          <p class="model-row-sub" data-zh="多模态理解与生成一体的旗舰模型，原生支持图文输入与图像输出。" data-en="Flagship multimodal model with unified understanding & generation; natively supports image-and-text input and image output.">多模态理解与生成一体的旗舰模型，原生支持图文输入与图像输出。</p>
+          <div class="model-row-id">
+            <span class="mid-label">model</span>
+            <code>sensenova-u1-fast</code>
+            <button type="button" class="copy-btn" onclick="copyModelId(this, 'sensenova-u1-fast')" data-zh="复制" data-en="Copy">复制</button>
+          </div>
+        </li>
 
-        <div class="model-card">
-          <h4>SenseNova 6.7 Flash <span class="pill flash" data-zh="高效" data-en="Efficient">高效</span></h4>
-          <p class="tagline" data-zh="面向真实工作流的轻量多模态智能体模型" data-en="Lightweight multimodal agent for real-world workflows">面向真实工作流的轻量多模态智能体模型</p>
-          <ul>
-            <li data-zh="轻量高效，兼顾效果、成本与落地性" data-en="Lightweight and efficient — balancing quality, cost and practicality">轻量高效，兼顾效果、成本与落地性</li>
-            <li data-zh="办公场景增强，稳定支撑复杂长链路任务" data-en="Enhanced for office scenarios, reliable on long-chain tasks">办公场景增强，稳定支撑复杂长链路任务</li>
-            <li data-zh="原生多模态架构，适合真实办公内容处理" data-en="Native multimodal architecture, tuned for real-world office content">原生多模态架构，适合真实办公内容处理</li>
-            <li data-zh="Token 效率更优，复杂任务成本更可控" data-en="Better token efficiency — lower cost on complex tasks">Token 效率更优，复杂任务成本更可控</li>
-          </ul>
-          <span class="mid">model ID: <code>SenseNova-6.7-Flash</code></span>
-        </div>
-      </div>
+        <li class="model-row">
+          <div class="model-row-head">
+            <h4>SenseNova 6.7 Flash-Lite</h4>
+            <span class="pill flash" data-zh="高效" data-en="Efficient">高效</span>
+          </div>
+          <p class="model-row-sub" data-zh="面向真实办公工作流的轻量多模态智能体模型，Token 效率更优，适合高频调用。" data-en="Lightweight multimodal agent model tuned for real-world office workflows, with better token efficiency for high-frequency calls.">面向真实办公工作流的轻量多模态智能体模型，Token 效率更优，适合高频调用。</p>
+          <div class="model-row-id">
+            <span class="mid-label">model</span>
+            <code>sensenova-6.7-flash-lite</code>
+            <button type="button" class="copy-btn" onclick="copyModelId(this, 'sensenova-6.7-flash-lite')" data-zh="复制" data-en="Copy">复制</button>
+          </div>
+        </li>
+      </ul>
 
       <h3 data-zh="能力对比" data-en="Capability matrix">能力对比</h3>
       <table>
         <thead>
           <tr>
             <th data-zh="能力" data-en="Capability">能力</th>
-            <th>SenseNova U1</th>
-            <th>SenseNova 6.7 Flash</th>
+            <th>SenseNova U1 Fast</th>
+            <th>SenseNova 6.7 Flash-Lite</th>
           </tr>
         </thead>
         <tbody>
@@ -492,10 +564,10 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
     </section>
 
     <section id="model-u1">
-      <h3>SenseNova U1</h3>
-      <p data-zh="SenseNova U1 是理解与生成一体的旗舰多模态模型，支持完整的图文输入与图文输出。"
-         data-en="SenseNova U1 is the flagship multimodal model with unified understanding & generation, supporting full image-and-text input and image-and-text output.">
-        SenseNova U1 是理解与生成一体的旗舰多模态模型，支持完整的图文输入与图文输出。
+      <h3>SenseNova U1 Fast</h3>
+      <p data-zh="SenseNova U1 Fast 是理解与生成一体的旗舰多模态模型，支持完整的图文输入与图文输出。"
+         data-en="SenseNova U1 Fast is the flagship multimodal model with unified understanding & generation, supporting full image-and-text input and image-and-text output.">
+        SenseNova U1 Fast 是理解与生成一体的旗舰多模态模型，支持完整的图文输入与图文输出。
       </p>
       <h4 data-zh="典型场景" data-en="Typical use cases">典型场景</h4>
       <ul>
@@ -512,10 +584,10 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
     </section>
 
     <section id="model-flash">
-      <h3>SenseNova 6.7 Flash</h3>
-      <p data-zh="SenseNova 6.7 Flash 是面向真实办公工作流的轻量多模态智能体模型，Token 效率更优，适合对延迟与成本敏感的高频调用场景。"
-         data-en="SenseNova 6.7 Flash is a lightweight multimodal agent model tuned for real-world office workflows, with better token efficiency and a good fit for latency- and cost-sensitive high-frequency scenarios.">
-        SenseNova 6.7 Flash 是面向真实办公工作流的轻量多模态智能体模型，Token 效率更优，适合对延迟与成本敏感的高频调用场景。
+      <h3>SenseNova 6.7 Flash-Lite</h3>
+      <p data-zh="SenseNova 6.7 Flash-Lite 是面向真实办公工作流的轻量多模态智能体模型，Token 效率更优，适合对延迟与成本敏感的高频调用场景。"
+         data-en="SenseNova 6.7 Flash-Lite is a lightweight multimodal agent model tuned for real-world office workflows, with better token efficiency and a good fit for latency- and cost-sensitive high-frequency scenarios.">
+        SenseNova 6.7 Flash-Lite 是面向真实办公工作流的轻量多模态智能体模型，Token 效率更优，适合对延迟与成本敏感的高频调用场景。
       </p>
       <h4 data-zh="典型场景" data-en="Typical use cases">典型场景</h4>
       <ul>
@@ -525,9 +597,9 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
         <li data-zh="对吞吐与成本敏感的线上业务" data-en="Throughput- and cost-sensitive production workloads">对吞吐与成本敏感的线上业务</li>
       </ul>
       <div class="callout"
-           data-zh-html="<strong>输出形态</strong> · 该模型主要返回文本内容，不直接生成图片；如需图像生成能力，请使用 <a href=&quot;#model-u1&quot;>SenseNova U1</a>。"
-           data-en-html="<strong>Output modality</strong> · This model primarily returns text and does not directly generate images. For image generation, use <a href=&quot;#model-u1&quot;>SenseNova U1</a>.">
-        <strong>输出形态</strong> · 该模型主要返回文本内容，不直接生成图片；如需图像生成能力，请使用 <a href="#model-u1">SenseNova U1</a>。
+           data-zh-html="<strong>输出形态</strong> · 该模型主要返回文本内容，不直接生成图片；如需图像生成能力，请使用 <a href=&quot;#model-u1&quot;>SenseNova U1 Fast</a>。"
+           data-en-html="<strong>Output modality</strong> · This model primarily returns text and does not directly generate images. For image generation, use <a href=&quot;#model-u1&quot;>SenseNova U1 Fast</a>.">
+        <strong>输出形态</strong> · 该模型主要返回文本内容，不直接生成图片；如需图像生成能力，请使用 <a href="#model-u1">SenseNova U1 Fast</a>。
       </div>
     </section>
 
@@ -547,7 +619,7 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
       <div class="code-block">
         <button class="code-copy" data-zh="复制" data-en="Copy">复制</button>
 <pre>{
-  <span class="str">"model"</span>: <span class="str">"SenseNova-U1"</span>,
+  <span class="str">"model"</span>: <span class="str">"sensenova-u1-fast"</span>,
   <span class="str">"messages"</span>: [
     { <span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"你是一个有用的助手。"</span> },
     { <span class="str">"role"</span>: <span class="str">"user"</span>,   <span class="str">"content"</span>: <span class="str">"介绍一下商汤科技。"</span> }
@@ -560,9 +632,9 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
 
     <section id="params-common">
       <h2 data-zh="请求参数" data-en="Request Parameters">请求参数</h2>
-      <p data-zh="以下参数在 SenseNova U1 与 SenseNova 6.7 Flash 上均稳定支持，行为与 OpenAI Chat Completions 一致。"
-         data-en="The parameters below are stably supported by both SenseNova U1 and SenseNova 6.7 Flash, with behavior identical to OpenAI Chat Completions.">
-        以下参数在 SenseNova U1 与 SenseNova 6.7 Flash 上均稳定支持，行为与 OpenAI Chat Completions 一致。
+      <p data-zh="以下参数在 SenseNova U1 Fast 与 SenseNova 6.7 Flash-Lite 上均稳定支持，行为与 OpenAI Chat Completions 一致。"
+         data-en="The parameters below are stably supported by both SenseNova U1 Fast and SenseNova 6.7 Flash-Lite, with behavior identical to OpenAI Chat Completions.">
+        以下参数在 SenseNova U1 Fast 与 SenseNova 6.7 Flash-Lite 上均稳定支持，行为与 OpenAI Chat Completions 一致。
       </p>
       <table>
         <thead>
@@ -577,8 +649,8 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
         <tbody>
           <tr>
             <td><code>model</code></td><td>string</td><td>✅</td><td>—</td>
-            <td data-zh-html="模型 ID，目前可选 <code>SenseNova-U1</code> / <code>SenseNova-6.7-Flash</code>"
-                data-en-html="Model ID. Currently available: <code>SenseNova-U1</code> / <code>SenseNova-6.7-Flash</code>">模型 ID，目前可选 <code>SenseNova-U1</code> / <code>SenseNova-6.7-Flash</code></td>
+            <td data-zh-html="模型 ID，目前可选 <code>sensenova-u1-fast</code> / <code>sensenova-6.7-flash-lite</code>"
+                data-en-html="Model ID. Currently available: <code>sensenova-u1-fast</code> / <code>sensenova-6.7-flash-lite</code>">模型 ID，目前可选 <code>sensenova-u1-fast</code> / <code>sensenova-6.7-flash-lite</code></td>
           </tr>
           <tr>
             <td><code>messages</code></td><td>array</td><td>✅</td><td>—</td>
@@ -663,7 +735,7 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
   <span class="str">"id"</span>: <span class="str">"chatcmpl-8aBcD..."</span>,
   <span class="str">"object"</span>: <span class="str">"chat.completion"</span>,
   <span class="str">"created"</span>: <span class="num">1713167890</span>,
-  <span class="str">"model"</span>: <span class="str">"SenseNova-U1"</span>,
+  <span class="str">"model"</span>: <span class="str">"sensenova-u1-fast"</span>,
   <span class="str">"choices"</span>: [{
     <span class="str">"index"</span>: <span class="num">0</span>,
     <span class="str">"message"</span>: {
@@ -705,7 +777,7 @@ console.<span class="fn">log</span>(resp.choices[<span class="num">0</span>].mes
 
       <h3 data-zh="完整流式样例" data-en="Full streaming sample">完整流式样例</h3>
       <div class="code-block">
-<pre>data: {<span class="str">"id"</span>:<span class="str">"chatcmpl-..."</span>,<span class="str">"object"</span>:<span class="str">"chat.completion.chunk"</span>,<span class="str">"created"</span>:<span class="num">1713167890</span>,<span class="str">"model"</span>:<span class="str">"SenseNova-U1"</span>,<span class="str">"choices"</span>:[{<span class="str">"index"</span>:<span class="num">0</span>,<span class="str">"delta"</span>:{<span class="str">"role"</span>:<span class="str">"assistant"</span>,<span class="str">"content"</span>:<span class="str">""</span>},<span class="str">"finish_reason"</span>:<span class="kw">null</span>}]}
+<pre>data: {<span class="str">"id"</span>:<span class="str">"chatcmpl-..."</span>,<span class="str">"object"</span>:<span class="str">"chat.completion.chunk"</span>,<span class="str">"created"</span>:<span class="num">1713167890</span>,<span class="str">"model"</span>:<span class="str">"sensenova-u1-fast"</span>,<span class="str">"choices"</span>:[{<span class="str">"index"</span>:<span class="num">0</span>,<span class="str">"delta"</span>:{<span class="str">"role"</span>:<span class="str">"assistant"</span>,<span class="str">"content"</span>:<span class="str">""</span>},<span class="str">"finish_reason"</span>:<span class="kw">null</span>}]}
 
 data: {<span class="str">"id"</span>:<span class="str">"chatcmpl-..."</span>,<span class="str">"object"</span>:<span class="str">"chat.completion.chunk"</span>,<span class="str">"choices"</span>:[{<span class="str">"index"</span>:<span class="num">0</span>,<span class="str">"delta"</span>:{<span class="str">"content"</span>:<span class="str">"Hello"</span>},<span class="str">"finish_reason"</span>:<span class="kw">null</span>}]}
 
@@ -734,7 +806,7 @@ data: [DONE]</pre>
       <h3 data-zh="请求示例" data-en="Request example">请求示例</h3>
       <div class="code-block">
 <pre>{
-  <span class="str">"model"</span>: <span class="str">"SenseNova-6.7-Flash"</span>,
+  <span class="str">"model"</span>: <span class="str">"sensenova-6.7-flash-lite"</span>,
   <span class="str">"messages"</span>: [
     { <span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"今天上海天气怎么样？"</span> }
   ],
@@ -781,7 +853,7 @@ data: [DONE]</pre>
       <h3 data-zh="回传工具结果" data-en="Post the tool result">回传工具结果</h3>
       <div class="code-block">
 <pre>{
-  <span class="str">"model"</span>: <span class="str">"SenseNova-6.7-Flash"</span>,
+  <span class="str">"model"</span>: <span class="str">"sensenova-6.7-flash-lite"</span>,
   <span class="str">"messages"</span>: [
     { <span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"今天上海天气怎么样？"</span> },
     { <span class="str">"role"</span>: <span class="str">"assistant"</span>, <span class="str">"tool_calls"</span>: [ /* 上一步模型返回 */ ] },
@@ -797,15 +869,15 @@ data: [DONE]</pre>
 
     <section id="multimodal">
       <h2 data-zh="图文输入输出" data-en="Image + Text I/O">图文输入输出</h2>
-      <p data-zh-html="仅 <strong>SenseNova U1</strong> 支持图像输入与图像输出。在 <code>messages[].content</code> 中以内容块数组的形式传入图像，模型生成的图片会通过 <code>message.images</code> 字段返回。"
-         data-en-html="Image input and output are supported only by <strong>SenseNova U1</strong>. Pass images as an array of content parts in <code>messages[].content</code>; generated images are returned via <code>message.images</code>.">
-        仅 <strong>SenseNova U1</strong> 支持图像输入与图像输出。在 <code>messages[].content</code> 中以内容块数组的形式传入图像，模型生成的图片会通过 <code>message.images</code> 字段返回。
+      <p data-zh-html="仅 <strong>SenseNova U1 Fast</strong> 支持图像输入与图像输出。在 <code>messages[].content</code> 中以内容块数组的形式传入图像，模型生成的图片会通过 <code>message.images</code> 字段返回。"
+         data-en-html="Image input and output are supported only by <strong>SenseNova U1 Fast</strong>. Pass images as an array of content parts in <code>messages[].content</code>; generated images are returned via <code>message.images</code>.">
+        仅 <strong>SenseNova U1 Fast</strong> 支持图像输入与图像输出。在 <code>messages[].content</code> 中以内容块数组的形式传入图像，模型生成的图片会通过 <code>message.images</code> 字段返回。
       </p>
 
       <h3 data-zh="图像输入" data-en="Image input">图像输入</h3>
       <div class="code-block">
 <pre>{
-  <span class="str">"model"</span>: <span class="str">"SenseNova-U1"</span>,
+  <span class="str">"model"</span>: <span class="str">"sensenova-u1-fast"</span>,
   <span class="str">"messages"</span>: [{
     <span class="str">"role"</span>: <span class="str">"user"</span>,
     <span class="str">"content"</span>: [
@@ -822,14 +894,14 @@ data: [DONE]</pre>
         <code>image_url.url</code> 支持 HTTPS 链接或 <code>data:image/...;base64,...</code> 格式的 base64 内联图片。
       </p>
 
-      <h3>图像生成 <span class="pill u1">SenseNova U1</span></h3>
-      <p data-zh-html="SenseNova U1 可在回复中直接生成图像。启用方式：在 <code>modalities</code> 中加入 <code>&quot;image&quot;</code>，并通过 <code>image_config</code> 指定生成参数。"
-         data-en-html="SenseNova U1 can directly generate images in its reply. Add <code>&quot;image&quot;</code> to <code>modalities</code> and specify generation options via <code>image_config</code>.">
-        SenseNova U1 可在回复中直接生成图像。启用方式：在 <code>modalities</code> 中加入 <code>"image"</code>，并通过 <code>image_config</code> 指定生成参数。
+      <h3>图像生成 <span class="pill u1">SenseNova U1 Fast</span></h3>
+      <p data-zh-html="SenseNova U1 Fast 可在回复中直接生成图像。启用方式：在 <code>modalities</code> 中加入 <code>&quot;image&quot;</code>，并通过 <code>image_config</code> 指定生成参数。"
+         data-en-html="SenseNova U1 Fast can directly generate images in its reply. Add <code>&quot;image&quot;</code> to <code>modalities</code> and specify generation options via <code>image_config</code>.">
+        SenseNova U1 Fast 可在回复中直接生成图像。启用方式：在 <code>modalities</code> 中加入 <code>"image"</code>，并通过 <code>image_config</code> 指定生成参数。
       </p>
       <div class="code-block">
 <pre>{
-  <span class="str">"model"</span>: <span class="str">"SenseNova-U1"</span>,
+  <span class="str">"model"</span>: <span class="str">"sensenova-u1-fast"</span>,
   <span class="str">"messages"</span>: [
     { <span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"为下季度销售周报生成一张信息图封面"</span> }
   ],
@@ -926,8 +998,8 @@ data: [DONE]</pre>
       <li><a href="#quickstart" data-zh="快速开始" data-en="Quickstart">快速开始</a></li>
       <li><a href="#auth" data-zh="鉴权" data-en="Authentication">鉴权</a></li>
       <li><a href="#models-overview" data-zh="模型总览" data-en="Model overview">模型总览</a></li>
-      <li><a href="#model-u1">SenseNova U1</a></li>
-      <li><a href="#model-flash">SenseNova 6.7 Flash</a></li>
+      <li><a href="#model-u1">SenseNova U1 Fast</a></li>
+      <li><a href="#model-flash">SenseNova 6.7 Flash-Lite</a></li>
       <li><a href="#chat">Chat Completions</a></li>
       <li><a href="#params-common" data-zh="请求参数" data-en="Request parameters">请求参数</a></li>
       <li><a href="#response" data-zh="响应结构" data-en="Response schema">响应结构</a></li>
@@ -940,5 +1012,19 @@ data: [DONE]</pre>
 </div>
 
 <script src="assets/app.js"></script>
+<script>
+  function copyModelId(btn, id) {
+    const reset = () => {
+      btn.classList.remove('copied');
+      btn.textContent = (document.documentElement.lang === 'en' ? 'Copy' : '复制');
+    };
+    if (!navigator.clipboard) { reset(); return; }
+    navigator.clipboard.writeText(id).then(() => {
+      btn.classList.add('copied');
+      btn.textContent = (document.documentElement.lang === 'en' ? 'Copied' : '已复制');
+      setTimeout(reset, 1500);
+    }).catch(reset);
+  }
+</script>
 </body>
 </html>

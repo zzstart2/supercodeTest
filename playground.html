@@ -106,7 +106,7 @@
 
   .billing-tip {
     background: var(--brand-soft);
-    border-bottom: 1px solid hsla(211, 86%, 48%, 0.15);
+    border-bottom: 1px solid hsla(245, 84%, 62%, 0.15);
     padding: 10px 32px;
     font-size: 13px;
     color: var(--brand);
@@ -186,7 +186,7 @@
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%);
+    background: linear-gradient(135deg, var(--brand) 0%, hsl(239 84% 67%) 100%);
     display: grid;
     place-items: center;
     color: white;
@@ -416,12 +416,9 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a class="brand" href="index.html">
-      <span class="brand-mark"></span>
-      SenseNova
-    </a>
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="SenseNova 日日新" class="brand-logo"/></a>
     <div class="nav-links">
-      <a href="index.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
+      <a href="tokenplan.html" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
       <a href="docs.html" data-zh="文档" data-en="Docs">文档</a>
       <a href="console/dashboard.html" data-zh="控制台" data-en="Console">控制台</a>
     </div>
@@ -475,14 +472,14 @@
       <h3 data-zh="文本模型" data-en="Text models">文本模型</h3>
       <div class="flex" style="gap:8px;">
         <span class="badge badge-success" data-zh="● 在线" data-en="● Online">● 在线</span>
-        <a href="index.html#token-plan" class="btn btn-primary btn-sm"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Token Plan</a>
+        <a href="tokenplan.html#token-plan" class="btn btn-primary btn-sm"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Token Plan</a>
         <button class="btn btn-outline btn-sm" data-zh="PK 添加模型比较" data-en="PK Compare models">PK 添加模型比较</button>
       </div>
     </div>
 
     <div class="billing-tip">
       <svg class="ico" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span data-zh-html="模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href=&quot;index.html#token-plan&quot; style=&quot;color:var(--brand); font-weight:600;&quot;>产品定价</a>。" data-en-html="Playground usage is metered by actual consumption, but currently free during public beta. See <a href=&quot;index.html#token-plan&quot; style=&quot;color:var(--brand); font-weight:600;&quot;>pricing</a> for details.">模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href="index.html#token-plan" style="color:var(--brand); font-weight:600;">产品定价</a>。</span>
+      <span data-zh-html="模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href=&quot;tokenplan.html#token-plan&quot; style=&quot;color:var(--brand); font-weight:600;&quot;>产品定价</a>。" data-en-html="Playground usage is metered by actual consumption, but currently free during public beta. See <a href=&quot;tokenplan.html#token-plan&quot; style=&quot;color:var(--brand); font-weight:600;&quot;>pricing</a> for details.">模型体验将按实际消耗计量，当前处于公测期完全免费。具体规则参见 <a href="tokenplan.html#token-plan" style="color:var(--brand); font-weight:600;">产品定价</a>。</span>
       <span class="close">×</span>
     </div>
 

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-zh="Token Plan · SenseNova" data-en="Token Plan · SenseNova">Token Plan · SenseNova</title>
+<link rel="stylesheet" href="assets/style.css"/>
+<style>
+  /* ========== Token Plan Hero ========== */
+  .tp-hero {
+    background: var(--grad-soft);
+    color: var(--ink-900);
+    padding: 80px 0 108px;  /* 底部留空供 value pills 上浮覆盖边界 */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .tp-hero::before {
+    content: '';
+    position: absolute;
+    top: -140px;
+    right: -100px;
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(124,58,237,.26) 0%, transparent 65%);
+    pointer-events: none;
+    filter: blur(10px);
+    z-index: 0;
+  }
+  .tp-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -180px;
+    left: -100px;
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(99,102,241,.22) 0%, transparent 65%);
+    pointer-events: none;
+    filter: blur(10px);
+    z-index: 0;
+  }
+  .tp-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .tp-eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 20px;
+  }
+  .tp-hero h1 {
+    color: var(--ink-900);
+    font-weight: 700;
+    letter-spacing: -.028em;
+    line-height: 1.15;
+    margin: 0 0 24px;
+  }
+  .tp-hero h1 .pre {
+    display: block;
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 600;
+    color: var(--ink-800);
+    margin-bottom: 10px;
+    letter-spacing: -.012em;
+  }
+  .tp-hero h1 .accent {
+    display: block;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.08;
+    background: linear-gradient(135deg,
+      hsl(245 84% 62%) 0%,
+      hsl(239 84% 67%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tp-hero .lead {
+    font-size: 17px;
+    color: var(--ink-500);
+    margin: 0 auto;
+    max-width: 720px;
+    line-height: 1.75;
+  }
+  .tp-hero .lead strong {
+    color: var(--brand);
+    font-weight: 600;
+  }
+
+  /* Hero CTA 行：主按钮 + 次级链接 */
+  .tp-hero-ctas {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .tp-hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--brand);
+    color: white;
+    font-size: 14.5px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    letter-spacing: -.005em;
+    box-shadow: var(--shadow-brand), inset 0 1px 0 hsla(0,0%,100%,0.15);
+    transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .tp-hero-cta:hover {
+    background: var(--brand-dark);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-brand-lg);
+  }
+  .tp-hero-cta .arrow {
+    display: inline-block;
+    transition: transform var(--dur) var(--ease);
+  }
+  .tp-hero-cta:hover .arrow { transform: translateX(3px); }
+
+  /* 次级 CTA：与主按钮同尺寸的 ghost 风格 */
+  .tp-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink-700);
+    background: var(--white);
+    border: 1px solid var(--ink-200);
+    border-radius: 10px;
+    text-decoration: none;
+    letter-spacing: -.005em;
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .tp-hero-link:hover {
+    color: var(--brand);
+    border-color: var(--brand-200);
+    background: var(--brand-soft);
+    transform: translateY(-1px);
+  }
+  .tp-hero-link .arrow {
+    color: var(--ink-400);
+    transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .tp-hero-link:hover .arrow {
+    color: var(--brand);
+    transform: translateX(3px);
+  }
+  .tp-hero-ctas { gap: 12px; }
+
+  /* ========== 能力清单 ========== */
+  .tp-abilities {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 72px 32px 0;
+  }
+  .tp-ability-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .tp-ability-grid li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    font-size: 14.5px;
+    color: var(--ink-700);
+    transition: border-color var(--dur) var(--ease);
+  }
+  .tp-ability-grid li:hover { border-color: var(--brand-200); }
+  .tp-ability-grid li .num {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--brand);
+    letter-spacing: .08em;
+    padding-top: 3px;
+  }
+
+  /* ========== 三个核心价值（上浮，跨 hero 边界） ========== */
+  .tp-values {
+    max-width: 1080px;
+    margin: -60px auto 0;  /* 负 margin 让卡片骑在 hero 底边 */
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .tp-value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .tp-value-pill {
+    background: var(--white);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    padding: 24px 24px 22px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .tp-value-pill:hover {
+    border-color: var(--brand-200);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .tp-value-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .tp-value-idx {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    color: var(--brand);
+    background: var(--brand-soft);
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  .tp-value-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -.012em;
+  }
+  .tp-value-body {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink-500);
+  }
+
+  /* ========== 订阅卡片 ========== */
+  .tp-plans {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+  .tp-plans-head {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .tp-plans-head h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink-900);
+    margin: 0 0 8px;
+    letter-spacing: -.015em;
+  }
+  .tp-plans-head p {
+    font-size: 14.5px;
+    color: var(--ink-500);
+    margin: 0;
+  }
+  .cp-cards {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 20px;
+  }
+  .plan-card {
+    background: var(--white);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-xl);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: border-color var(--dur) var(--ease),
+                box-shadow var(--dur) var(--ease),
+                transform var(--dur) var(--ease);
+  }
+  .plan-card.featured {
+    border: 1px solid hsla(245, 84%, 62%, 0.28);
+    box-shadow: var(--shadow-md);
+  }
+  .plan-card.featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(180deg,
+      hsla(245, 84%, 62%, 0.03) 0%,
+      transparent 40%);
+    pointer-events: none;
+  }
+  .plan-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .plan-name {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.015em;
+    margin: 0;
+    color: var(--ink-900);
+  }
+  .plan-name.featured-name { color: var(--ink-900); }
+  .plan-head .price-inline {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink-500);
+    font-variant-numeric: tabular-nums;
+  }
+  .plan-head .price-inline::before {
+    content: "·";
+    margin: 0 6px;
+    color: var(--ink-300);
+  }
+  .badge-hot {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--brand);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 8px hsla(245, 84%, 62%, 0.25);
+  }
+  .badge-hot .ico { width: 12px; height: 12px; stroke-width: 2; }
+  .badge-soon {
+    background: var(--ink-100);
+    color: var(--ink-500);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  /* 模型 ID 提示（快速上手） */
+  .plan-hint {
+    font-size: 12.5px;
+    color: var(--ink-500);
+    margin: 0 0 20px;
+    line-height: 1.6;
+  }
+  .plan-hint code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 1px 6px;
+    background: var(--ink-100);
+    border-radius: 4px;
+    color: var(--ink-800);
+  }
+  .plan-price-area {
+    padding: 0 0 20px;
+  }
+  .plan-price {
+    font-family: var(--font-heading);
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -.04em;
+    color: var(--ink-900);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .plan-price .unit {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink-500);
+    letter-spacing: -.005em;
+  }
+  .plan-price-sub {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: var(--ink-500);
+    line-height: 1.5;
+  }
+  .plan-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    background: var(--brand);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 18px;
+    text-decoration: none;
+    transition: all var(--dur) var(--ease);
+    box-shadow: var(--shadow-brand), inset 0 1px 0 hsla(0,0%,100%,0.15);
+    letter-spacing: -.005em;
+  }
+  .plan-btn:hover {
+    background: var(--brand-dark);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-brand-lg);
+  }
+  .plan-btn .arrow {
+    display: inline-block;
+    transition: transform var(--dur) var(--ease);
+  }
+  .plan-btn:hover .arrow { transform: translateX(3px); }
+  /* 配额 headline（独立大字号，放大版） */
+  .plan-quota-head {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--ink-200);
+  }
+  .plan-quota-value {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -.01em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+  }
+  .plan-quota-sub {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--ink-500);
+    line-height: 1.5;
+  }
+  /* 配额说明 hint + 浮层 */
+  .quota-hint {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-left: 6px;
+    background: var(--ink-200);
+    color: var(--ink-500);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    font-style: italic;
+    cursor: help;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    outline: none;
+  }
+  .quota-hint:hover,
+  .quota-hint:focus {
+    background: var(--brand-soft);
+    color: var(--brand);
+  }
+  .quota-hint .hint-tip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 14px;
+    background: #0A0B12;
+    color: rgba(255, 255, 255, 0.88);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.55;
+    border-radius: 8px;
+    width: 280px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+    box-shadow: 0 4px 16px -4px rgba(10, 11, 18, 0.25);
+    z-index: 10;
+  }
+  .quota-hint .hint-tip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-top-color: #0A0B12;
+  }
+  .quota-hint:hover .hint-tip,
+  .quota-hint:focus .hint-tip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-2px);
+  }
+  .plan-beta-note {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--brand);
+    background: hsla(245, 84%, 62%, 0.08);
+    border-radius: 100px;
+    letter-spacing: .01em;
+  }
+  /* "限时放量"徽章（与 plan-name 同行对齐） */
+  .plan-badge-top {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--brand);
+    background: hsla(245, 84%, 62%, 0.10);
+    border-radius: 100px;
+    letter-spacing: .01em;
+    flex-shrink: 0;
+  }
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+  .plan-features li {
+    padding: 5px 0;
+    font-size: 13.5px;
+    color: var(--ink-700);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.6;
+  }
+  .plan-features li strong {
+    color: var(--ink-900);
+    font-weight: 600;
+  }
+  .plan-features .feature-sub {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--ink-500);
+    font-weight: 400;
+  }
+  .plan-features .feature-sub code {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    background: var(--ink-100);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--ink-800);
+    margin: 0 2px;
+  }
+  .plan-features li .mark {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 1px;
+    background: hsla(245, 84%, 62%, 0.12);
+    color: var(--brand);
+  }
+  .plan-features li .mark::before { content: '✓'; }
+  .plan-card.soon {
+    background: hsla(0, 0%, 100%, 0.55);
+    border: 1px dashed var(--ink-300);
+    opacity: 0.85;
+    transition: opacity var(--dur) var(--ease);
+  }
+  .plan-card.soon:hover { opacity: 1; }
+  .plan-card.soon .plan-name {
+    font-size: 18px;
+    color: var(--ink-500);
+    font-weight: 600;
+  }
+  .plan-card.soon .soon-desc {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    color: var(--ink-400);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ========== 集成入口（Hermes / OpenClaw）· 精简单行 ========== */
+  .tp-integration {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 32px 0;
+    text-align: center;
+  }
+  .integration-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-700);
+    text-decoration: none;
+    padding: 8px 4px;
+    border-bottom: 1px solid transparent;
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .integration-link:hover {
+    color: var(--brand);
+    border-bottom-color: var(--brand);
+  }
+  .integration-link .arrow {
+    display: inline-block;
+    color: var(--brand);
+    transition: transform var(--dur) var(--ease);
+  }
+  .integration-link:hover .arrow { transform: translateX(4px); }
+
+  @media (max-width: 900px) {
+    .tp-value-grid { grid-template-columns: 1fr; }
+    .cp-cards { grid-template-columns: 1fr; }
+    .tp-values { margin-top: -40px; }
+    .tp-hero { padding: 56px 0 80px; }
+    .tp-hero-ctas { flex-direction: column; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="SenseNova 日日新" class="brand-logo"/></a>
+    <div class="nav-links">
+      <a href="tokenplan.html" class="active" data-zh="Token Plan" data-en="Token Plan">Token Plan</a>
+      <a href="docs.html" data-zh="文档" data-en="Docs">文档</a>
+      <a href="console/dashboard.html" data-zh="控制台" data-en="Console">控制台</a>
+    </div>
+    <div class="nav-cta">
+      <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
+      <a href="https://www.sensetime.com" target="_blank" class="btn btn-ghost btn-sm" data-zh="商汤官网" data-en="SenseTime">商汤官网</a>
+      <a href="login.html" class="btn btn-ghost btn-sm" data-zh="登录" data-en="Sign in">登录</a>
+      <a href="register.html" class="btn btn-primary btn-sm" data-zh="免费注册" data-en="Sign up free">免费注册</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="tp-hero" id="token-plan">
+  <div class="tp-hero-inner">
+    <span class="tp-eyebrow">SenseNova Token Plan</span>
+    <h1><span class="pre" data-zh="不止折扣，更是" data-en="More than a discount —">不止折扣，更是</span><span class="accent" data-zh="办公生产力能力包" data-en="a productivity pack for real work">办公生产力能力包</span></h1>
+    <p class="lead" data-zh="精选模型 + 富裕用量保障，让&quot;长任务&quot;也能&quot;放心跑&quot;。" data-en="Curated models + generous quota, so long-running tasks can actually finish.">精选模型 + 富裕用量保障，让"长任务"也能"放心跑"。</p>
+    <div class="tp-hero-ctas">
+      <a class="tp-hero-cta" href="register.html" data-zh-html="免费开始 <span class=&quot;arrow&quot;>→</span>" data-en-html="Start free <span class=&quot;arrow&quot;>→</span>">免费开始 <span class="arrow">→</span></a>
+      <a class="tp-hero-link" href="https://github.com/OpenSenseNova/SenseNova6.7/blob/main/docs/API.md#2-hermes-agent-%E4%B8%8E-openclaw-%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener" data-zh-html="在 Hermes Agent 与 OpenClaw 中使用 <span class=&quot;arrow&quot;>→</span>" data-en-html="Use with Hermes Agent &amp; OpenClaw <span class=&quot;arrow&quot;>→</span>">在 Hermes Agent 与 OpenClaw 中使用 <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 核心价值 · 跨越 hero band 边界上浮 -->
+<section class="tp-values">
+  <div class="tp-value-grid">
+    <div class="tp-value-pill">
+      <div class="tp-value-head">
+        <span class="tp-value-idx">01</span>
+        <span class="tp-value-name" data-zh="原生多模智能体" data-en="Native multimodal agent">原生多模智能体</span>
+      </div>
+      <p class="tp-value-body" data-zh="贯通理解与生成的多模态底座，既能读懂文档、图片、表格，也能生成图文并茂的高质量交付物。" data-en="A multimodal backbone that unifies understanding and generation — reads documents, images and tables, and produces high-quality illustrated deliverables.">贯通理解与生成的多模态底座，既能读懂文档、图片、表格，也能生成图文并茂的高质量交付物。</p>
+    </div>
+    <div class="tp-value-pill">
+      <div class="tp-value-head">
+        <span class="tp-value-idx">02</span>
+        <span class="tp-value-name" data-zh="更懂企业办公需求" data-en="Tuned for office workflows">更懂企业办公需求</span>
+      </div>
+      <p class="tp-value-body" data-zh="从&quot;理解任务&quot;到&quot;生成最终产物&quot;形成闭环，复杂办公流程一次跑到结果，而不是只停留在给建议。" data-en="Closes the loop from understanding tasks to delivering final artifacts — complex workflows run to completion, not just suggestions.">从"理解任务"到"生成最终产物"形成闭环，复杂办公流程一次跑到结果，而不是只停留在给建议。</p>
+    </div>
+    <div class="tp-value-pill">
+      <div class="tp-value-head">
+        <span class="tp-value-idx">03</span>
+        <span class="tp-value-name" data-zh-html="Token 消耗立省 60%<span class=&quot;quota-hint&quot; tabindex=&quot;0&quot; aria-label=&quot;数据说明&quot;>i<span class=&quot;hint-tip&quot;>基于长链路复杂任务，对比市面主流最新 Agent 模型，平均估算所得，根据实际执行任务不同可能存在波动。</span></span>" data-en-html="60% lower token usage<span class=&quot;quota-hint&quot; tabindex=&quot;0&quot; aria-label=&quot;data note&quot;>i<span class=&quot;hint-tip&quot;>Estimated against current mainstream agent models on long-horizon complex tasks; actual savings vary by task.</span></span>">Token 消耗立省 60%<span class="quota-hint" tabindex="0" aria-label="数据说明">i<span class="hint-tip">基于长链路复杂任务，对比市面主流最新 Agent 模型，平均估算所得，根据实际执行任务不同可能存在波动。</span></span></span>
+      </div>
+      <p class="tp-value-body" data-zh="复杂任务下 token 消耗更可控，单位成本下的可交付产出显著提升，长链路任务也能&quot;放心跑&quot;。" data-en="Token usage is more predictable on complex tasks, so deliverables-per-cost improves markedly — long-running tasks stay affordable.">复杂任务下 token 消耗更可控，单位成本下的可交付产出显著提升，长链路任务也能"放心跑"。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 订阅方案 -->
+<section class="tp-plans">
+  <div class="tp-plans-head">
+    <h2 data-zh="订阅方案" data-en="Subscription plans">订阅方案</h2>
+    <p data-zh="公测期完全免费开放，付费档位即将上线" data-en="Free during public beta; paid tiers coming soon">公测期完全免费开放，付费档位即将上线</p>
+  </div>
+  <div class="cp-cards">
+    <div class="plan-card featured">
+      <div class="plan-head">
+        <h3 class="plan-name featured-name" data-zh="Free · 公测" data-en="Free · Public Beta">Free · 公测</h3>
+        <span class="plan-badge-top" data-zh="限时放量" data-en="Boosted quota">限时放量</span>
+      </div>
+      <div class="plan-price-area">
+        <div class="plan-price">¥ 0<span class="unit">/月</span></div>
+      </div>
+      <a class="plan-btn" href="register.html" data-zh-html="立即开始 <span class=&quot;arrow&quot;>→</span>" data-en-html="Get started <span class=&quot;arrow&quot;>→</span>">立即开始 <span class="arrow">→</span></a>
+      <div class="plan-quota-head">
+        <div class="plan-quota-value">
+          <span data-zh="每模型 1,500 次调用 / 5 小时" data-en="Per model: 1,500 calls / 5 hours">每模型 1,500 次调用 / 5 小时</span>
+          <span class="quota-hint" tabindex="0" aria-label="用量说明">
+            i
+            <span class="hint-tip" data-zh="单模型独立计数 · 同账户所有 Key 共享" data-en="Counted per model · Shared across all Keys in the account">单模型独立计数 · 同账户所有 Key 共享</span>
+          </span>
+        </div>
+      </div>
+      <ul class="plan-features">
+        <li><span class="mark"></span><span data-zh-html="<strong>SenseNova 6.7 Flash-Lite</strong> 与 <strong>SenseNova U1 Fast</strong>" data-en-html="<strong>SenseNova 6.7 Flash-Lite</strong> and <strong>SenseNova U1 Fast</strong>"><strong>SenseNova 6.7 Flash-Lite</strong> 与 <strong>SenseNova U1 Fast</strong></span></li>
+        <li><span class="mark"></span><span data-zh="原生多模态架构，理解生成一体" data-en="Native multimodal architecture with unified understanding & generation">原生多模态架构，理解生成一体</span></li>
+        <li><span class="mark"></span><span data-zh-html="原生支持 <strong>Cowork-Skills</strong> 体系，办公场景特化支持" data-en-html="Native <strong>Cowork-Skills</strong> support, optimized for office workflows">原生支持 <strong>Cowork-Skills</strong> 体系，办公场景特化支持</span></li>
+        <li><span class="mark"></span><span data-zh-html="支持 <strong>Hermes Agent</strong> 与 <strong>OpenClaw</strong> 快速接入" data-en-html="Quick integration with <strong>Hermes Agent</strong> and <strong>OpenClaw</strong>">支持 <strong>Hermes Agent</strong> 与 <strong>OpenClaw</strong> 快速接入</span></li>
+        <li><span class="mark"></span><span data-zh-html="最多 <strong>20 个 API Key</strong>" data-en-html="Up to <strong>20 API Keys</strong>">最多 <strong>20 个 API Key</strong></span></li>
+      </ul>
+    </div>
+    <div class="plan-card soon">
+      <div class="plan-head">
+        <h3 class="plan-name" data-zh="Lite / Pro" data-en="Lite / Pro">Lite / Pro</h3>
+        <span class="badge-soon" data-zh="即将上线" data-en="Coming soon">即将上线</span>
+      </div>
+      <p class="soon-desc" data-zh="付费档位即将推出" data-en="Paid tiers coming soon">付费档位即将推出</p>
+    </div>
+  </div>
+</section>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

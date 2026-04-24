@@ -13,14 +13,14 @@
     grid-template-columns: 1fr 1fr;
   }
   .auth-hero {
-    background: radial-gradient(ellipse at top right, hsl(211 20% 10%) 0%, hsl(211 25% 8%) 70%);
+    background: radial-gradient(ellipse at top right, hsl(233 18% 10%) 0%, hsl(233 25% 8%) 70%);
     color: white; padding: 64px;
     display: flex; flex-direction: column; justify-content: space-between;
     position: relative; overflow: hidden;
   }
   .auth-hero::before {
     content: ''; position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 70% 30%, hsla(211, 86%, 48%, 0.15) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 70% 30%, hsla(245, 84%, 62%, 0.15) 0%, transparent 50%);
     pointer-events: none;
   }
   .auth-hero .brand { color: white; font-size: 20px; position: relative; z-index: 1; }
@@ -121,13 +121,10 @@
 
 <div class="auth-page">
   <div class="auth-hero">
-    <a class="brand" href="index.html">
-      <span class="brand-mark"></span>
-      SenseNova
-    </a>
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="SenseNova 日日新" class="brand-logo"/></a>
 
     <div>
-      <h1 data-zh-html="开启你的<br/><span style=&quot;background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;&quot;>AI 之旅</span>" data-en-html="Start your<br/><span style=&quot;background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;&quot;>AI journey</span>">开启你的<br/><span style="background: linear-gradient(135deg, var(--brand) 0%, hsl(200 80% 55%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AI 之旅</span></h1>
+      <h1 data-zh-html="开启你的<br/><span style=&quot;background: linear-gradient(135deg, var(--brand) 0%, hsl(239 84% 67%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;&quot;>AI 之旅</span>" data-en-html="Start your<br/><span style=&quot;background: linear-gradient(135deg, var(--brand) 0%, hsl(239 84% 67%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;&quot;>AI journey</span>">开启你的<br/><span style="background: linear-gradient(135deg, var(--brand) 0%, hsl(239 84% 67%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AI 之旅</span></h1>
       <p data-zh="在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。" data-en="Create a SenseNova account in 30 seconds and start using our production-grade LLM API right away.">在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。</p>
 
       <ul class="bonus-list">

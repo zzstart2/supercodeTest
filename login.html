@@ -15,14 +15,14 @@
     grid-template-columns: 1fr 1fr;
   }
   .auth-hero {
-    background: radial-gradient(ellipse at top right, hsl(211 20% 10%) 0%, hsl(211 25% 8%) 70%);
+    background: radial-gradient(ellipse at top right, hsl(233 18% 10%) 0%, hsl(233 25% 8%) 70%);
     color: white; padding: 64px;
     display: flex; flex-direction: column; justify-content: space-between;
     position: relative; overflow: hidden;
   }
   .auth-hero::before {
     content: ''; position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 70% 30%, hsla(211, 86%, 48%, 0.15) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 70% 30%, hsla(245, 84%, 62%, 0.15) 0%, transparent 50%);
     pointer-events: none;
   }
   .auth-hero .brand { color: white; font-size: 20px; position: relative; z-index: 1; }
@@ -212,10 +212,7 @@
 
 <div class="auth-page">
   <div class="auth-hero">
-    <a class="brand" href="index.html">
-      <span class="brand-mark"></span>
-      SenseNova
-    </a>
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="SenseNova 日日新" class="brand-logo"/></a>
 
     <div>
       <h1 data-zh="欢迎回来" data-en="Welcome back">欢迎回来</h1>
