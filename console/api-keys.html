@@ -127,7 +127,7 @@
             <div class="meta"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px; color:var(--ink-400);"><rect x="4" y="1" width="8" height="14" rx="2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg> +86 xxx ****xxxx</div>
             <div class="meta" data-zh-html="当前套餐：<strong style=&quot;color:var(--brand);&quot;>Free · 公测</strong>" data-en-html="Current plan: <strong style=&quot;color:var(--brand);&quot;>Free · Beta</strong>">当前套餐：<strong style="color:var(--brand);">Free · 公测</strong></div>
           </div>
-          <button class="menu-item"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span> <span data-zh="修改密码" data-en="Change password">修改密码</span></button>
+          <button class="menu-item" onclick="openResetPwd()"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span> <span data-zh="修改密码" data-en="Change password">修改密码</span></button>
           <a class="menu-item danger" href="../login.html"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2H3.5A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14H6"/><path d="M10 11l3-3-3-3"/><path d="M13 8H6"/></svg></span> <span data-zh="退出登录" data-en="Sign out">退出登录</span></a>
         </div>
       </div>
@@ -312,8 +312,61 @@ client = <span class="fn">OpenAI</span>(
   </div>
 </div>
 
+<!-- 修改密码（用手机号重置） -->
+<div class="modal-overlay" id="reset-modal" onclick="if(event.target===this)closeResetPwd()">
+  <div class="modal">
+    <h3 data-zh="修改密码" data-en="Change password">修改密码</h3>
+    <p class="desc" data-zh="为账号安全，请通过绑定手机号校验后设置新密码。" data-en="For your security, verify with your bound phone number before setting a new password.">为账号安全，请通过绑定手机号校验后设置新密码。</p>
+
+    <div style="background: var(--ink-100); padding: 10px 14px; border-radius: var(--radius); font-size: 13px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center;">
+      <span data-zh="绑定手机号" data-en="Bound phone">绑定手机号</span>
+      <strong style="font-family: var(--font-mono); color: var(--ink-900);">+86 138****0000</strong>
+    </div>
+
+    <form onsubmit="event.preventDefault(); submitReset();">
+      <div class="form-field">
+        <label data-zh="短信验证码" data-en="SMS code">短信验证码</label>
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 8px;">
+          <input id="reset-code" class="input" type="text" placeholder="请输入验证码" data-zh-placeholder="请输入验证码" data-en-placeholder="Enter verification code" required/>
+          <button type="button" class="btn btn-outline btn-sm" onclick="sendResetSms(this)" data-zh="发送验证码" data-en="Send code">发送验证码</button>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label data-zh="新密码" data-en="New password">新密码</label>
+        <input id="reset-pwd1" class="input" type="password" placeholder="至少 8 位，含字母与数字" data-zh-placeholder="至少 8 位，含字母与数字" data-en-placeholder="At least 8 chars, letters + numbers" required/>
+      </div>
+
+      <div class="form-field">
+        <label data-zh="确认新密码" data-en="Confirm new password">确认新密码</label>
+        <input id="reset-pwd2" class="input" type="password" placeholder="再次输入新密码" data-zh-placeholder="再次输入新密码" data-en-placeholder="Re-enter your new password" required/>
+      </div>
+
+      <div class="flex" style="justify-content: flex-end; gap: 8px; margin-top: 20px;">
+        <button type="button" class="btn btn-outline" onclick="closeResetPwd()" data-zh="取消" data-en="Cancel">取消</button>
+        <button type="submit" class="btn btn-primary" data-zh="确认修改" data-en="Confirm">确认修改</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script src="../assets/app.js"></script>
 <script>
+  function openResetPwd() { document.getElementById('reset-modal').classList.add('open'); }
+  function closeResetPwd() { document.getElementById('reset-modal').classList.remove('open'); }
+  function sendResetSms(btn) {
+    let s = 60; btn.disabled = true; const orig = btn.textContent; btn.textContent = `${s}s`;
+    const t = setInterval(() => { s--; btn.textContent = `${s}s`; if (s <= 0) { clearInterval(t); btn.disabled = false; btn.textContent = orig; } }, 1000);
+  }
+  function submitReset() {
+    const a = document.getElementById('reset-pwd1').value;
+    const b = document.getElementById('reset-pwd2').value;
+    const isEn = document.documentElement.dataset.lang === 'en';
+    if (a !== b) { alert(isEn ? 'Passwords do not match' : '两次输入不一致'); return; }
+    alert(isEn ? 'Password changed successfully' : '密码修改成功');
+    closeResetPwd();
+  }
+
   function copyKey(btn, key) {
     navigator.clipboard.writeText(key).then(() => {
       btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3.5 3.5L13 5"/></svg>';

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title data-zh="注册 · SenseNova" data-en="Sign up · SenseNova">注册 · SenseNova</title>
+<title data-zh="完善账号信息 · SenseNova" data-en="Set up account · SenseNova">完善账号信息 · SenseNova</title>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
   body { background: var(--ink-100); }
@@ -24,16 +24,73 @@
     pointer-events: none;
   }
   .auth-hero .brand { color: white; font-size: 20px; position: relative; z-index: 1; }
-  .auth-hero h1 { color: white; font-size: 40px; position: relative; z-index: 1; }
-  .auth-hero p { color: rgba(255,255,255,0.7); font-size: 16px; max-width: 380px; position: relative; z-index: 1; }
+  .auth-hero h1 { color: white; font-size: 32px; position: relative; z-index: 1; margin: 0 0 8px; }
+  .auth-hero p { color: rgba(255,255,255,0.7); font-size: 14px; max-width: 380px; position: relative; z-index: 1; }
 
-  .bonus-list { position: relative; z-index: 1; margin-top: 24px; padding: 0; }
-  .bonus-list li {
-    list-style: none; padding: 10px 0;
-    color: rgba(255, 255, 255, 0.85); font-size: 14px;
-    display: flex; gap: 12px; align-items: flex-start;
+  /* 开发用流程说明（临时） */
+  .dev-spec {
+    position: relative; z-index: 1;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px dashed rgba(255,255,255,0.18);
+    border-radius: 10px;
+    padding: 16px 18px;
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    line-height: 1.6;
   }
-  .bonus-list li .ico { color: var(--brand); flex-shrink: 0; margin-top: 3px; }
+  .dev-spec .dev-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: hsla(45, 90%, 60%, 0.15);
+    color: hsl(45, 90%, 70%);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .dev-spec h4 {
+    margin: 12px 0 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dev-spec h4:first-of-type { margin-top: 0; }
+  .dev-spec h4 .num {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    background: var(--brand);
+    color: white;
+    font-size: 11px;
+    display: grid; place-items: center;
+    flex-shrink: 0;
+  }
+  .dev-spec ol, .dev-spec ul {
+    margin: 0 0 0 4px;
+    padding-left: 18px;
+    color: rgba(255,255,255,0.78);
+  }
+  .dev-spec li { padding: 2px 0; }
+  .dev-spec code {
+    background: rgba(255,255,255,0.08);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: hsl(200 80% 75%);
+  }
+  .dev-spec .branch {
+    background: rgba(255,255,255,0.04);
+    border-left: 2px solid var(--brand);
+    padding: 6px 10px;
+    margin: 6px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 12px;
+  }
+  .dev-spec .branch strong { color: white; }
 
   .auth-form-wrap {
     background: white; padding: 48px 64px;
@@ -50,65 +107,118 @@
   }
   .auth-foot a { color: var(--brand); font-weight: 500; }
 
-  .verify-tip {
+  /* 步骤指示 */
+  .stepper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--ink-500);
+  }
+  .stepper .step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stepper .dot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--ink-200);
+    color: var(--ink-500);
+    display: grid; place-items: center;
+    font-size: 12px; font-weight: 600;
+  }
+  .stepper .step.done .dot {
+    background: #10B981;
+    color: white;
+  }
+  .stepper .step.active .dot {
+    background: var(--brand);
+    color: white;
+  }
+  .stepper .step.active .label { color: var(--ink-900); font-weight: 600; }
+  .stepper .bar {
+    flex: 1; height: 2px;
+    background: var(--ink-200);
+  }
+  .stepper .bar.done { background: #10B981; }
+
+  /* 已校验手机号横幅 */
+  .verified-phone {
     background: #F0FDF4;
     border: 1px solid #BBF7D0;
     color: #065F46;
-    padding: 10px 14px;
+    padding: 12px 14px;
     border-radius: var(--radius);
     font-size: 13px;
-    margin-top: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .verified-phone .left {
     display: flex;
     align-items: center;
     gap: 10px;
   }
-  .verify-tip .ico { color: #059669; flex-shrink: 0; }
+  .verified-phone .left .ico {
+    color: #059669;
+    flex-shrink: 0;
+  }
+  .verified-phone .num {
+    font-family: var(--font-mono, monospace);
+    font-weight: 600;
+  }
+  .verified-phone .change {
+    color: var(--brand);
+    font-size: 13px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .verified-phone .change:hover { text-decoration: underline; }
 
-  .phone-input {
+  .pwd-wrap {
     display: flex;
+    align-items: center;
     border: 1px solid var(--ink-200);
     border-radius: var(--radius);
-    overflow: hidden;
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
   }
-  .phone-input:focus-within {
+  .pwd-wrap:focus-within {
     border-color: var(--brand);
     box-shadow: 0 0 0 3px var(--brand-soft);
   }
-  .phone-input .cc {
-    border: none;
-    background: var(--ink-100);
-    padding: 0 12px;
-    font-size: 14px;
-    color: var(--ink-700);
-    border-right: 1px solid var(--ink-200);
-  }
-  .phone-input input {
+  .pwd-wrap input {
     flex: 1;
     border: none;
     padding: 10px 14px;
     font-size: 14px;
     outline: none;
+    background: transparent;
+    min-width: 0;
   }
-
-  .sms-group {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 8px;
+  .pwd-wrap .field-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink-400);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
   }
-  .sms-btn {
-    padding: 10px 14px;
-    border: 1px solid var(--ink-200);
-    border-radius: var(--radius);
-    background: white;
-    color: var(--brand);
-    font-size: 13px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-  .sms-btn:hover { background: var(--brand-soft); border-color: var(--brand); }
+  .pwd-wrap .field-icon:hover { color: var(--ink-700); }
 
   .strength { height: 4px; background: var(--ink-200); border-radius: 4px; margin-top: 6px; overflow: hidden; }
-  .strength-fill { height: 100%; width: 60%; background: linear-gradient(90deg, #F59E0B, #10B981); }
+  .strength-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #F59E0B, #10B981); transition: width var(--dur) var(--ease); }
+
+  .match-tip {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .match-tip.ok { color: #059669; }
+  .match-tip.bad { color: #DC2626; }
 
   @media (max-width: 900px) {
     .auth-page { grid-template-columns: 1fr; }
@@ -123,16 +233,47 @@
   <div class="auth-hero">
     <a class="brand" href="index.html"><img src="assets/logo.svg" alt="SenseNova 日日新" class="brand-logo"/></a>
 
-    <div>
-      <h1 data-zh-html="开启你的<br/><span style=&quot;background: linear-gradient(135deg, var(--brand) 0%, hsl(239 84% 67%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;&quot;>AI 之旅</span>" data-en-html="Start your<br/><span style=&quot;background: linear-gradient(135deg, var(--brand) 0%, hsl(239 84% 67%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;&quot;>AI journey</span>">开启你的<br/><span style="background: linear-gradient(135deg, var(--brand) 0%, hsl(239 84% 67%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AI 之旅</span></h1>
-      <p data-zh="在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。" data-en="Create a SenseNova account in 30 seconds and start using our production-grade LLM API right away.">在 30 秒内创建 SenseNova 账号，立即体验生产级大模型 API 服务。</p>
+    <div style="overflow-y: auto; max-height: calc(100vh - 220px); padding-right: 4px;">
+      <h1 data-zh="完善账号信息" data-en="Set up your account">完善账号信息</h1>
+      <p data-zh="手机号已通过校验，下一步设置登录账号与密码。" data-en="Phone is verified — next, set up your sign-in account and password.">手机号已通过校验，下一步设置登录账号与密码。</p>
 
-      <ul class="bonus-list">
-        <li><svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-zh="公测期完全免费开放" data-en="Completely free during public beta">公测期完全免费开放</span></li>
-        <li><svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-zh="即刻获得 API Key，兼容 OpenAI SDK" data-en="Instant API Key, works with the OpenAI SDK">即刻获得 API Key，兼容 OpenAI SDK</span></li>
-        <li><svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-zh="每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放" data-en="1,500 calls per model every 5 hours (shared across all Keys) · All models open">每模型 1,500 次调用 / 5 小时（同账户所有 Key 共享）· 模型全开放</span></li>
-        <li><svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-zh="解锁 Playground 在线测试" data-en="Unlock the online Playground">解锁 Playground 在线测试</span></li>
-      </ul>
+      <div class="dev-spec">
+        <span class="dev-tag">DEV SPEC · 开发参考</span>
+
+        <h4><span class="num">1</span> 进入条件</h4>
+        <ul>
+          <li>由 <code>login.html</code> 手机号 Tab 跳转而来，必须携带 <code>?cc=&phone=&verified=1</code></li>
+          <li>未携带 <code>verified=1</code> 或 token 失效 → 返回 <code>login.html</code> 重新校验</li>
+          <li>同号多账号（verify 返回 ≥ 2）<strong style="color:hsl(45,90%,70%);">不会进入此页</strong>，注册接口对该号码返回 409</li>
+        </ul>
+
+        <h4><span class="num">2</span> 表单字段</h4>
+        <ol>
+          <li><strong>设置账号</strong>：4–32 位，<code>[a-zA-Z0-9_-]</code>，全局唯一，作为登录账号且不可修改</li>
+          <li><strong>设置密码</strong>：≥ 8 位，需含字母 + 数字；前端展示强度条（弱 / 一般 / 中 / 强）</li>
+          <li><strong>确认密码</strong>：前端实时一致性提示，提交前需 <code>pwd1 === pwd2</code></li>
+          <li>勾选服务条款 + 隐私政策</li>
+        </ol>
+
+        <h4><span class="num">3</span> 提交流程</h4>
+        <div class="branch">
+          <strong>POST /auth/register</strong><br/>
+          入参：<code>{ phone_token, account, password }</code><br/>
+          phone_token 来自 Step 1 的 <code>/auth/phone/verify</code>，后端再次校验后落库
+        </div>
+        <ul>
+          <li>账号已被占用 → 返回 409，前端字段下提示"该账号已存在"</li>
+          <li>phone_token 失效或对应号码已存在多账号 → 返回 409，前端跳回 <code>login.html</code></li>
+          <li>成功 → 自动登录新账号 → 跳 <code>/console/dashboard</code></li>
+        </ul>
+
+        <h4><span class="num">4</span> 后续操作</h4>
+        <ul>
+          <li>新账号默认绑定该手机号（用于后续"修改密码"重置流程）</li>
+          <li>注册后用户菜单里"修改密码" → 用此手机号 + 验证码 + 新密码完成重置</li>
+          <li>"更换手机号"链接 → 返回 <code>login.html</code> 重新走 Step 1</li>
+        </ul>
+      </div>
     </div>
 
     <div class="text-small" style="color: rgba(255,255,255,0.4);" data-zh="我们遵循 SOC2 标准，你的数据始终受到保护。" data-en="We follow SOC2 standards — your data is always protected.">
@@ -145,38 +286,61 @@
       <div style="display:flex; justify-content:flex-end; margin-bottom: 12px;">
         <button type="button" class="lang-toggle" onclick="toggleLang()">EN</button>
       </div>
-      <h2 data-zh="创建账号" data-en="Create account">创建账号</h2>
-      <p class="sub" data-zh="立即接入，5 分钟接入生产" data-en="Integrate in 5 minutes, ship to production">立即接入，5 分钟接入生产</p>
 
-      <form onsubmit="event.preventDefault(); alert((document.documentElement.dataset.lang==='en'?'Registration successful! Welcome to SenseNova 🎉':'注册成功！欢迎来到 SenseNova 🎉')); location.href='console/dashboard.html';">
-        <div class="form-field">
-          <label data-zh="手机号" data-en="Phone number">手机号</label>
-          <div class="phone-input">
-            <select class="cc">
-              <option>+86</option>
-              <option>+852</option>
-              <option>+65</option>
-              <option>+60</option>
-              <option>+1</option>
-            </select>
-            <input type="tel" placeholder="请输入手机号" data-zh-placeholder="请输入手机号" data-en-placeholder="Enter your phone number" required/>
-          </div>
-          <div class="helper" data-zh="我们将发送验证码短信到此手机号" data-en="We'll send a verification code to this number">我们将发送验证码短信到此手机号</div>
+      <h2 data-zh="完善账号信息" data-en="Set up your account">完善账号信息</h2>
+      <p class="sub" data-zh="手机号已通过校验，下一步设置登录账号" data-en="Phone verified — set up your sign-in account next">手机号已通过校验，下一步设置登录账号</p>
+
+      <div class="stepper">
+        <div class="step done">
+          <span class="dot">✓</span>
+          <span class="label" data-zh="校验手机号" data-en="Verify phone">校验手机号</span>
         </div>
+        <div class="bar done"></div>
+        <div class="step active">
+          <span class="dot">2</span>
+          <span class="label" data-zh="设置账号" data-en="Set up account">设置账号</span>
+        </div>
+      </div>
 
-        <div class="form-field">
-          <label data-zh="短信验证码" data-en="SMS code">短信验证码</label>
-          <div class="sms-group">
-            <input class="input" type="text" placeholder="6 位验证码" data-zh-placeholder="6 位验证码" data-en-placeholder="6-digit code" required/>
-            <button type="button" class="sms-btn" data-zh="发送验证码" data-en="Send code">发送验证码</button>
+      <div class="verified-phone">
+        <div class="left">
+          <svg class="ico" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.5 3.5L13 5"/></svg>
+          <div>
+            <div style="font-size: 12px; color: #047857; margin-bottom: 2px;" data-zh="已校验手机号" data-en="Verified phone">已校验手机号</div>
+            <div class="num" id="verified-num">+86 138****0000</div>
           </div>
+        </div>
+        <a class="change" href="login.html" data-zh="更换手机号" data-en="Change number">更换手机号</a>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert((document.documentElement.dataset.lang==='en'?'Account created! Welcome to SenseNova 🎉':'账号创建成功！欢迎来到 SenseNova 🎉')); location.href='console/dashboard.html';">
+        <div class="form-field">
+          <label data-zh="设置账号" data-en="Set account">设置账号</label>
+          <input class="input" type="text" placeholder="例如 acme-corp 或 zhangsan" data-zh-placeholder="例如 acme-corp 或 zhangsan" data-en-placeholder="e.g. acme-corp or zhangsan" required pattern="[a-zA-Z0-9_-]{4,32}"/>
+          <div class="helper" data-zh="4–32 位，支持字母、数字、下划线和短横线，作为登录账号且不可修改" data-en="4–32 chars: letters, digits, _ or -. Used to sign in and cannot be changed later">4–32 位，支持字母、数字、下划线和短横线，作为登录账号且不可修改</div>
         </div>
 
         <div class="form-field">
           <label data-zh="设置密码" data-en="Set password">设置密码</label>
-          <input class="input" type="password" placeholder="至少 8 位，含字母与数字" data-zh-placeholder="至少 8 位，含字母与数字" data-en-placeholder="At least 8 characters, letters + numbers" required/>
-          <div class="strength"><div class="strength-fill"></div></div>
-          <div class="helper" data-zh="密码强度：中等 · 建议添加特殊字符" data-en="Password strength: medium · Add special characters for stronger">密码强度：中等 · 建议添加特殊字符</div>
+          <div class="pwd-wrap">
+            <input id="pwd1" type="password" placeholder="至少 8 位，含字母与数字" data-zh-placeholder="至少 8 位，含字母与数字" data-en-placeholder="At least 8 characters, letters + numbers" required oninput="updateStrength(); checkMatch();"/>
+            <button type="button" class="field-icon" onclick="togglePwd('pwd1')" aria-label="Toggle password visibility">
+              <svg class="ico" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <div class="strength"><div class="strength-fill" id="strength-fill"></div></div>
+          <div class="helper" id="strength-text" data-zh="建议包含字母、数字与特殊字符" data-en="Mix in letters, numbers, and special characters">建议包含字母、数字与特殊字符</div>
+        </div>
+
+        <div class="form-field">
+          <label data-zh="确认密码" data-en="Confirm password">确认密码</label>
+          <div class="pwd-wrap">
+            <input id="pwd2" type="password" placeholder="再次输入密码" data-zh-placeholder="再次输入密码" data-en-placeholder="Re-enter your password" required oninput="checkMatch();"/>
+            <button type="button" class="field-icon" onclick="togglePwd('pwd2')" aria-label="Toggle password visibility">
+              <svg class="ico" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <div class="match-tip" id="match-tip"></div>
         </div>
 
         <label class="flex" style="font-size:13px; color: var(--ink-700); margin: 4px 0 20px; align-items: flex-start;">
@@ -186,21 +350,64 @@
           </span>
         </label>
 
-        <button type="submit" class="btn btn-primary btn-block btn-lg" data-zh="创建账号 · 免费开始" data-en="Create account · Start free">创建账号 · 免费开始</button>
-
-        <div class="verify-tip">
-          <svg class="ico" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-          <span data-zh="注册成功即可使用 · 公测期完全免费开放" data-en="Ready to use right after signup · Completely free during public beta">注册成功即可使用 · 公测期完全免费开放</span>
-        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" data-zh="完成注册 · 进入控制台" data-en="Finish & enter Console">完成注册 · 进入控制台</button>
       </form>
 
-      <p class="auth-foot" data-zh-html="已有账号？<a href=&quot;login.html&quot;>立即登录</a>" data-en-html="Already have an account? <a href=&quot;login.html&quot;>Sign in</a>">
-        已有账号？<a href="login.html">立即登录</a>
+      <p class="auth-foot" data-zh-html="已有账号？<a href=&quot;login.html&quot;>返回登录</a>" data-en-html="Already have an account? <a href=&quot;login.html&quot;>Back to sign in</a>">
+        已有账号？<a href="login.html">返回登录</a>
       </p>
     </div>
   </div>
 </div>
 
+<script>
+// 从上一步带过来的手机号（login.html 跳转时通过 query 传入）
+(function() {
+  const p = new URLSearchParams(location.search);
+  const cc = p.get('cc') || '+86';
+  const phone = p.get('phone') || '';
+  if (phone && phone.length >= 4) {
+    const masked = phone.slice(0, 3) + '****' + phone.slice(-4);
+    document.getElementById('verified-num').textContent = `${cc} ${masked}`;
+  }
+})();
+
+function togglePwd(id) {
+  const inp = document.getElementById(id);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+
+function updateStrength() {
+  const v = document.getElementById('pwd1').value;
+  let score = 0;
+  if (v.length >= 8) score++;
+  if (/[A-Z]/.test(v) && /[a-z]/.test(v)) score++;
+  if (/\d/.test(v)) score++;
+  if (/[^A-Za-z0-9]/.test(v)) score++;
+  const pct = [0, 25, 50, 75, 100][score];
+  document.getElementById('strength-fill').style.width = pct + '%';
+  const labels = {
+    zh: ['请输入密码', '强度：弱', '强度：一般', '强度：中等', '强度：强'],
+    en: ['Enter a password', 'Strength: weak', 'Strength: fair', 'Strength: medium', 'Strength: strong']
+  };
+  const lang = document.documentElement.dataset.lang === 'en' ? 'en' : 'zh';
+  document.getElementById('strength-text').textContent = labels[lang][score];
+}
+
+function checkMatch() {
+  const a = document.getElementById('pwd1').value;
+  const b = document.getElementById('pwd2').value;
+  const tip = document.getElementById('match-tip');
+  if (!b) { tip.textContent = ''; tip.className = 'match-tip'; return; }
+  if (a === b) {
+    tip.textContent = document.documentElement.dataset.lang === 'en' ? '✓ Passwords match' : '✓ 两次输入一致';
+    tip.className = 'match-tip ok';
+  } else {
+    tip.textContent = document.documentElement.dataset.lang === 'en' ? '✗ Passwords do not match' : '✗ 两次输入不一致';
+    tip.className = 'match-tip bad';
+  }
+}
+</script>
 <script src="assets/app.js"></script>
 </body>
 </html>
