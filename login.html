@@ -622,8 +622,17 @@
 function switchMode(el, mode) {
   document.querySelectorAll('.login-tabs .t').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
+  // 复位多账号选择 / 忘记密码视图，避免跨 Tab 残留
+  const pick = document.getElementById('form-pick');
+  if (pick) pick.classList.add('hidden');
+  const forgot = document.getElementById('form-forgot');
+  if (forgot) forgot.classList.add('hidden');
+  // Tab 自身可能在忘记密码态下被隐藏，这里确保可见
+  document.querySelectorAll('.login-tabs').forEach(t => t.classList.remove('hidden'));
   document.getElementById('form-pw').classList.toggle('hidden', mode !== 'pw');
   document.getElementById('form-sms').classList.toggle('hidden', mode !== 'sms');
+  const agreement = document.querySelector('.login-agreement');
+  if (agreement) agreement.classList.remove('hidden');
 }
 function togglePwd() {
   const inp = document.getElementById('pwd-input');
